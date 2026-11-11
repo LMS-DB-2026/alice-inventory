@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9IiM0QzQ4NDkiLz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMiAzMikgc2NhbGUoMC4yOTgxKSB0cmFuc2xhdGUoLTg3LjE1IC04NS41MCkiPjxwYXRoIGZpbGw9IiNDOUE5NkUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgZD0iTTI2LjYgMzAuNCBMMjMuNCAzNC4yIEwyMS4zIDM3LjQgTDE4LjcgNDEuOCBMMTUuNCA0OC42IEwxMy41IDU0LjEgTDEyLjIgNTkuOSBMMTEuMSA2Ni4xIEwxMS4wIDczLjAgTDExLjIgNzcuMiBMMTEuNSA3OS45IEwxMy4zIDg3LjkgTDE1LjEgOTMuOCBMMTYuOCA5OC4wIEwxOS4yIDEwMi45IEwyMi44IDEwOS4xIEwyNi42IDExNC4yIEwzMC4xIDExOC40IEwzMi44IDEyMC45IEwzNi44IDEyNC4zIEw0Mi40IDEyOC42IEw0Ni44IDEzMS4zIEw1MS4xIDEzMy40IEw1Ni42IDEzNS41IEw2MS4xIDEzNi42IEw2Ni45IDEzNy4zIEw2Ny44IDEzNy44IEw2OC4zIDEzOC44IEw2OC4xIDE0MC40IEw2NC40IDE1MC44IEw2My40IDE1Mi4yIEw2MS41IDE1NC4yIEw2MC41IDE1NC45IEw1OC45IDE1NS44IEw1Ni4wIDE1Ni41IEw1Mi40IDE1Ni43IEw0NS4wIDE1Ni44IEw0My45IDE1Ni45IEw0My4xIDE1Ny4zIEw0Mi43IDE1OC4wIEw0Mi44IDE1OC45IEw0My4zIDE1OS41IEw0My45IDE1OS44IEw0NC44IDE2MC4wIEw0Ny41IDE1OS45IEw0OS45IDE2MC4wIEw1My4xIDE1OS44IEw3Mi4xIDE1OS41IEw3Ni4xIDE1OS4zIEw3OC4wIDE1OS40IEw3OC43IDE1OS4yIEw3OS4zIDE1OC45IEw3OS44IDE1OC4yIEw4MC4wIDE1Ny40IEw3OS44IDE1Ni43IEw3OS4yIDE1Ni4xIEw3Ny45IDE1NS45IEw3My4wIDE1Ni4xIEw3MS42IDE1Ni4wIEw3MC4zIDE1NS40IEw2OS44IDE1NC45IEw2OS41IDE1NC4xIEw2OS40IDE1My4yIEw2OS43IDE1Mi4wIEw3MS42IDE0Ni41IEw3NC4wIDEzOS4wIEw3NC41IDEzNy45IEw3NS4xIDEzNy4xIEw3NS45IDEzNi43IEw4My44IDEzNC45IEw4Ny45IDEzMy4zIEw5Mi4yIDEzMS4wIEw5Ni4wIDEyOC45IEw5OS44IDEyNi4wIEwxMDMuNiAxMjIuNSBMMTA2LjcgMTE5LjAgTDEwOC4wIDExNy4xIEwxMDkuNSAxMTQuNCBMMTEwLjQgMTEyLjIgTDExMC43IDExMC4yIEwxMTAuOSAxMDguMCBMMTEwLjQgMTA0LjMgTDExMC45IDEwMy40IEwxMTEuOSAxMDMuMSBMMTEyLjkgMTAzLjIgTDExMy43IDEwMy41IEwxMTQuNCAxMDQuMSBMMTE0LjggMTA0LjkgTDExOC41IDExMy42IEwxMjAuMiAxMTcuMiBMMTIyLjIgMTIyLjQgTDEyNi4zIDEzMS42IEwxMjcuNSAxMzQuOSBMMTI4LjcgMTM3LjQgTDEyOS41IDEzOS45IEwxMzEuMCAxNDMuNSBMMTMxLjMgMTQ1LjEgTDEzMC45IDE0Ni4yIEwxMzAuMSAxNDcuMCBMMTI4LjAgMTQ3LjUgTDEyNy4xIDE0OC4yIEwxMjYuNyAxNDguOCBMMTI2LjYgMTQ5LjIgTDEyNi43IDE0OS43IEwxMjcuMSAxNTAuMyBMMTI4LjMgMTUwLjggTDEzMC42IDE1MC45IEwxMzguNCAxNTAuNCBMMTQyLjIgMTUwLjQgTDE0OC42IDE0OS45IEwxNTMuNSAxNTAuMCBMMTYwLjAgMTQ5LjggTDE2MS41IDE0OS44IEwxNjIuMiAxNDkuNyBMMTYyLjkgMTQ5LjIgTDE2My4zIDE0OC41IEwxNjMuMyAxNDcuNiBMMTYyLjkgMTQ2LjkgTDE2Mi4yIDE0Ni41IEwxNjEuMSAxNDYuMiBMMTU0LjkgMTQ2LjQgTDE1Mi4xIDE0NS45IEwxNDkuMiAxNDQuNSBMMTQ4LjAgMTQzLjcgTDE0Ni43IDE0Mi42IEwxNDUuNyAxNDEuMSBMMTQ0LjEgMTM3LjggTDEzOC42IDEyNC4wIEwxMzEuMSAxMDYuNCBMMTMwLjkgMTA1LjUgTDEzMS4wIDEwNC44IEwxMzEuNCAxMDQuMiBMMTMyLjUgMTAzLjMgTDEzMi43IDEwMi45IEwxMzIuNiAxMDIuNSBMMTMyLjMgMTAyLjEgTDEzMS43IDEwMS44IEwxMjkuNSAxMDEuNiBMMTI4LjQgMTAxLjAgTDEyNy41IDk5LjkgTDEyNS44IDk2LjggTDEyMy41IDg4LjkgTDEyMS41IDgzLjQgTDExNS42IDY5LjIgTDExMy4wIDY0LjIgTDExMS45IDYxLjUgTDEwOS44IDU1LjggTDEwNy45IDUxLjIgTDEwNS4xIDQ0LjMgTDEwNC4yIDQzLjEgTDEwMi40IDQyLjAgTDEwMS42IDQxLjggTDEwMS4wIDQxLjcgTDEwMC41IDQxLjkgTDEwMC4xIDQyLjQgTDk5LjUgNDMuOCBMOTguMiA0OC4xIEw5Ny43IDQ4LjkgTDk2LjcgNDkuNCBMOTQuOSA0OS42IEw5NC4zIDUwLjEgTDk0LjIgNTAuNiBMOTQuNCA1MS4xIEw5NS44IDUyLjQgTDk2LjIgNTMuMCBMOTYuMyA1My42IEw5Ni4yIDU0LjUgTDk0LjggNTguNCBMOTMuOCA2Mi4xIEw5MS40IDY5LjAgTDg4LjUgNzguMiBMODMuOCA5MS44IEw4My4zIDkzLjAgTDgyLjYgOTMuOCBMODEuNyA5NC4yIEw3NC45IDk1LjYgTDcyLjAgOTYuNSBMNjkuNCA5Ny43IEw2NS4wIDEwMC4yIEw2Mi40IDEwMi41IEw1OS44IDEwNS40IEw1OC40IDEwNy42IEw1Ni4zIDExMS45IEw1NC4zIDExOC4yIEw1My44IDEyMC4xIEw1My4xIDEyMS4yIEw1Mi41IDEyMS40IEw1MS43IDEyMS4zIEw0OS40IDExOS41IEw0Ni4wIDExNi42IEw0MC45IDExMS4wIEwzNy43IDEwNi40IEwzNS4wIDEwMS42IEwzMi4zIDk1LjUgTDMwLjggOTEuMSBMMjkuMCA4NS4wIEwyNy45IDc5LjEgTDI3LjMgNjkuNiBMMjguMSA1OS44IEwyOC45IDU1LjUgTDMwLjAgNTEuNSBMMzEuOCA0Ni45IEwzMy4wIDQ0LjIgTDM0LjQgNDEuOSBMMzkuMCAzNS4xIEw0My4zIDMwLjcgTDQ2LjkgMjcuNyBMNTEuMCAyNC43IEw1NS4xIDIyLjQgTDYwLjQgMjAuMSBMNjQuNSAxOS4zIEw2OC45IDE4LjkgTDc1LjIgMTkuMCBMNzcuNCAxOS4yIEw4MC40IDE5LjggTDg5LjEgMjIuNCBMOTQuNiAyNC43IEw5OS4wIDI2LjggTDEwMC40IDI3LjYgTDEwMS45IDI4LjkgTDEwMy43IDMxLjIgTDEwNi4wIDM0LjcgTDEwNi44IDM1LjQgTDEwNy41IDM1LjUgTDEwOC4xIDM1LjMgTDEwOC42IDM0LjkgTDEwOS4wIDM0LjQgTDEwOS4zIDMzLjYgTDEwOS4zIDMyLjUgTDEwOC41IDMwLjQgTDEwOC43IDI5LjQgTDEwOS40IDI4LjkgTDExMi4wIDI4LjIgTDExMi42IDI3LjggTDExMy4wIDI3LjIgTDExMy4yIDI2LjYgTDExMy4xIDI2LjAgTDExMi45IDI1LjMgTDExMi40IDI0LjcgTDExMS41IDI0LjMgTDEwOC45IDI0LjAgTDEwNS4xIDIyLjkgTDEwMy44IDIyLjQgTDg4LjIgMTQuNCBMODIuNiAxMi40IEw3Ny40IDExLjMgTDczLjggMTEuMCBMNjcuOSAxMS4wIEw2My4yIDExLjUgTDU3LjkgMTIuNSBMNTIuNCAxNC4yIEw0NC40IDE3LjQgTDQwLjAgMTkuNiBMMzQuOSAyMy4wIEwzMS4wIDI1LjkgTDI5LjAgMjcuOFogTTgwLjAgMTAwLjcgTDgwLjMgMTAxLjEgTDgwLjUgMTAxLjggTDgwLjEgMTAzLjUgTDc3LjUgMTExLjAgTDczLjAgMTI1LjEgTDcyLjMgMTI2LjkgTDcxLjkgMTI3LjYgTDcxLjIgMTI4LjEgTDcwLjUgMTI4LjIgTDY3LjIgMTI3LjggTDYxLjMgMTI2LjEgTDU5LjkgMTI1LjQgTDU5LjMgMTI0LjYgTDU5LjIgMTIzLjkgTDYwLjEgMTIwLjIgTDYxLjIgMTE3LjQgTDYyLjggMTE0LjEgTDY1LjUgMTA5LjkgTDY4LjEgMTA2LjkgTDcwLjQgMTA0LjkgTDcyLjQgMTAzLjQgTDc0LjggMTAyLjAgTDc3LjYgMTAwLjcgTDc5LjAgMTAwLjRaIE0xMDMuNSAxMDMuMyBMMTA0LjggMTA1LjAgTDEwNS42IDEwNi44IEwxMDYuMCAxMDguNCBMMTA2LjEgMTA5LjggTDEwNS44IDExMS41IEwxMDUuMSAxMTMuMiBMMTAzLjggMTE1LjIgTDEwMi4yIDExNy4xIEw5OS44IDExOS40IEw5Ni44IDEyMS42IEw5My41IDEyMy41IEw5MC42IDEyNC45IEw4Ny4xIDEyNi4xIEw4MC42IDEyNy44IEw3OS40IDEyNy45IEw3OC42IDEyNy41IEw3OC4zIDEyNy4wIEw3OC40IDEyNi4yIEw3OS44IDEyMC45IEw4MS40IDExNi45IEw4My4wIDExMS4wIEw4NC4xIDEwNy42IEw4Ni4zIDEwMS41IEw4Ny4xIDEwMC4zIEw4OC4wIDk5LjggTDg5LjIgOTkuNiBMOTQuMCA5OS42IEw5Ny45IDEwMC4yIEwxMDAuNCAxMDEuMVogTTk4LjAgNjYuNyBMOTguNSA2Ni42IEw5OS4wIDY2LjggTDk5LjcgNjcuNiBMMTAxLjIgNzIuNCBMMTA2LjkgODUuNiBMMTA5LjkgOTMuMSBMMTEyLjEgOTcuOSBMMTEyLjMgOTguNiBMMTEyLjMgOTkuMiBMMTEyLjAgOTkuNyBMMTExLjUgMTAwLjEgTDExMC45IDEwMC4yIEwxMTAuMSAxMDAuMSBMMTA3LjEgOTkuMyBMMTA1LjYgOTguNyBMMTAxLjIgOTYuNCBMOTcuMSA5NS4xIEw5My40IDk0LjMgTDkwLjQgOTQuMCBMODkuNyA5My42IEw4OS4zIDkzLjEgTDg5LjIgOTIuNSBMODkuNCA5MS42IEw5NS41IDcyLjkgTDk2LjAgNzAuNSBMOTcuMSA2Ny41IEw5Ny42IDY3LjBaIi8+PC9nPjwvc3ZnPg==">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#4c4849">
+<title>Castello di Alice Inventory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&amp;family=Source+Sans+3:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Layout idea: header, family switch, alert tiles, sticky search and filters, then a dense table that becomes cards on phones. */
+  --cream: #f2efec;
+  --card: #faf8f6;
+  --ink: #2b2829;
+  --muted: #6a6465;
+  --line: #ddd6d0;
+  --line-soft: #e8e3df;
+  --petrol: #4c4849;
+  --on-petrol: #ffffff;
+  --gold: #c9a96e;
+  --gold-soft: #e3cb9b;
+  --on-plate: #d9cdb8;
+  --ok: #245f42;
+  --ok-bg: #e1efe6;
+  --warn: #8f4a08;
+  --warn-bg: #fbe8d0;
+  --crit: #a3302a;
+  --crit-bg: #f7dcd9;
+  --stock: #4c4849;
+  --stock-bg: #eae6e3;
+  --asset: #7a5c1c;
+  --asset-bg: #f3e8cc;
+  --display: "Cinzel", "Trajan Pro", "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.45; padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
+:focus-visible { outline: 3px solid var(--petrol); outline-offset: 2px; }
+button, select, input { font: inherit; color: inherit; }
+
+header.top { background: var(--petrol); color: var(--on-plate); padding: 16px 0; border-bottom: 3px solid var(--gold); box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25); }
+header.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.brand { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.brand .mono { width: clamp(46px, 11vw, 70px); height: auto; flex: none; fill: var(--gold); }
+h1 { margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(1.18rem, 4.4vw, 2.15rem); letter-spacing: 0.07em; line-height: 1.1; color: var(--gold-soft); text-transform: uppercase; }
+.brand-sub { margin: 5px 0 0; font-family: var(--display); font-weight: 500; font-size: clamp(0.66rem, 2.1vw, 0.92rem); letter-spacing: 0.3em; text-transform: uppercase; color: var(--on-plate); }
+.headright { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+.lang { display: inline-flex; align-items: center; gap: 4px; padding: 3px; border: 1px solid rgba(201, 169, 110, 0.6); border-radius: 999px; background: transparent; color: var(--on-plate); }
+.lang svg { margin: 0 4px 0 8px; flex: none; }
+.lang button { border: 0; background: transparent; padding: 7px 13px; min-height: 36px; border-radius: 999px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.04em; cursor: pointer; color: var(--on-plate); }
+.lang button[aria-pressed="true"] { background: var(--gold); color: #3a3637; }
+.meta { margin: 0; font-size: 0.85rem; color: var(--on-plate); }
+
+.family { padding: 18px 0 6px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+.famswitch { display: inline-flex; border: 1px solid var(--petrol); border-radius: 10px; overflow: hidden; background: var(--card); }
+.famswitch button { border: 0; background: transparent; padding: 10px 18px; min-height: 44px; font-weight: 600; cursor: pointer; color: var(--petrol); display: inline-flex; align-items: center; gap: 8px; }
+.famswitch button + button { border-left: 1px solid var(--petrol); }
+.famswitch button[aria-pressed="true"] { background: var(--petrol); color: var(--gold-soft); }
+.famswitch .n { font-weight: 500; font-size: 0.85rem; opacity: 0.8; font-variant-numeric: tabular-nums; }
+.famdesc { margin: 0; color: var(--muted); font-size: 0.92rem; flex: 1 1 280px; }
+
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 14px 0 6px; }
+.tile { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 2px; min-height: 76px; }
+.tile .num { font-family: var(--display); font-size: 1.75rem; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tile .lbl { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+.tile[aria-pressed="true"] { border-color: var(--petrol); box-shadow: inset 0 0 0 1px var(--petrol); }
+.tile.t-out .num { color: var(--crit); } .tile.t-low .num { color: var(--warn); } .tile.t-verify .num { color: var(--asset); } .tile.t-total .num { color: var(--petrol); }
+.tile.zero .num { color: var(--muted); }
+
+.tools { position: sticky; top: 0; z-index: 5; background: var(--cream); padding: 12px 0 8px; margin-top: 6px; }
+.searchrow { display: flex; align-items: center; gap: 10px; background: #fff; border: 1.5px solid var(--petrol); border-radius: 12px; padding: 0 8px 0 14px; min-height: 52px; }
+.searchrow svg { flex: none; color: var(--petrol); }
+.searchrow input { flex: 1; min-width: 0; border: 0; background: transparent; font-size: 1.05rem; padding: 12px 0; outline: none; }
+.searchrow:focus-within { outline: 3px solid var(--petrol); outline-offset: 2px; }
+.searchrow button { border: 0; background: transparent; font-size: 1.6rem; line-height: 1; width: 44px; height: 44px; cursor: pointer; color: var(--muted); border-radius: 8px; }
+.filterbar { padding: 6px 0 0; }
+.filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; }
+.filters label, .filters .sortfield { display: flex; flex-direction: column; gap: 3px; font-size: 0.78rem; font-weight: 600; color: var(--muted); letter-spacing: 0.03em; text-transform: uppercase; }
+.filters select { appearance: none; -webkit-appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234c4849' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right 12px center; border: 1px solid var(--line); border-radius: 10px; min-height: 44px; padding: 8px 34px 8px 12px; font-size: 0.98rem; font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--ink); width: 100%; }
+
+.resultbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 14px 0 8px; }
+.count { font-size: 0.92rem; color: var(--muted); font-weight: 500; }
+.count b { color: var(--ink); }
+.actions { display: flex; gap: 8px; }
+.btn { border: 1px solid var(--petrol); background: var(--card); color: var(--petrol); border-radius: 10px; padding: 8px 14px; min-height: 40px; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
+.btn:hover { background: var(--stock-bg); }
+.btn.primary { background: var(--petrol); color: var(--on-petrol); }
+.btn.primary:hover { background: #3a3637; }
+
+.tablewrap { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; overflow: clip; }
+table.list { width: 100%; border-collapse: collapse; }
+.list thead th { position: sticky; top: var(--stickyoff, 0px); background: var(--petrol); color: var(--gold-soft); text-align: left; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 11px 14px; white-space: nowrap; z-index: 2; }
+.list th.num, .list td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.list thead th { padding: 4px 10px; }
+.list thead th .sortbtn { all: unset; box-sizing: border-box; display: inline-flex; align-items: center; gap: 7px; cursor: pointer; font: inherit; letter-spacing: inherit; text-transform: inherit; color: inherit; padding: 7px 4px; border-radius: 6px; white-space: nowrap; }
+.list thead th.num .sortbtn { flex-direction: row-reverse; }
+.list thead th .sortbtn:hover { background: rgba(255, 255, 255, 0.09); }
+.list thead th .sortbtn:focus-visible { outline: 2px solid var(--gold-soft); outline-offset: 1px; }
+.list thead th .arr { width: 9px; height: 12px; flex: none; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='12' viewBox='0 0 9 12'%3E%3Cpath d='M1 4.5l3.5-3.5 3.5 3.5M1 7.5l3.5 3.5 3.5-3.5' fill='none' stroke='%23e3cb9b' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center / contain; opacity: 0.5; }
+.list thead th[aria-sort="ascending"] .arr { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='12' viewBox='0 0 9 12'%3E%3Cpath d='M4.5 10.5v-9M1.2 4.8l3.3-3.3 3.3 3.3' fill='none' stroke='%23e3cb9b' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); opacity: 1; }
+.list thead th[aria-sort="descending"] .arr { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='9' height='12' viewBox='0 0 9 12'%3E%3Cpath d='M4.5 1.5v9M1.2 7.2l3.3 3.3 3.3-3.3' fill='none' stroke='%23e3cb9b' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); opacity: 1; }
+.list thead th[aria-sort="ascending"], .list thead th[aria-sort="descending"] { color: #fff; }
+.sortctl { display: flex; gap: 6px; }
+.sortctl select { flex: 1; min-width: 0; }
+.dirbtn { flex: none; width: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 10px; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='16' viewBox='0 0 14 16'%3E%3Cpath d='M7 14V3M2.5 7.5L7 3l4.5 4.5' fill='none' stroke='%234c4849' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat center; cursor: pointer; }
+.dirbtn[data-dir="desc"] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='16' viewBox='0 0 14 16'%3E%3Cpath d='M7 2v11M2.5 8.5L7 13l4.5-4.5' fill='none' stroke='%234c4849' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+.dirbtn:hover:not(:disabled) { background-color: var(--stock-bg); }
+.dirbtn:disabled { opacity: 0.4; cursor: default; }
+.list tbody tr { border-top: 1px solid var(--line-soft); cursor: pointer; }
+.list tbody tr:first-child { border-top: 0; }
+.list tbody tr:hover { background: #f1ece6; }
+.list tbody tr:focus-visible { outline: 3px solid var(--petrol); outline-offset: -3px; }
+.list td { padding: 11px 14px; vertical-align: top; }
+.iname { font-weight: 600; color: var(--ink); overflow-wrap: anywhere; }
+.isub { display: block; font-size: 0.82rem; color: var(--muted); font-weight: 400; overflow-wrap: anywhere; }
+.iplace { color: var(--ink); font-size: 0.93rem; }
+.iplace .sec { color: var(--muted); font-size: 0.82rem; display: block; }
+.qty { font-weight: 700; font-size: 1.02rem; }
+.dim { color: var(--muted); }
+.chip { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 3px 10px; font-size: 0.78rem; font-weight: 700; white-space: nowrap; line-height: 1.3; }
+.chip::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.chip.out { background: var(--crit-bg); color: var(--crit); }
+.chip.low { background: var(--warn-bg); color: var(--warn); }
+.chip.expired { background: var(--crit-bg); color: var(--crit); }
+.chip.expiring { background: var(--warn-bg); color: var(--warn); }
+.chip.ok { background: var(--ok-bg); color: var(--ok); }
+.chip.stock { background: var(--stock-bg); color: var(--stock); }
+.chip.asset { background: var(--asset-bg); color: var(--asset); }
+.chip.stock::before, .chip.asset::before { display: none; }
+.vflag { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: var(--asset-bg); color: var(--asset); font-size: 0.72rem; font-weight: 800; margin-left: 6px; vertical-align: 1px; }
+.empty { padding: 40px 20px; text-align: center; color: var(--muted); }
+.empty button { margin-top: 12px; }
+.more { display: flex; justify-content: center; padding: 16px 0 6px; }
+.loading, .error { padding: 60px 20px; text-align: center; color: var(--muted); }
+.error { color: var(--crit); }
+footer.foot { padding: 26px 0 40px; color: var(--muted); font-size: 0.82rem; text-align: center; }
+
+dialog { border: 0; border-radius: 16px; padding: 0; width: min(680px, calc(100vw - 24px)); max-height: calc(100vh - 32px); background: var(--card); color: var(--ink); box-shadow: 0 20px 60px rgba(30, 26, 27, 0.38); }
+dialog::backdrop { background: rgba(30, 26, 27, 0.55); }
+.dhead { display: flex; justify-content: space-between; gap: 12px; padding: 20px 20px 14px; border-bottom: 1px solid var(--line); }
+.dname { margin: 0; font-family: var(--display); font-weight: 600; font-size: 1.35rem; letter-spacing: 0.02em; line-height: 1.2; color: var(--petrol); overflow-wrap: anywhere; }
+.dorig { margin: 4px 0 0; font-size: 0.85rem; color: var(--muted); }
+.place { margin: 6px 0 0; font-size: 0.92rem; color: var(--muted); }
+.dclose { border: 0; background: transparent; font-size: 2rem; line-height: 1; width: 44px; height: 44px; flex: none; cursor: pointer; border-radius: 10px; color: var(--muted); }
+.dbody { padding: 16px 20px 22px; overflow: auto; max-height: calc(100vh - 150px); display: grid; gap: 16px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+dl.facts { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px 16px; }
+.facts > div { background: #fff; border: 1px solid var(--line-soft); border-radius: 10px; padding: 10px 12px; }
+.facts dt { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+.facts dd { margin: 2px 0 0; font-weight: 600; font-size: 1.02rem; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.facts dd small { font-weight: 400; color: var(--muted); font-size: 0.82rem; }
+.sect h3 { margin: 0 0 8px; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.others { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line-soft); border-radius: 10px; background: #fff; }
+.others li { display: flex; justify-content: space-between; gap: 12px; padding: 9px 12px; border-top: 1px solid var(--line-soft); font-size: 0.93rem; }
+.others li:first-child { border-top: 0; }
+.others li.total { font-weight: 700; background: var(--stock-bg); border-radius: 0 0 10px 10px; }
+.checks { margin: 0; padding: 10px 12px 10px 30px; background: var(--asset-bg); border-radius: 10px; color: #4e3a0d; font-size: 0.93rem; }
+.gallery { display: flex; gap: 8px; overflow-x: auto; }
+.gallery img { height: 150px; border-radius: 10px; border: 1px solid var(--line); background: #fff; }
+
+/* ---- connected mode: sign-in, editing, photos, history ---- */
+.userbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 0 8px; font-size: 0.85rem; color: var(--on-plate); }
+.linkbtn { border: 0; background: transparent; color: var(--gold-soft); font-weight: 600; text-decoration: underline; cursor: pointer; padding: 8px 6px; min-height: 40px; }
+.muted { color: var(--muted); }
+.login { max-width: 440px; margin: 7vh auto 0; padding: 0 20px 40px; }
+.logincard { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px 24px 24px; box-shadow: 0 10px 30px rgba(20, 30, 36, 0.08); }
+.logincard h2 { margin: 0 0 6px; font-family: var(--display); font-weight: 600; letter-spacing: 0.04em; font-size: 1.5rem; color: var(--petrol); }
+.logincard > p { margin: 0 0 20px; color: var(--muted); }
+.logincard .btn { width: 100%; min-height: 48px; font-size: 1rem; }
+.formerr { margin: 0 0 12px; color: var(--crit); font-weight: 600; font-size: 0.92rem; }
+.logincard label, .form label { display: flex; flex-direction: column; gap: 4px; font-size: 0.78rem; font-weight: 600; color: var(--muted); letter-spacing: 0.03em; text-transform: uppercase; margin-bottom: 14px; }
+.logincard input, .form input, .form select, .form textarea, .mvform input, .mvform select { border: 1px solid var(--line); border-radius: 10px; min-height: 46px; padding: 8px 12px; font-size: 1rem; background: #fff; text-transform: none; letter-spacing: 0; color: var(--ink); width: 100%; font-weight: 400; }
+.form textarea { resize: vertical; }
+.form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 14px; }
+.form .full, .form details { grid-column: 1 / -1; }
+.form details { margin-bottom: 14px; }
+.form summary { cursor: pointer; font-weight: 600; color: var(--petrol); padding: 8px 0; }
+.form .inner { margin-top: 8px; }
+.formactions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn.danger { border-color: var(--crit); color: var(--crit); margin-left: auto; }
+.btn.danger:hover { background: var(--crit-bg); }
+.stockctl .qtyrow { display: flex; align-items: center; justify-content: center; gap: 18px; margin-bottom: 12px; }
+.qbtn { width: 56px; height: 56px; border-radius: 14px; border: 1.5px solid var(--petrol); background: #fff; color: var(--petrol); font-size: 1.8rem; line-height: 1; cursor: pointer; }
+.qbtn:active { background: var(--stock-bg); }
+.qval { font-family: var(--display); font-size: 2.2rem; font-weight: 600; min-width: 3ch; text-align: center; color: var(--petrol); font-variant-numeric: tabular-nums; }
+.mvform { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.8fr); gap: 8px; }
+.mvform input[type="text"], .mvform .btn { grid-column: 1 / -1; }
+.mvform .btn { min-height: 46px; }
+.gallery .ph { position: relative; flex: none; }
+.phx { position: absolute; top: 6px; right: 6px; width: 34px; height: 34px; border-radius: 50%; border: 0; background: rgba(30, 43, 49, 0.78); color: #fff; font-size: 1.3rem; line-height: 1; cursor: pointer; }
+.phadd { margin-top: 8px; }
+.hist { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line-soft); border-radius: 10px; background: #fff; }
+.hist li { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 9px 12px; border-top: 1px solid var(--line-soft); font-size: 0.9rem; }
+.hist li:first-child { border-top: 0; }
+.hist .when { color: var(--muted); font-size: 0.82rem; }
+.hist .dplus { color: var(--ok); font-weight: 700; text-align: right; }
+.hist .dminus { color: var(--crit); font-weight: 700; text-align: right; }
+.hist .why { color: var(--muted); font-size: 0.82rem; grid-column: 1 / -1; }
+.hist li.none { display: block; color: var(--muted); }
+.banner { margin: 14px 0 0; padding: 14px 16px; background: var(--asset-bg); border-radius: 12px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; color: #4e3a0d; }
+.toast { position: fixed; left: 50%; top: 18px; transform: translateX(-50%); background: var(--petrol); color: #fff; padding: 12px 18px; border-radius: 12px; z-index: 100; box-shadow: 0 8px 24px rgba(20, 30, 36, 0.3); max-width: calc(100vw - 32px); font-weight: 600; }
+.toast.bad { background: var(--crit); }
+@media (max-width: 560px) { .form { grid-template-columns: 1fr; } }
+@media print { .userbar, .banner { display: none !important; } }
+
+@media (max-width: 760px) {
+  .wrap { padding: 0 14px; }
+  .headright { align-items: flex-start; }
+  .list thead { display: none; }
+  .list, .list tbody, .list tr, .list td { display: block; width: 100%; }
+  .list tbody tr { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name qty" "place status" "type type"; gap: 4px 12px; padding: 12px 14px; }
+  .list td { padding: 0; }
+  .list td.c-name { grid-area: name; } .list td.c-qty { grid-area: qty; text-align: right; }
+  .list td.c-place { grid-area: place; } .list td.c-status { grid-area: status; text-align: right; align-self: center; }
+  .list td.c-type, .list td.c-min { display: none; }
+  .famswitch { width: 100%; } .famswitch button { flex: 1; justify-content: center; padding: 10px 8px; }
+}
+@media print {
+  .tools, .family, .tiles, .actions, .more, .lang { display: none !important; }
+  body { background: #fff; }
+}
+@media (prefers-reduced-motion: no-preference) { .tile, .btn, .list tbody tr { transition: background-color 0.12s, border-color 0.12s; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <svg class="mono" viewBox="10.0 10.0 154.3 151.0" role="img" aria-label="Castello di Alice"><path fill-rule="evenodd" d="M26.6 30.4 L23.4 34.2 L21.3 37.4 L18.7 41.8 L15.4 48.6 L13.5 54.1 L12.2 59.9 L11.1 66.1 L11.0 73.0 L11.2 77.2 L11.5 79.9 L13.3 87.9 L15.1 93.8 L16.8 98.0 L19.2 102.9 L22.8 109.1 L26.6 114.2 L30.1 118.4 L32.8 120.9 L36.8 124.3 L42.4 128.6 L46.8 131.3 L51.1 133.4 L56.6 135.5 L61.1 136.6 L66.9 137.3 L67.8 137.8 L68.3 138.8 L68.1 140.4 L64.4 150.8 L63.4 152.2 L61.5 154.2 L60.5 154.9 L58.9 155.8 L56.0 156.5 L52.4 156.7 L45.0 156.8 L43.9 156.9 L43.1 157.3 L42.7 158.0 L42.8 158.9 L43.3 159.5 L43.9 159.8 L44.8 160.0 L47.5 159.9 L49.9 160.0 L53.1 159.8 L72.1 159.5 L76.1 159.3 L78.0 159.4 L78.7 159.2 L79.3 158.9 L79.8 158.2 L80.0 157.4 L79.8 156.7 L79.2 156.1 L77.9 155.9 L73.0 156.1 L71.6 156.0 L70.3 155.4 L69.8 154.9 L69.5 154.1 L69.4 153.2 L69.7 152.0 L71.6 146.5 L74.0 139.0 L74.5 137.9 L75.1 137.1 L75.9 136.7 L83.8 134.9 L87.9 133.3 L92.2 131.0 L96.0 128.9 L99.8 126.0 L103.6 122.5 L106.7 119.0 L108.0 117.1 L109.5 114.4 L110.4 112.2 L110.7 110.2 L110.9 108.0 L110.4 104.3 L110.9 103.4 L111.9 103.1 L112.9 103.2 L113.7 103.5 L114.4 104.1 L114.8 104.9 L118.5 113.6 L120.2 117.2 L122.2 122.4 L126.3 131.6 L127.5 134.9 L128.7 137.4 L129.5 139.9 L131.0 143.5 L131.3 145.1 L130.9 146.2 L130.1 147.0 L128.0 147.5 L127.1 148.2 L126.7 148.8 L126.6 149.2 L126.7 149.7 L127.1 150.3 L128.3 150.8 L130.6 150.9 L138.4 150.4 L142.2 150.4 L148.6 149.9 L153.5 150.0 L160.0 149.8 L161.5 149.8 L162.2 149.7 L162.9 149.2 L163.3 148.5 L163.3 147.6 L162.9 146.9 L162.2 146.5 L161.1 146.2 L154.9 146.4 L152.1 145.9 L149.2 144.5 L148.0 143.7 L146.7 142.6 L145.7 141.1 L144.1 137.8 L138.6 124.0 L131.1 106.4 L130.9 105.5 L131.0 104.8 L131.4 104.2 L132.5 103.3 L132.7 102.9 L132.6 102.5 L132.3 102.1 L131.7 101.8 L129.5 101.6 L128.4 101.0 L127.5 99.9 L125.8 96.8 L123.5 88.9 L121.5 83.4 L115.6 69.2 L113.0 64.2 L111.9 61.5 L109.8 55.8 L107.9 51.2 L105.1 44.3 L104.2 43.1 L102.4 42.0 L101.6 41.8 L101.0 41.7 L100.5 41.9 L100.1 42.4 L99.5 43.8 L98.2 48.1 L97.7 48.9 L96.7 49.4 L94.9 49.6 L94.3 50.1 L94.2 50.6 L94.4 51.1 L95.8 52.4 L96.2 53.0 L96.3 53.6 L96.2 54.5 L94.8 58.4 L93.8 62.1 L91.4 69.0 L88.5 78.2 L83.8 91.8 L83.3 93.0 L82.6 93.8 L81.7 94.2 L74.9 95.6 L72.0 96.5 L69.4 97.7 L65.0 100.2 L62.4 102.5 L59.8 105.4 L58.4 107.6 L56.3 111.9 L54.3 118.2 L53.8 120.1 L53.1 121.2 L52.5 121.4 L51.7 121.3 L49.4 119.5 L46.0 116.6 L40.9 111.0 L37.7 106.4 L35.0 101.6 L32.3 95.5 L30.8 91.1 L29.0 85.0 L27.9 79.1 L27.3 69.6 L28.1 59.8 L28.9 55.5 L30.0 51.5 L31.8 46.9 L33.0 44.2 L34.4 41.9 L39.0 35.1 L43.3 30.7 L46.9 27.7 L51.0 24.7 L55.1 22.4 L60.4 20.1 L64.5 19.3 L68.9 18.9 L75.2 19.0 L77.4 19.2 L80.4 19.8 L89.1 22.4 L94.6 24.7 L99.0 26.8 L100.4 27.6 L101.9 28.9 L103.7 31.2 L106.0 34.7 L106.8 35.4 L107.5 35.5 L108.1 35.3 L108.6 34.9 L109.0 34.4 L109.3 33.6 L109.3 32.5 L108.5 30.4 L108.7 29.4 L109.4 28.9 L112.0 28.2 L112.6 27.8 L113.0 27.2 L113.2 26.6 L113.1 26.0 L112.9 25.3 L112.4 24.7 L111.5 24.3 L108.9 24.0 L105.1 22.9 L103.8 22.4 L88.2 14.4 L82.6 12.4 L77.4 11.3 L73.8 11.0 L67.9 11.0 L63.2 11.5 L57.9 12.5 L52.4 14.2 L44.4 17.4 L40.0 19.6 L34.9 23.0 L31.0 25.9 L29.0 27.8Z M80.0 100.7 L80.3 101.1 L80.5 101.8 L80.1 103.5 L77.5 111.0 L73.0 125.1 L72.3 126.9 L71.9 127.6 L71.2 128.1 L70.5 128.2 L67.2 127.8 L61.3 126.1 L59.9 125.4 L59.3 124.6 L59.2 123.9 L60.1 120.2 L61.2 117.4 L62.8 114.1 L65.5 109.9 L68.1 106.9 L70.4 104.9 L72.4 103.4 L74.8 102.0 L77.6 100.7 L79.0 100.4Z M103.5 103.3 L104.8 105.0 L105.6 106.8 L106.0 108.4 L106.1 109.8 L105.8 111.5 L105.1 113.2 L103.8 115.2 L102.2 117.1 L99.8 119.4 L96.8 121.6 L93.5 123.5 L90.6 124.9 L87.1 126.1 L80.6 127.8 L79.4 127.9 L78.6 127.5 L78.3 127.0 L78.4 126.2 L79.8 120.9 L81.4 116.9 L83.0 111.0 L84.1 107.6 L86.3 101.5 L87.1 100.3 L88.0 99.8 L89.2 99.6 L94.0 99.6 L97.9 100.2 L100.4 101.1Z M98.0 66.7 L98.5 66.6 L99.0 66.8 L99.7 67.6 L101.2 72.4 L106.9 85.6 L109.9 93.1 L112.1 97.9 L112.3 98.6 L112.3 99.2 L112.0 99.7 L111.5 100.1 L110.9 100.2 L110.1 100.1 L107.1 99.3 L105.6 98.7 L101.2 96.4 L97.1 95.1 L93.4 94.3 L90.4 94.0 L89.7 93.6 L89.3 93.1 L89.2 92.5 L89.4 91.6 L95.5 72.9 L96.0 70.5 L97.1 67.5 L97.6 67.0Z"/></svg>
+      <div>
+        <h1>Castello di Alice</h1>
+        <p class="brand-sub" data-i18n="inventory"></p>
+      </div>
+    </div>
+    <div class="headright">
+      <div class="lang" id="lang" role="group" data-i18n-aria="language">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg>
+        <button type="button" data-lang="en" lang="en" title="English" aria-label="English">EN</button>
+        <button type="button" data-lang="it" lang="it" title="Italiano" aria-label="Italiano">IT</button>
+        <button type="button" data-lang="fr" lang="fr" title="Français" aria-label="Français">FR</button>
+      </div>
+      <p class="meta" id="meta"></p>
+      <div class="userbar" id="userbar" hidden>
+        <span id="whoami"></span>
+        <button class="linkbtn" id="btn-team" type="button" data-i18n="team" hidden></button>
+        <button class="linkbtn" id="btn-signout" type="button" data-i18n="signout"></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="login" class="login" hidden>
+  <div class="logincard">
+    <h2 data-i18n="login_title"></h2>
+    <p data-i18n="login_sub"></p>
+    <form id="loginform" novalidate>
+      <label for="lg-email"><span data-i18n="lbl_email"></span><input id="lg-email" type="email" autocomplete="username" inputmode="email" autocapitalize="off" spellcheck="false"></label>
+      <label for="lg-pass"><span data-i18n="lbl_password"></span><input id="lg-pass" type="password" autocomplete="current-password"></label>
+      <p class="formerr" id="lg-err" role="alert" hidden></p>
+      <button class="btn primary" id="lg-go" type="submit" data-i18n="signin"></button>
+    </form>
+  </div>
+</main>
+
+<div class="wrap" id="app">
+  <div class="banner" id="importbox" hidden></div>
+  <section class="family">
+    <div class="famswitch" id="famswitch" role="group" data-i18n-aria="familyAria"></div>
+    <p class="famdesc" id="famdesc"></p>
+  </section>
+
+  <section class="tiles" id="tiles" data-i18n-aria="tilesAria"></section>
+
+  <section class="tools" id="tools">
+    <div class="searchrow">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" data-i18n-ph="placeholder" data-i18n-aria="searchAria">
+      <button id="clearq" type="button" data-i18n-aria="clearSearch" hidden>&times;</button>
+    </div>
+  </section>
+
+  <section class="filterbar">
+    <div class="filters" role="group" data-i18n-aria="filtersAria">
+      <label for="f-section"><span data-i18n="section"></span><select id="f-section"></select></label>
+      <label for="f-location"><span data-i18n="location"></span><select id="f-location"></select></label>
+      <label for="f-status"><span data-i18n="status"></span><select id="f-status"></select></label>
+      <div class="sortfield"><label for="f-sort"><span data-i18n="sortBy"></span></label><div class="sortctl"><select id="f-sort"></select><button type="button" class="dirbtn" id="f-dir" data-dir="asc"></button></div></div>
+    </div>
+  </section>
+
+  <div class="resultbar">
+    <div class="count" id="count" role="status" aria-live="polite"></div>
+    <div class="actions"><button class="btn primary" id="addbtn" type="button" data-i18n="a_add" hidden></button><button class="btn" id="export" type="button" data-i18n="exportCsv"></button></div>
+  </div>
+
+  <div class="tablewrap" id="tablewrap">
+    <div class="loading" id="loading" data-i18n="loading"></div>
+    <div class="error" id="error" hidden></div>
+    <table class="list" id="list" hidden>
+      <thead><tr>
+        <th scope="col" data-col="name" aria-sort="none"><button type="button" class="sortbtn" data-sort="name"><span data-i18n="h_item"></span><span class="arr" aria-hidden="true"></span></button></th>
+        <th scope="col" data-col="place" aria-sort="none"><button type="button" class="sortbtn" data-sort="place"><span data-i18n="h_place"></span><span class="arr" aria-hidden="true"></span></button></th>
+        <th scope="col" data-col="type" aria-sort="none"><button type="button" class="sortbtn" data-sort="type"><span data-i18n="h_type"></span><span class="arr" aria-hidden="true"></span></button></th>
+        <th scope="col" class="num" data-col="qty" aria-sort="none"><button type="button" class="sortbtn" data-sort="qty"><span data-i18n="h_qty"></span><span class="arr" aria-hidden="true"></span></button></th>
+        <th scope="col" class="num" data-col="min" aria-sort="none"><button type="button" class="sortbtn" data-sort="min"><span data-i18n="h_min"></span><span class="arr" aria-hidden="true"></span></button></th>
+        <th scope="col" data-col="status" aria-sort="none"><button type="button" class="sortbtn" data-sort="status"><span data-i18n="h_status"></span><span class="arr" aria-hidden="true"></span></button></th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+    <div class="empty" id="empty" hidden><p data-i18n="noResults"></p><button class="btn" id="reset" type="button" data-i18n="resetFilters"></button></div>
+  </div>
+  <div class="more" id="more" hidden><button class="btn primary" id="morebtn" type="button"></button></div>
+  <footer class="foot" id="foot"></footer>
+</div>
+
+<dialog id="detail" aria-labelledby="d-name">
+  <div class="dhead">
+    <div>
+      <h2 class="dname" id="d-name"></h2>
+      <p class="dorig" id="d-orig" hidden></p>
+      <p class="place" id="d-place"></p>
+    </div>
+    <button class="dclose" id="d-close" type="button" data-i18n-aria="close">&times;</button>
+  </div>
+  <div class="dbody" id="d-body"></div>
+</dialog>
+
+<dialog id="editor" aria-labelledby="ed-title">
+  <div class="dhead">
+    <h2 class="dname" id="ed-title"></h2>
+    <button class="dclose" id="ed-close" type="button" data-i18n-aria="close">&times;</button>
+  </div>
+  <div class="dbody" id="ed-body"></div>
+</dialog>
+
+<dialog id="team" aria-labelledby="tm-title">
+  <div class="dhead">
+    <h2 class="dname" id="tm-title" data-i18n="team_title"></h2>
+    <button class="dclose" id="tm-close" type="button" data-i18n-aria="close">&times;</button>
+  </div>
+  <div class="dbody" id="tm-body"></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden></div>
+<script src="config.js"></script>
+<script src="supabase.js"></script>
+<script>
+/*CORE*/
+const EXPIRY_WARN_DAYS = 30;
+
+function norm(s) {
+  return String(s == null ? '' : s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+// Damerau-Levenshtein distance (optimal string alignment): a swap of two letters counts as one error.
+function dl(a, b) {
+  const al = a.length, bl = b.length;
+  if (!al) return bl;
+  if (!bl) return al;
+  const d = [];
+  for (let i = 0; i <= al; i++) d[i] = [i];
+  for (let j = 1; j <= bl; j++) d[0][j] = j;
+  for (let i = 1; i <= al; i++) {
+    for (let j = 1; j <= bl; j++) {
+      const c = a[i - 1] === b[j - 1] ? 0 : 1;
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + c);
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+    }
+  }
+  return d[al][bl];
+}
+
+// Score of one query word against one indexed word. 0 means no match.
+function tokScore(q, t) {
+  if (t === q) return 100;
+  if (t.startsWith(q)) return q.length >= 2 ? 85 : 60;
+  if (q.length >= 3 && t.includes(q)) return 65;
+  if (q.length >= 4) {
+    const max = q.length >= 8 ? 2 : 1;
+    const d = Math.min(dl(q, t), dl(q, t.slice(0, q.length)));
+    if (d <= max) return 55 - 10 * d;
+  }
+  return 0;
+}
+
+// Words of an item: names in the three languages count most, then the place, then notes and supplier.
+function indexItem(it, names, places) {
+  const f = (s) => norm(s).split(' ').filter(Boolean);
+  const uniq = (arr) => Array.from(new Set(arr));
+  return {
+    name: uniq(names.flatMap(f)),
+    loc: uniq(places.flatMap(f).concat(it.sub ? f(it.sub.v) : [])),
+    extra: uniq(f((it.notes || '') + ' ' + (it.sup || ''))),
+    nameStr: names.map(norm)
+  };
+}
+
+// Every query word must match somewhere. Returns 0 when the item does not match.
+function searchScore(ix, queryWords, queryStr) {
+  let total = 0;
+  for (const q of queryWords) {
+    let best = 0;
+    for (const t of ix.name) best = Math.max(best, tokScore(q, t));
+    if (best < 100) for (const t of ix.loc) best = Math.max(best, tokScore(q, t) * 0.7);
+    if (best < 60) for (const t of ix.extra) best = Math.max(best, tokScore(q, t) * 0.5);
+    if (best === 0) return 0;
+    total += best;
+  }
+  if (queryStr && ix.nameStr.some((n) => n.includes(queryStr))) total += 50;
+  return total;
+}
+
+function daysUntil(iso, today) {
+  const p = String(iso).slice(0, 10).split('-').map(Number);
+  if (p.length !== 3 || p.some(isNaN)) return null;
+  const d = new Date(p[0], p[1] - 1, p[2]);
+  const t = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  return Math.round((d - t) / 86400000);
+}
+
+// Family of one item: 'asset' (durable) or 'stock' (consumable). Anything not marked 'asset' is treated as stock.
+function familyOf(it) { return it && it.family === 'asset' ? 'asset' : 'stock'; }
+
+// Alerts of one item: any of 'expired', 'out', 'low', 'expiring'. Assets are not replenished, so they never alert.
+function alertsOf(it, today) {
+  if (familyOf(it) === 'asset') return [];
+  const a = [];
+  const q = it.qty;
+  if (q === 0) a.push('out');
+  else if (q != null && ((it.min != null && q <= it.min) || (it.min == null && it.src === 'low'))) a.push('low');
+  if (it.expiry) {
+    const d = daysUntil(it.expiry, today);
+    if (d !== null) {
+      if (d < 0) a.push('expired');
+      else if (d <= EXPIRY_WARN_DAYS) a.push('expiring');
+    }
+  }
+  return a;
+}
+const SEVERITY = { expired: 4, out: 3, low: 2, expiring: 1 };
+function severity(alerts) { return alerts.reduce((m, k) => Math.max(m, SEVERITY[k]), 0); }
+/*END CORE*/
+
+/*I18N*/
+const STRINGS = {
+  en: {
+    inventory: 'Inventory', language: 'Language', familyAria: 'Item family',
+    fam_all: 'All', fam_stock: 'Stock', fam_asset: 'Assets',
+    famdesc_all: 'Consumables and durable items, all locations.',
+    famdesc_stock: 'Consumables that are used up and replenished. Minimum stock alerts apply.',
+    famdesc_asset: 'Durable items such as furniture, equipment and tools. No replenishment alerts.',
+    tilesAria: 'Summary', t_total: 'Items', t_out: 'Out of stock', t_low: 'Low stock', t_expired: 'Expired', t_expiring: 'Expiring soon', t_verify: 'To verify',
+    placeholder: 'Search an item, brand or place', searchAria: 'Search the inventory', clearSearch: 'Clear search',
+    filtersAria: 'Filters', section: 'Section', location: 'Location', status: 'Status', sortBy: 'Sort by',
+    all_sections: 'All sections', all_locations: 'All locations',
+    st_all: 'All', st_attention: 'Needs attention', st_out: 'Out of stock', st_low: 'Low stock', st_expiring: 'Expiring soon', st_expired: 'Expired', st_ok: 'OK', st_verify: 'Data to verify',
+    so_auto: 'Priority', dir_asc: 'Ascending', dir_desc: 'Descending', dir_toggle: 'Reverse the order',
+    h_item: 'Item', h_place: 'Location', h_type: 'Type', h_qty: 'Qty', h_min: 'Min', h_status: 'Status',
+    s_out: 'Out of stock', s_low: 'Low stock', s_ok: 'OK', s_expired: 'Expired', s_expiring: 'Expiring soon',
+    type_stock: 'Stock', type_asset: 'Asset',
+    count_all: '{n} items', count_some: '{n} of {t} items', more: 'Show {n} more', moreAll: 'Show all',
+    noResults: 'No item matches your search.', resetFilters: 'Reset search and filters', exportCsv: 'Export CSV',
+    loading: 'Loading the inventory', loadError: 'The inventory could not be loaded. Please reload the page.',
+    close: 'Close', updated: 'Data as of {date}', foot: 'Castello di Alice',
+    d_qty: 'Quantity', d_min: 'Minimum quantity', d_notset: 'Not defined', d_pack: 'Units per pack', d_bal: 'Total units', d_in: 'Received', d_out: 'Issued',
+    d_sup: 'Supplier', d_lp: 'Last purchase', d_notes: 'Notes', d_type: 'Type', d_original: 'Original name: {n}', d_elsewhere: 'Same item in other locations', d_total: 'Total', d_checks: 'Data to verify',
+    k_shelf: 'Shelf', k_box: 'Box', k_container: 'Container',
+    f_min_500: 'The minimum quantity is recorded as 500, which looks like an entry error.',
+    f_balance_gap: 'The total units do not equal quantity times units per pack.',
+    f_flag_no_min: 'Flagged as low in the source data, but no minimum quantity is defined.',
+    f_suspect_name: 'The item name looks corrupted.',
+    f_dup_row: 'The same item is entered more than once in this location.',
+    f_qty_missing: 'No quantity is recorded.',
+    login_title: "Sign in",
+    login_sub: "Access to the inventory is limited to the team.",
+    lbl_email: "Email",
+    lbl_password: "Password",
+    signin: "Sign in",
+    signing: "Signing in",
+    login_err: "Incorrect email or password.",
+    login_net: "The connection failed. Please try again.",
+    signout: "Sign out",
+    noaccess: "This account has no access to the inventory. Please contact an administrator.",
+    role_admin: "Administrator",
+    role_editor: "Editor",
+    role_viewer: "Viewer",
+    a_add: "Add an item",
+    a_edit: "Edit",
+    a_save: "Save",
+    a_cancel: "Cancel",
+    a_delete: "Delete this item",
+    a_delete_confirm: "Confirm deletion",
+    a_saved: "Saved.",
+    a_error: "The change could not be saved.",
+    a_required: "The name, section and location are required.",
+    a_verified: "Mark as verified",
+    mv_title: "Stock movement",
+    mv_add: "Receive (add)",
+    mv_remove: "Issue (remove)",
+    mv_set: "Set to (count)",
+    mv_amount: "Amount",
+    mv_reason: "Reason (optional)",
+    mv_apply: "Apply",
+    mv_minus: "Remove one",
+    mv_plus: "Add one",
+    hist: "History",
+    hist_none: "No movement recorded yet.",
+    hist_to: "now {n}",
+    ph_title: "Photos",
+    ph_add: "Add a photo",
+    ph_remove: "Remove this photo",
+    ph_busy: "Uploading",
+    fld_name: "Name (English)",
+    fld_name_it: "Name (Italian)",
+    fld_name_fr: "Name (French)",
+    fld_section: "Section",
+    fld_loc: "Location",
+    fld_sub_kind: "Shelf, box or container",
+    fld_sub_v: "Number or label",
+    fld_family: "Type",
+    fld_qty: "Quantity",
+    fld_min: "Minimum quantity",
+    fld_pack: "Units per pack",
+    fld_sup: "Supplier",
+    fld_lp: "Last purchase",
+    fld_exp: "Expiry date",
+    fld_notes: "Notes",
+    fld_notes_it: "Notes (Italian)",
+    fld_notes_fr: "Notes (French)",
+    fld_trans: "Translations",
+    fld_none: "None",
+    team: "Team",
+    team_title: "Team access",
+    team_help: "New people are added in the Supabase dashboard (Authentication, Users) and start as viewers.",
+    team_you: "you",
+    imp_title: "The database is empty.",
+    imp_text: "The catalogue contains {n} items, ready to import.",
+    imp_btn: "Import {n} items",
+    imp_prog: "Importing {d} of {n}",
+    imp_done: "Import complete.",
+    imp_err: "The import failed. Nothing was overwritten, you can try again.",
+    d_expiry: "Expiry date",
+    d_updated: "Last change",
+    csv_cols: ['ID', 'Item', 'Original name', 'Section', 'Location', 'Shelf / box / container', 'Type', 'Quantity', 'Minimum', 'Status', 'Units per pack', 'Total units', 'Supplier', 'Last purchase', 'Notes', 'Data to verify']
+  },
+  it: {
+    inventory: 'Inventario', language: 'Lingua', familyAria: 'Famiglia di articoli',
+    fam_all: 'Tutti', fam_stock: 'Scorte', fam_asset: 'Beni durevoli',
+    famdesc_all: 'Materiali di consumo e beni durevoli, tutte le ubicazioni.',
+    famdesc_stock: 'Materiali di consumo che si esauriscono e vanno riforniti. Si applicano gli avvisi di scorta minima.',
+    famdesc_asset: 'Beni durevoli come arredi, attrezzature e utensili. Nessun avviso di rifornimento.',
+    tilesAria: 'Riepilogo', t_total: 'Articoli', t_out: 'Esauriti', t_low: 'Scorta bassa', t_expired: 'Scaduti', t_expiring: 'In scadenza', t_verify: 'Da verificare',
+    placeholder: 'Cerca un articolo, una marca o un luogo', searchAria: "Cerca nell'inventario", clearSearch: 'Cancella la ricerca',
+    filtersAria: 'Filtri', section: 'Sezione', location: 'Ubicazione', status: 'Stato', sortBy: 'Ordina per',
+    all_sections: 'Tutte le sezioni', all_locations: 'Tutte le ubicazioni',
+    st_all: 'Tutti', st_attention: 'Richiede attenzione', st_out: 'Esauriti', st_low: 'Scorta bassa', st_expiring: 'In scadenza', st_expired: 'Scaduti', st_ok: 'OK', st_verify: 'Dati da verificare',
+    so_auto: 'Priorità', dir_asc: 'Crescente', dir_desc: 'Decrescente', dir_toggle: "Inverti l'ordine",
+    h_item: 'Articolo', h_place: 'Ubicazione', h_type: 'Tipo', h_qty: 'Q.tà', h_min: 'Min', h_status: 'Stato',
+    s_out: 'Esaurito', s_low: 'Scorta bassa', s_ok: 'OK', s_expired: 'Scaduto', s_expiring: 'In scadenza',
+    type_stock: 'Scorta', type_asset: 'Bene',
+    count_all: '{n} articoli', count_some: '{n} articoli su {t}', more: 'Mostra altri {n}', moreAll: 'Mostra tutti',
+    noResults: 'Nessun articolo corrisponde alla ricerca.', resetFilters: 'Azzera ricerca e filtri', exportCsv: 'Esporta CSV',
+    loading: "Caricamento dell'inventario", loadError: "Impossibile caricare l'inventario. Ricarica la pagina.",
+    close: 'Chiudi', updated: 'Dati al {date}', foot: 'Castello di Alice',
+    d_qty: 'Quantità', d_min: 'Quantità minima', d_notset: 'Non definita', d_pack: 'Unità per confezione', d_bal: 'Unità totali', d_in: 'Ricevuti', d_out: 'Prelevati',
+    d_sup: 'Fornitore', d_lp: 'Ultimo acquisto', d_notes: 'Note', d_type: 'Tipo', d_original: 'Nome originale: {n}', d_elsewhere: 'Stesso articolo in altre ubicazioni', d_total: 'Totale', d_checks: 'Dati da verificare',
+    k_shelf: 'Scaffale', k_box: 'Scatola', k_container: 'Contenitore',
+    f_min_500: 'La quantità minima è registrata come 500, probabile errore di inserimento.',
+    f_balance_gap: 'Le unità totali non corrispondono a quantità per unità per confezione.',
+    f_flag_no_min: 'Segnalato come scorta bassa nei dati di origine, ma senza quantità minima definita.',
+    f_suspect_name: 'Il nome dell\'articolo sembra alterato.',
+    f_dup_row: 'Lo stesso articolo è inserito più volte in questa ubicazione.',
+    f_qty_missing: 'Nessuna quantità registrata.',
+    login_title: "Accedi",
+    login_sub: "L'accesso all'inventario è riservato al team.",
+    lbl_email: "E-mail",
+    lbl_password: "Password",
+    signin: "Accedi",
+    signing: "Accesso in corso",
+    login_err: "E-mail o password non corretti.",
+    login_net: "Connessione non riuscita. Riprova.",
+    signout: "Esci",
+    noaccess: "Questo account non ha accesso all'inventario. Contatta un amministratore.",
+    role_admin: "Amministratore",
+    role_editor: "Editor",
+    role_viewer: "Lettore",
+    a_add: "Aggiungi un articolo",
+    a_edit: "Modifica",
+    a_save: "Salva",
+    a_cancel: "Annulla",
+    a_delete: "Elimina questo articolo",
+    a_delete_confirm: "Conferma l'eliminazione",
+    a_saved: "Salvato.",
+    a_error: "Impossibile salvare la modifica.",
+    a_required: "Nome, sezione e ubicazione sono obbligatori.",
+    a_verified: "Segna come verificato",
+    mv_title: "Movimento di magazzino",
+    mv_add: "Carico (aggiungi)",
+    mv_remove: "Scarico (rimuovi)",
+    mv_set: "Imposta a (conteggio)",
+    mv_amount: "Quantità",
+    mv_reason: "Motivo (facoltativo)",
+    mv_apply: "Applica",
+    mv_minus: "Togli uno",
+    mv_plus: "Aggiungi uno",
+    hist: "Cronologia",
+    hist_none: "Nessun movimento registrato.",
+    hist_to: "ora {n}",
+    ph_title: "Foto",
+    ph_add: "Aggiungi una foto",
+    ph_remove: "Rimuovi questa foto",
+    ph_busy: "Caricamento",
+    fld_name: "Nome (inglese)",
+    fld_name_it: "Nome (italiano)",
+    fld_name_fr: "Nome (francese)",
+    fld_section: "Sezione",
+    fld_loc: "Ubicazione",
+    fld_sub_kind: "Scaffale, scatola o contenitore",
+    fld_sub_v: "Numero o etichetta",
+    fld_family: "Tipo",
+    fld_qty: "Quantità",
+    fld_min: "Quantità minima",
+    fld_pack: "Unità per confezione",
+    fld_sup: "Fornitore",
+    fld_lp: "Ultimo acquisto",
+    fld_exp: "Data di scadenza",
+    fld_notes: "Note",
+    fld_notes_it: "Note (italiano)",
+    fld_notes_fr: "Note (francese)",
+    fld_trans: "Traduzioni",
+    fld_none: "Nessuno",
+    team: "Team",
+    team_title: "Accessi del team",
+    team_help: "Le nuove persone si aggiungono nel pannello Supabase (Authentication, Users) e iniziano come lettori.",
+    team_you: "tu",
+    imp_title: "Il database è vuoto.",
+    imp_text: "Il catalogo contiene {n} articoli, pronti da importare.",
+    imp_btn: "Importa {n} articoli",
+    imp_prog: "Importazione di {d} su {n}",
+    imp_done: "Importazione completata.",
+    imp_err: "Importazione non riuscita. Nulla è stato sovrascritto, puoi riprovare.",
+    d_expiry: "Data di scadenza",
+    d_updated: "Ultima modifica",
+    csv_cols: ['ID', 'Articolo', 'Nome originale', 'Sezione', 'Ubicazione', 'Scaffale / scatola / contenitore', 'Tipo', 'Quantità', 'Minimo', 'Stato', 'Unità per confezione', 'Unità totali', 'Fornitore', 'Ultimo acquisto', 'Note', 'Dati da verificare']
+  },
+  fr: {
+    inventory: 'Inventaire', language: 'Langue', familyAria: "Famille d'articles",
+    fam_all: 'Tous', fam_stock: 'Stock', fam_asset: 'Biens durables',
+    famdesc_all: 'Consommables et biens durables, tous les emplacements.',
+    famdesc_stock: "Consommables qui s'épuisent et se réapprovisionnent. Les alertes de stock minimum s'appliquent.",
+    famdesc_asset: 'Biens durables : mobilier, équipement, outils. Aucune alerte de réapprovisionnement.',
+    tilesAria: 'Synthèse', t_total: 'Articles', t_out: 'En rupture', t_low: 'Stock bas', t_expired: 'Périmés', t_expiring: 'Bientôt périmés', t_verify: 'À vérifier',
+    placeholder: 'Rechercher un article, une marque ou un lieu', searchAria: "Rechercher dans l'inventaire", clearSearch: 'Effacer la recherche',
+    filtersAria: 'Filtres', section: 'Section', location: 'Emplacement', status: 'Statut', sortBy: 'Trier par',
+    all_sections: 'Toutes les sections', all_locations: 'Tous les emplacements',
+    st_all: 'Tous', st_attention: 'À traiter', st_out: 'En rupture', st_low: 'Stock bas', st_expiring: 'Bientôt périmés', st_expired: 'Périmés', st_ok: 'OK', st_verify: 'Données à vérifier',
+    so_auto: 'Priorité', dir_asc: 'Croissant', dir_desc: 'Décroissant', dir_toggle: "Inverser l'ordre",
+    h_item: 'Article', h_place: 'Emplacement', h_type: 'Type', h_qty: 'Qté', h_min: 'Min', h_status: 'Statut',
+    s_out: 'En rupture', s_low: 'Stock bas', s_ok: 'OK', s_expired: 'Périmé', s_expiring: 'Bientôt périmé',
+    type_stock: 'Stock', type_asset: 'Bien durable',
+    count_all: '{n} articles', count_some: '{n} articles sur {t}', more: 'Afficher {n} de plus', moreAll: 'Tout afficher',
+    noResults: 'Aucun article ne correspond à la recherche.', resetFilters: 'Réinitialiser la recherche et les filtres', exportCsv: 'Exporter en CSV',
+    loading: "Chargement de l'inventaire", loadError: "L'inventaire n'a pas pu être chargé. Veuillez recharger la page.",
+    close: 'Fermer', updated: 'Données au {date}', foot: 'Castello di Alice',
+    d_qty: 'Quantité', d_min: 'Quantité minimale', d_notset: 'Non définie', d_pack: 'Unités par conditionnement', d_bal: 'Unités au total', d_in: 'Reçu', d_out: 'Sorti',
+    d_sup: 'Fournisseur', d_lp: 'Dernier achat', d_notes: 'Notes', d_type: 'Type', d_original: 'Nom d\'origine : {n}', d_elsewhere: 'Même article à d\'autres emplacements', d_total: 'Total', d_checks: 'Données à vérifier',
+    k_shelf: 'Étagère', k_box: 'Boîte', k_container: 'Conteneur',
+    f_min_500: 'La quantité minimale est enregistrée à 500, ce qui ressemble à une erreur de saisie.',
+    f_balance_gap: 'Le total des unités ne correspond pas à la quantité multipliée par les unités par conditionnement.',
+    f_flag_no_min: "Signalé comme stock bas dans les données d'origine, mais sans quantité minimale définie.",
+    f_suspect_name: "Le nom de l'article semble altéré.",
+    f_dup_row: 'Le même article est saisi plusieurs fois à cet emplacement.',
+    f_qty_missing: 'Aucune quantité enregistrée.',
+    login_title: "Connexion",
+    login_sub: "L'accès à l'inventaire est réservé à l'équipe.",
+    lbl_email: "E-mail",
+    lbl_password: "Mot de passe",
+    signin: "Se connecter",
+    signing: "Connexion en cours",
+    login_err: "E-mail ou mot de passe incorrect.",
+    login_net: "La connexion a échoué. Veuillez réessayer.",
+    signout: "Se déconnecter",
+    noaccess: "Ce compte n'a pas accès à l'inventaire. Veuillez contacter un administrateur.",
+    role_admin: "Administrateur",
+    role_editor: "Éditeur",
+    role_viewer: "Lecteur",
+    a_add: "Ajouter un article",
+    a_edit: "Modifier",
+    a_save: "Enregistrer",
+    a_cancel: "Annuler",
+    a_delete: "Supprimer cet article",
+    a_delete_confirm: "Confirmer la suppression",
+    a_saved: "Enregistré.",
+    a_error: "La modification n'a pas pu être enregistrée.",
+    a_required: "Le nom, la section et l'emplacement sont obligatoires.",
+    a_verified: "Marquer comme vérifié",
+    mv_title: "Mouvement de stock",
+    mv_add: "Entrée (ajouter)",
+    mv_remove: "Sortie (retirer)",
+    mv_set: "Fixer à (comptage)",
+    mv_amount: "Quantité",
+    mv_reason: "Motif (facultatif)",
+    mv_apply: "Appliquer",
+    mv_minus: "Retirer un",
+    mv_plus: "Ajouter un",
+    hist: "Historique",
+    hist_none: "Aucun mouvement enregistré.",
+    hist_to: "maintenant {n}",
+    ph_title: "Photos",
+    ph_add: "Ajouter une photo",
+    ph_remove: "Retirer cette photo",
+    ph_busy: "Envoi en cours",
+    fld_name: "Nom (anglais)",
+    fld_name_it: "Nom (italien)",
+    fld_name_fr: "Nom (français)",
+    fld_section: "Section",
+    fld_loc: "Emplacement",
+    fld_sub_kind: "Étagère, boîte ou conteneur",
+    fld_sub_v: "Numéro ou repère",
+    fld_family: "Type",
+    fld_qty: "Quantité",
+    fld_min: "Quantité minimale",
+    fld_pack: "Unités par conditionnement",
+    fld_sup: "Fournisseur",
+    fld_lp: "Dernier achat",
+    fld_exp: "Date de péremption",
+    fld_notes: "Notes",
+    fld_notes_it: "Notes (italien)",
+    fld_notes_fr: "Notes (français)",
+    fld_trans: "Traductions",
+    fld_none: "Aucun",
+    team: "Équipe",
+    team_title: "Accès de l'équipe",
+    team_help: "Les nouvelles personnes s'ajoutent dans le tableau de bord Supabase (Authentication, Users) et démarrent comme lecteurs.",
+    team_you: "vous",
+    imp_title: "La base est vide.",
+    imp_text: "Le catalogue contient {n} articles, prêts à être importés.",
+    imp_btn: "Importer {n} articles",
+    imp_prog: "Import de {d} sur {n}",
+    imp_done: "Import terminé.",
+    imp_err: "L'import a échoué. Rien n'a été écrasé, vous pouvez réessayer.",
+    d_expiry: "Date de péremption",
+    d_updated: "Dernière modification",
+    csv_cols: ['ID', 'Article', "Nom d'origine", 'Section', 'Emplacement', 'Étagère / boîte / conteneur', 'Type', 'Quantité', 'Minimum', 'Statut', 'Unités par conditionnement', 'Unités au total', 'Fournisseur', 'Dernier achat', 'Notes', 'Données à vérifier']
+  }
+};
+/*END I18N*/
+
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const PAGE = 100;
+  const today = new Date();
+  let lang = 'en';
+  try { const s = localStorage.getItem('alice-lang'); if (s && STRINGS[s]) lang = s; } catch (e) {}
+  let META = null, ITEMS = [], TR = { items: {}, sections: {}, locations: {}, notes: {} };
+  let IX = [], ALERTS = [], KEYS = [], BYKEY = new Map();
+  const S = { fam: 'all', q: '', sec: 'all', loc: 'all', st: 'all', sort: 'auto', dir: 'asc', shown: PAGE, tile: null };
+  let VIEW = [];
+
+  const t = (k, v) => {
+    let s = (STRINGS[lang] && STRINGS[lang][k]) || STRINGS.en[k] || k;
+    if (v) for (const x in v) s = s.replace('{' + x + '}', v[x]);
+    return s;
+  };
+  const nf = (n) => (n == null ? '' : Number(n).toLocaleString(lang));
+  const tr = (map, key) => (lang === 'en' ? key : ((TR[map][key] || {})[lang] || key));
+  const nameOf = (it) => tr('items', it.name);
+  const secOf = (it) => tr('sections', it.section);
+  const locOf = (it) => tr('locations', it.loc);
+  const subOf = (it) => (it.sub ? t('k_' + it.sub.kind) + ' ' + it.sub.v : '');
+  const fmtDate = (iso) => { try { const p = String(iso).slice(0, 10).split('-').map(Number); return new Intl.DateTimeFormat(lang, { dateStyle: 'medium' }).format(new Date(p[0], p[1] - 1, p[2])); } catch (e) { return iso; } };
+  const normKey = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '');
+
+  function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+
+  // ---------- statics (translated labels) ----------
+  function applyStatic() {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach((e) => { e.textContent = t(e.dataset.i18n); });
+    document.querySelectorAll('[data-i18n-aria]').forEach((e) => { e.setAttribute('aria-label', t(e.dataset.i18nAria)); });
+    document.querySelectorAll('[data-i18n-ph]').forEach((e) => { e.setAttribute('placeholder', t(e.dataset.i18nPh)); });
+    document.querySelectorAll('#lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    $('foot').textContent = t('foot');
+    renderUser();
+    if (META) $('meta').textContent = t('updated', { date: fmtDate(META.generated_at) });
+    fillSelects();
+    renderFamily();
+  }
+
+  function fillSelects() {
+    const secSel = $('f-section');
+    const prev = S.sec;
+    secSel.textContent = '';
+    secSel.appendChild(new Option(t('all_sections'), 'all'));
+    (META ? META.sections : []).forEach((s) => secSel.appendChild(new Option(tr('sections', s), s)));
+    secSel.value = prev;
+    fillLocations();
+    const st = $('f-status'); st.textContent = '';
+    const hasExpiry = ITEMS.some((i) => i.expiry);
+    ['all', 'attention', 'out', 'low'].concat(hasExpiry ? ['expiring', 'expired'] : [], ['ok', 'verify']).forEach((k) => st.appendChild(new Option(t('st_' + k), k)));
+    st.value = S.st;
+    const so = $('f-sort'); so.textContent = '';
+    [['auto', 'so_auto'], ['name', 'h_item'], ['place', 'h_place'], ['type', 'h_type'], ['qty', 'h_qty'], ['min', 'h_min'], ['status', 'h_status']].forEach(([v, k]) => so.appendChild(new Option(t(k), v)));
+    so.value = S.sort;
+    syncSort();
+  }
+
+  function syncSort() {
+    document.querySelectorAll('#list thead th[data-col]').forEach((h) => {
+      h.setAttribute('aria-sort', S.sort === h.dataset.col ? (S.dir === 'desc' ? 'descending' : 'ascending') : 'none');
+    });
+    $('f-sort').value = S.sort;
+    const d = $('f-dir');
+    d.disabled = S.sort === 'auto';
+    d.dataset.dir = S.dir;
+    const lab = t('dir_toggle') + ' (' + t(S.dir === 'desc' ? 'dir_desc' : 'dir_asc') + ')';
+    d.setAttribute('aria-label', lab); d.title = lab;
+  }
+
+  function fillLocations() {
+    const sel = $('f-location');
+    sel.textContent = '';
+    sel.appendChild(new Option(t('all_locations'), 'all'));
+    const seen = new Map();
+    ITEMS.forEach((i) => {
+      if (S.sec !== 'all' && i.section !== S.sec) return;
+      if (S.fam !== 'all' && familyOf(i) !== S.fam) return;
+      const k = i.section + '||' + i.loc;
+      if (!seen.has(k)) seen.set(k, { sec: i.section, loc: i.loc });
+    });
+    const order = META ? META.sections : [];
+    Array.from(seen.entries()).sort((a, b) => (order.indexOf(a[1].sec) - order.indexOf(b[1].sec)) || a[1].loc.localeCompare(b[1].loc, 'en', { numeric: true })).forEach(([k, v]) => {
+      const label = (S.sec === 'all' ? tr('sections', v.sec) + ' › ' : '') + tr('locations', v.loc);
+      sel.appendChild(new Option(label, k));
+    });
+    if (!seen.has(S.loc)) S.loc = 'all';
+    sel.value = S.loc;
+  }
+
+  // ---------- family switch ----------
+  function scope() { return S.fam === 'all' ? ITEMS.map((_, i) => i) : ITEMS.reduce((a, it, i) => (familyOf(it) === S.fam && a.push(i), a), []); }
+  function renderFamily() {
+    const box = $('famswitch'); box.textContent = '';
+    const counts = { all: ITEMS.length, stock: 0, asset: 0 };
+    ITEMS.forEach((i) => { counts[familyOf(i)]++; });
+    ['all', 'stock', 'asset'].forEach((f) => {
+      const b = el('button', null); b.type = 'button'; b.dataset.fam = f; b.setAttribute('aria-pressed', String(S.fam === f));
+      b.appendChild(document.createTextNode(t('fam_' + f)));
+      b.appendChild(el('span', 'n', nf(counts[f])));
+      box.appendChild(b);
+    });
+    $('famdesc').textContent = t('famdesc_' + S.fam);
+  }
+
+  // ---------- tiles ----------
+  function renderTiles() {
+    const idx = scope();
+    const c = { total: idx.length, out: 0, low: 0, expired: 0, expiring: 0, verify: 0 };
+    idx.forEach((i) => { const a = ALERTS[i]; if (a.includes('out')) c.out++; if (a.includes('low')) c.low++; if (a.includes('expired')) c.expired++; if (a.includes('expiring')) c.expiring++; if (ITEMS[i].flags && ITEMS[i].flags.length) c.verify++; });
+    const defs = [['total', 'all']];
+    if (S.fam !== 'asset') { defs.push(['out', 'out'], ['low', 'low']); if (c.expired) defs.push(['expired', 'expired']); if (c.expiring) defs.push(['expiring', 'expiring']); }
+    defs.push(['verify', 'verify']);
+    const box = $('tiles'); box.textContent = '';
+    defs.forEach(([k, st]) => {
+      const b = el('button', 'tile t-' + k + (c[k] === 0 && k !== 'total' ? ' zero' : '')); b.type = 'button'; b.dataset.st = st;
+      b.setAttribute('aria-pressed', String(S.st === st && st !== 'all' || (st === 'all' && S.st === 'all')));
+      b.appendChild(el('span', 'num', nf(c[k])));
+      b.appendChild(el('span', 'lbl', t('t_' + k)));
+      box.appendChild(b);
+    });
+  }
+
+  // ---------- filtering and sorting ----------
+  function compute() {
+    const words = norm(S.q).split(' ').filter(Boolean);
+    const qs = norm(S.q);
+    const scored = [];
+    for (let i = 0; i < ITEMS.length; i++) {
+      const it = ITEMS[i];
+      if (S.fam !== 'all' && familyOf(it) !== S.fam) continue;
+      if (S.sec !== 'all' && it.section !== S.sec) continue;
+      if (S.loc !== 'all' && (it.section + '||' + it.loc) !== S.loc) continue;
+      const a = ALERTS[i];
+      if (S.st === 'attention' && !a.length) continue;
+      if (S.st === 'out' && !a.includes('out')) continue;
+      if (S.st === 'low' && !a.includes('low')) continue;
+      if (S.st === 'expiring' && !a.includes('expiring')) continue;
+      if (S.st === 'expired' && !a.includes('expired')) continue;
+      if (S.st === 'ok' && a.length) continue;
+      if (S.st === 'verify' && !(it.flags && it.flags.length)) continue;
+      let sc = 0;
+      if (words.length) { sc = searchScore(IX[i], words, qs); if (!sc) continue; }
+      scored.push({ i, sc });
+    }
+    const dir = S.dir === 'desc' ? -1 : 1;
+    const txt = (a, b) => String(a).localeCompare(String(b), lang, { sensitivity: 'base', numeric: true });
+    const cmpName = (x, y) => txt(nameOf(ITEMS[x.i]), nameOf(ITEMS[y.i]));
+    const sev = (x) => severity(ALERTS[x.i]);
+    const numLast = (get) => (x, y) => { const a = get(x), b = get(y); if (a == null || b == null) return (a == null) - (b == null); return (a - b) * dir; };
+    const cmpPlace = (x, y) => (META.sections.indexOf(ITEMS[x.i].section) - META.sections.indexOf(ITEMS[y.i].section)) || txt(locOf(ITEMS[x.i]), locOf(ITEMS[y.i])) || txt(ITEMS[x.i].sub ? subOf(ITEMS[x.i]) : '', ITEMS[y.i].sub ? subOf(ITEMS[y.i]) : '');
+    let cmp;
+    if (S.sort === 'name') cmp = (x, y) => cmpName(x, y) * dir;
+    else if (S.sort === 'place') cmp = (x, y) => cmpPlace(x, y) * dir || cmpName(x, y);
+    else if (S.sort === 'type') cmp = (x, y) => txt(t('type_' + familyOf(ITEMS[x.i])), t('type_' + familyOf(ITEMS[y.i]))) * dir || cmpName(x, y);
+    else if (S.sort === 'qty') { const f = numLast((x) => ITEMS[x.i].qty); cmp = (x, y) => f(x, y) || cmpName(x, y); }
+    else if (S.sort === 'min') { const f = numLast((x) => ITEMS[x.i].min); cmp = (x, y) => f(x, y) || cmpName(x, y); }
+    else if (S.sort === 'status') cmp = (x, y) => (sev(y) - sev(x)) * dir || cmpName(x, y);
+    else cmp = (x, y) => (words.length ? (y.sc - x.sc) : 0) || (sev(y) - sev(x)) || cmpName(x, y);
+    scored.sort(cmp);
+    VIEW = scored.map((s) => s.i);
+  }
+
+  // ---------- table ----------
+  function statusChip(i) {
+    const a = ALERTS[i];
+    const k = a.length ? a.slice().sort((x, y) => SEVERITY[y] - SEVERITY[x])[0] : 'ok';
+    return el('span', 'chip ' + k, t('s_' + k));
+  }
+
+  function renderRows() {
+    const body = $('rows'); body.textContent = '';
+    const frag = document.createDocumentFragment();
+    const end = Math.min(S.shown, VIEW.length);
+    for (let n = 0; n < end; n++) {
+      const i = VIEW[n], it = ITEMS[i];
+      const tr_ = el('tr'); tr_.tabIndex = 0; tr_.dataset.i = i; tr_.setAttribute('role', 'button');
+      const c1 = el('td', 'c-name'); const nm = el('span', 'iname', nameOf(it)); c1.appendChild(nm);
+      if (it.flags && it.flags.length) { const f = el('span', 'vflag', '!'); f.title = t('st_verify'); f.setAttribute('aria-label', t('st_verify')); nm.appendChild(f); }
+      if (lang !== 'en' && nameOf(it) !== it.name) c1.appendChild(el('span', 'isub', it.name));
+      const c2 = el('td', 'c-place'); const pl = el('span', 'iplace', locOf(it) + (it.sub ? ' · ' + subOf(it) : '')); pl.appendChild(el('span', 'sec', secOf(it))); c2.appendChild(pl);
+      const c3 = el('td', 'c-type'); c3.appendChild(el('span', 'chip ' + familyOf(it), t('type_' + familyOf(it))));
+      const c4 = el('td', 'c-qty num'); c4.appendChild(el('span', 'qty', it.qty == null ? '–' : nf(it.qty)));
+      const c5 = el('td', 'c-min num dim', it.min == null ? '' : nf(it.min));
+      const c6 = el('td', 'c-status'); c6.appendChild(statusChip(i));
+      [c1, c2, c3, c4, c5, c6].forEach((c) => tr_.appendChild(c));
+      frag.appendChild(tr_);
+    }
+    body.appendChild(frag);
+    const empty = VIEW.length === 0;
+    $('list').hidden = empty; $('empty').hidden = !empty;
+    const left = VIEW.length - end;
+    $('more').hidden = left <= 0;
+    if (left > 0) $('morebtn').textContent = t('more', { n: nf(Math.min(PAGE, left)) }) + ' (' + nf(left) + ')';
+  }
+
+  function renderCount() {
+    const total = scope().length;
+    $('count').textContent = VIEW.length === total && !S.q ? t('count_all', { n: nf(VIEW.length) }) : t('count_some', { n: nf(VIEW.length), t: nf(total) });
+  }
+
+  function refresh(resetPage) {
+    if (resetPage !== false) S.shown = PAGE;
+    compute();
+    syncSort();
+    renderTiles(); renderCount(); renderRows();
+    $('clearq').hidden = !S.q;
+  }
+
+  // ---------- detail ----------
+  function fact(dl_, label, valueNode) { const d = el('div'); d.appendChild(el('dt', null, label)); const dd = el('dd'); if (typeof valueNode === 'string') dd.textContent = valueNode; else dd.appendChild(valueNode); d.appendChild(dd); dl_.appendChild(d); }
+
+  function openDetail(i) {
+    const it = ITEMS[i];
+    CUR = i;
+    const keep = $('detail').open ? $('d-body').scrollTop : 0;
+    $('d-name').textContent = nameOf(it);
+    const orig = $('d-orig');
+    if (lang !== 'en' && nameOf(it) !== it.name) { orig.textContent = t('d_original', { n: it.name }); orig.hidden = false; } else { orig.hidden = true; }
+    $('d-place').textContent = [secOf(it), locOf(it), subOf(it)].filter(Boolean).join(' › ');
+    const body = $('d-body'); body.textContent = '';
+    const chips = el('div', 'chips'); chips.appendChild(statusChip(i)); chips.appendChild(el('span', 'chip ' + familyOf(it), t('type_' + familyOf(it)))); body.appendChild(chips);
+    if (DB) { const ps = photoSection(i); if (ps) body.appendChild(ps); }
+    if (it.photos && it.photos.length) { const g = el('div', 'gallery'); it.photos.forEach((p) => { const im = document.createElement('img'); im.src = p; im.alt = nameOf(it); im.loading = 'lazy'; g.appendChild(im); }); body.appendChild(g); }
+    const facts = el('dl', 'facts');
+    fact(facts, t('d_qty'), it.qty == null ? '–' : nf(it.qty));
+    if (familyOf(it) === 'stock') fact(facts, t('d_min'), it.min == null ? t('d_notset') : nf(it.min));
+    if (it.pack) fact(facts, t('d_pack'), nf(it.pack));
+    const totalUnits = DB ? (it.pack && it.qty != null ? it.qty * it.pack : null) : it.bal;
+    if (totalUnits != null && totalUnits !== it.qty) fact(facts, t('d_bal'), nf(totalUnits));
+    if (it.in) fact(facts, t('d_in'), nf(it.in));
+    if (it.out) fact(facts, t('d_out'), nf(it.out));
+    if (it.sup) fact(facts, t('d_sup'), it.sup);
+    if (it.lp) fact(facts, t('d_lp'), fmtDate(it.lp));
+    if (it.expiry) fact(facts, t('d_expiry'), fmtDate(it.expiry));
+    if (it.notes) fact(facts, t('d_notes'), tr('notes', it.notes));
+    body.appendChild(facts);
+    if (DB && canEdit()) body.appendChild(stockControl(i));
+    const same = (BYKEY.get(KEYS[i]) || []).filter((j) => j !== i);
+    if (same.length) {
+      const s = el('div', 'sect'); s.appendChild(el('h3', null, t('d_elsewhere')));
+      const ul = el('ul', 'others'); let tot = it.qty || 0;
+      same.forEach((j) => { const o = ITEMS[j]; tot += o.qty || 0; const li = el('li'); li.appendChild(el('span', null, secOf(o) + ' › ' + locOf(o) + (o.sub ? ' · ' + subOf(o) : ''))); li.appendChild(el('strong', null, o.qty == null ? '–' : nf(o.qty))); ul.appendChild(li); });
+      const lt = el('li', 'total'); lt.appendChild(el('span', null, t('d_total'))); lt.appendChild(el('span', null, nf(tot))); ul.appendChild(lt);
+      s.appendChild(ul); body.appendChild(s);
+    }
+    if (it.flags && it.flags.length) {
+      const s = el('div', 'sect'); s.appendChild(el('h3', null, t('d_checks')));
+      const ul = el('ul', 'checks'); it.flags.forEach((f) => ul.appendChild(el('li', null, t('f_' + f)))); s.appendChild(ul);
+      if (DB && canEdit()) { const vb = mkBtn(t('a_verified'), 'btn', () => markVerified(i)); vb.style.marginTop = '8px'; s.appendChild(vb); }
+      body.appendChild(s);
+    }
+    if (DB) {
+      body.appendChild(historySection(i));
+      if (canEdit()) { const eb = mkBtn(t('a_edit'), 'btn', () => { $('detail').close(); openEditor(i); }); body.appendChild(eb); }
+    }
+    const dlg = $('detail');
+    if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', ''); }
+    body.scrollTop = keep;
+  }
+
+  // ---------- CSV ----------
+  function exportCsv() {
+    const esc = (v) => { const s = v == null ? '' : String(v); return /[",\n;]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+    const rows = [t('csv_cols')];
+    VIEW.forEach((i) => {
+      const it = ITEMS[i], a = ALERTS[i];
+      const st = a.length ? t('s_' + a.slice().sort((x, y) => SEVERITY[y] - SEVERITY[x])[0]) : t('s_ok');
+      rows.push([it.id, nameOf(it), it.name, secOf(it), locOf(it), subOf(it), t('type_' + familyOf(it)), it.qty, it.min, st, it.pack, it.bal, it.sup, it.lp, it.notes, (it.flags || []).map((f) => t('f_' + f)).join(' | ')]);
+    });
+    const csv = '﻿' + rows.map((r) => r.map(esc).join(',')).join('\r\n');
+    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    const a = document.createElement('a'); a.href = url; a.download = 'castello-di-alice-inventory-' + new Date().toISOString().slice(0, 10) + '.csv';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  // ---------- events ----------
+  let timer = null;
+  $('q').addEventListener('input', (e) => { S.q = e.target.value; clearTimeout(timer); timer = setTimeout(() => refresh(), 120); $('clearq').hidden = !S.q; });
+  $('clearq').addEventListener('click', () => { S.q = ''; $('q').value = ''; $('q').focus(); refresh(); });
+  $('f-section').addEventListener('change', (e) => { S.sec = e.target.value; S.loc = 'all'; fillLocations(); refresh(); });
+  $('f-location').addEventListener('change', (e) => { S.loc = e.target.value; refresh(); });
+  $('f-status').addEventListener('change', (e) => { S.st = e.target.value; refresh(); });
+  $('f-sort').addEventListener('change', (e) => { S.sort = e.target.value; S.dir = 'asc'; refresh(); });
+  $('f-dir').addEventListener('click', () => { S.dir = S.dir === 'desc' ? 'asc' : 'desc'; refresh(); });
+  $('list').querySelector('thead').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-sort]'); if (!b) return;
+    const c = b.dataset.sort;
+    if (S.sort !== c) { S.sort = c; S.dir = 'asc'; } else if (S.dir === 'asc') { S.dir = 'desc'; } else { S.sort = 'auto'; S.dir = 'asc'; }
+    refresh();
+    const r = $('tablewrap').getBoundingClientRect(), off = $('tools').getBoundingClientRect().height;
+    if (r.top < off) window.scrollBy(0, r.top - off);
+    const nb = $('list').querySelector('thead button[data-sort="' + c + '"]'); if (nb) nb.focus({ preventScroll: true });
+  });
+  $('famswitch').addEventListener('click', (e) => { const b = e.target.closest('button[data-fam]'); if (!b) return; S.fam = b.dataset.fam; if (S.fam === 'asset' && ['out', 'low', 'expired', 'expiring', 'attention'].includes(S.st)) { S.st = 'all'; $('f-status').value = 'all'; } renderFamily(); fillLocations(); refresh(); });
+  $('tiles').addEventListener('click', (e) => { const b = e.target.closest('button[data-st]'); if (!b) return; S.st = (S.st === b.dataset.st) ? 'all' : b.dataset.st; $('f-status').value = S.st; refresh(); });
+  $('rows').addEventListener('click', (e) => { const r = e.target.closest('tr[data-i]'); if (r) openDetail(Number(r.dataset.i)); });
+  $('rows').addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { const r = e.target.closest('tr[data-i]'); if (r) { e.preventDefault(); openDetail(Number(r.dataset.i)); } } });
+  $('morebtn').addEventListener('click', () => { S.shown += PAGE; renderRows(); });
+  $('reset').addEventListener('click', () => { Object.assign(S, { q: '', sec: 'all', loc: 'all', st: 'all', sort: 'auto', dir: 'asc' }); $('q').value = ''; fillSelects(); refresh(); });
+  $('export').addEventListener('click', exportCsv);
+  $('d-close').addEventListener('click', () => $('detail').close());
+  $('detail').addEventListener('click', (e) => { if (e.target === $('detail')) $('detail').close(); });
+  $('lang').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-lang]'); if (!b) return;
+    lang = b.dataset.lang; try { localStorage.setItem('alice-lang', lang); } catch (x) {}
+    if (META) { buildIndex(); }
+    applyStatic(); refresh(false);
+    if ($('detail').open) $('detail').close();
+  });
+
+  function stickyOffset() { const h = $('tools'); document.documentElement.style.setProperty('--stickyoff', h ? h.getBoundingClientRect().height + 'px' : '0px'); }
+  window.addEventListener('resize', stickyOffset);
+
+  // ---------- backend (Supabase) ----------
+  const CFG = window.ALICE_CONFIG || {};
+  const DB = !!(CFG.url && CFG.key && window.supabase);
+  const PLACES = {"order":["New Store Room","Tool Room","Kitchen Inventory","Laundry","Management Offices","Garages","Lanseria Depot"],"sections":{"Management Offices":{"it":"Uffici direzionali","fr":"Bureaux de direction"},"New Store Room":{"it":"Nuovo magazzino","fr":"Nouvelle réserve"},"Tool Room":{"it":"Magazzino attrezzi","fr":"Local des outils"},"Lanseria Depot":{"it":"Deposito di Lanseria","fr":"Dépôt de Lanseria"},"Kitchen Inventory":{"it":"Inventario cucina","fr":"Inventaire cuisine"},"Garages":{"it":"Garage","fr":"Garages"},"Laundry":{"it":"Lavanderia","fr":"Buanderie"}},"locations":{"Reception Office":{"it":"Ufficio reception","fr":"Bureau de réception"},"Denise's Office":{"it":"Ufficio di Denise","fr":"Bureau de Denise"},"Marco's Office":{"it":"Ufficio di Marco","fr":"Bureau de Marco"},"Chad's Office":{"it":"Ufficio di Chad","fr":"Bureau de Chad"},"Martina's Office":{"it":"Ufficio di Martina","fr":"Bureau de Martina"},"Management Bathroom":{"it":"Bagno della direzione","fr":"Salle de bain de la direction"},"Staff Canteen":{"it":"Mensa del personale","fr":"Cantine du personnel"},"IT Room":{"it":"Sala IT","fr":"Salle informatique"},"Pictures in the Cortege":{"it":"Quadri nel Cortège","fr":"Tableaux dans le Cortège"},"Tools":{"it":"Attrezzi","fr":"Outils"},"Consumables":{"it":"Materiali di consumo","fr":"Consommables"},"Lanseria Depot":{"it":"Deposito di Lanseria","fr":"Dépôt de Lanseria"},"Appliance and Cookware":{"it":"Elettrodomestici e utensili da cucina","fr":"Électroménager et ustensiles de cuisine"},"Furnitures":{"it":"Arredi","fr":"Mobilier"},"Laundryware and Furnitures":{"it":"Biancheria e arredi per lavanderia","fr":"Linge et mobilier de buanderie"},"Location A":{"it":"Ubicazione A","fr":"Emplacement A"},"Location B":{"it":"Ubicazione B","fr":"Emplacement B"},"Location C":{"it":"Ubicazione C","fr":"Emplacement C"},"Location D":{"it":"Ubicazione D","fr":"Emplacement D"},"Location E":{"it":"Ubicazione E","fr":"Emplacement E"},"Location F":{"it":"Ubicazione F","fr":"Emplacement F"},"Location G":{"it":"Ubicazione G","fr":"Emplacement G"},"Garage 1":{"it":"Garage 1","fr":"Garage 1"},"Garage 2":{"it":"Garage 2","fr":"Garage 2"},"Garage 3":{"it":"Garage 3","fr":"Garage 3"},"Garage 4":{"it":"Garage 4","fr":"Garage 4"},"Garage 5":{"it":"Garage 5","fr":"Garage 5"}}};
+  let sb = null, ROLE = null, USER = null, LAST_LOAD = 0, CUR = -1, BUSY = false;
+  const canEdit = () => ROLE === 'admin' || ROLE === 'editor';
+  const isAdmin = () => ROLE === 'admin';
+  const mkBtn = (label, cls, fn) => { const b = el('button', cls || 'btn', label); b.type = 'button'; if (fn) b.addEventListener('click', fn); return b; };
+  const sectionBox = (title) => { const s = el('div', 'sect'); s.appendChild(el('h3', null, title)); return s; };
+
+  let toastTimer = null;
+  function toast(msg, bad) {
+    const e = $('toast');
+    (document.querySelector('dialog[open]') || document.body).appendChild(e);
+    e.textContent = msg; e.className = 'toast' + (bad ? ' bad' : ''); e.hidden = false;
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => { e.hidden = true; }, 3800);
+  }
+
+  function fromRow(r) {
+    const it = { id: r.id, name: r.name, section: r.section, loc: r.loc, family: r.family, qty: r.qty, min: r.min_qty == null ? null : r.min_qty, src: r.src || 'ok', basis: r.basis || 'p', flags: r.flags || [] };
+    if (r.sub_kind && r.sub_v) it.sub = { kind: r.sub_kind, v: r.sub_v };
+    if (r.pack != null) it.pack = r.pack;
+    if (r.bal != null) it.bal = r.bal;
+    if (r.qty_out) it.out = r.qty_out;
+    if (r.supplier) it.sup = r.supplier;
+    if (r.last_purchase) it.lp = r.last_purchase;
+    if (r.notes) it.notes = r.notes;
+    if (r.expiry) it.expiry = r.expiry;
+    it.photoPaths = r.photos || [];
+    it.upd = r.updated_at || '';
+    it._tr = { name_it: r.name_it, name_fr: r.name_fr, notes_it: r.notes_it, notes_fr: r.notes_fr };
+    return it;
+  }
+
+  function toRow(it, trn) {
+    const nt = ((trn && trn.items) || {})[it.name] || {};
+    const no = ((trn && trn.notes) || {})[it.notes] || {};
+    const nz = (v) => (v == null ? null : v);
+    return {
+      id: it.id, name: it.name, name_it: nt.it || null, name_fr: nt.fr || null, section: it.section, loc: it.loc,
+      sub_kind: it.sub ? it.sub.kind : null, sub_v: it.sub ? String(it.sub.v) : null, family: it.family === 'asset' ? 'asset' : 'stock',
+      qty: nz(it.qty), min_qty: nz(it.min), pack: nz(it.pack), bal: nz(it.bal), qty_out: nz(it.out), supplier: it.sup || null, last_purchase: it.lp || null,
+      notes: it.notes || null, notes_it: no.it || null, notes_fr: no.fr || null, flags: it.flags || [], src: it.src || null, basis: it.basis || null
+    };
+  }
+
+  function derive() {
+    ALERTS = ITEMS.map((it) => alertsOf(it, today));
+    KEYS = ITEMS.map((it) => normKey(it.name));
+    BYKEY = new Map();
+    KEYS.forEach((k, i) => { if (!k) return; if (!BYKEY.has(k)) BYKEY.set(k, []); BYKEY.get(k).push(i); });
+    buildIndex();
+  }
+
+  function rebuildTR() {
+    TR = { items: {}, sections: PLACES.sections, locations: PLACES.locations, notes: {} };
+    ITEMS.forEach((it) => {
+      const x = it._tr || {};
+      if (x.name_it || x.name_fr) TR.items[it.name] = { it: x.name_it || '', fr: x.name_fr || '' };
+      if (it.notes && (x.notes_it || x.notes_fr)) TR.notes[it.notes] = { it: x.notes_it || '', fr: x.notes_fr || '' };
+    });
+  }
+
+  function rebuildMeta() {
+    const order = PLACES.order.slice();
+    ITEMS.forEach((it) => { if (!order.includes(it.section)) order.push(it.section); });
+    META = { sections: order.filter((s) => ITEMS.some((it) => it.section === s)), generated_at: ITEMS.reduce((m, it) => (it.upd && it.upd > m ? it.upd : m), '') || new Date().toISOString() };
+  }
+
+  function dbApply(rows) { ITEMS = rows.map(fromRow); rebuildTR(); rebuildMeta(); derive(); }
+  function afterChange() { rebuildTR(); rebuildMeta(); derive(); fillSelects(); renderFamily(); refresh(false); }
+
+  function renderUser() {
+    const u = $('userbar'); if (!u) return;
+    u.hidden = !(DB && USER);
+    if (!DB || !USER) return;
+    $('whoami').textContent = (USER.email || '') + (ROLE ? ' · ' + t('role_' + ROLE) : '');
+    $('btn-team').hidden = !isAdmin();
+    $('addbtn').hidden = !canEdit();
+  }
+
+  function showLogin() {
+    ROLE = null; USER = null; ITEMS = []; VIEW = []; ALERTS = []; IX = [];
+    $('app').hidden = true; $('login').hidden = false; $('userbar').hidden = true; $('importbox').hidden = true;
+    $('rows').textContent = ''; $('lg-pass').value = '';
+    ['detail', 'editor', 'team'].forEach((id) => { if ($(id).open) $(id).close(); });
+    setTimeout(() => $('lg-email').focus(), 0);
+  }
+
+  async function enter() { $('login').hidden = true; $('app').hidden = false; renderUser(); await loadDb(false); }
+
+  async function loadDb(silent) {
+    if (!silent) { $('loading').hidden = false; $('list').hidden = true; $('error').hidden = true; $('empty').hidden = true; }
+    try {
+      const me = await sb.from('staff').select('role,email').eq('user_id', USER.id).maybeSingle();
+      if (me.error) throw me.error;
+      if (!me.data) { ROLE = null; renderUser(); $('loading').hidden = true; const er = $('error'); er.hidden = false; er.textContent = t('noaccess'); return; }
+      ROLE = me.data.role;
+      const rows = [];
+      for (let from = 0; ; from += 1000) {
+        const r = await sb.from('items').select('*').order('id').range(from, from + 999);
+        if (r.error) throw r.error;
+        rows.push(...r.data);
+        if (r.data.length < 1000) break;
+      }
+      dbApply(rows); LAST_LOAD = Date.now();
+      renderUser();
+      if (silent) { fillSelects(); renderFamily(); refresh(false); } else { init(); }
+      checkImport();
+    } catch (e) {
+      if (!silent) { $('loading').hidden = true; const er = $('error'); er.hidden = false; er.textContent = t('loadError'); }
+    }
+  }
+
+  // ---------- sign in / out ----------
+  function wireAuth() {
+    $('loginform').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = $('lg-email').value.trim(), password = $('lg-pass').value;
+      const err = $('lg-err'); err.hidden = true;
+      if (!email || !password) { err.textContent = t('login_err'); err.hidden = false; return; }
+      const go = $('lg-go'); go.disabled = true; go.textContent = t('signing');
+      try {
+        const r = await sb.auth.signInWithPassword({ email, password });
+        if (r.error) { err.textContent = (r.error.status && r.error.status < 500) ? t('login_err') : t('login_net'); err.hidden = false; }
+        else { USER = r.data.user; $('lg-pass').value = ''; await enter(); }
+      } catch (x) { err.textContent = t('login_net'); err.hidden = false; }
+      go.disabled = false; go.textContent = t('signin');
+    });
+    $('btn-signout').addEventListener('click', async () => { try { await sb.auth.signOut(); } catch (e) {} showLogin(); });
+    document.addEventListener('visibilitychange', () => {
+      if (USER && ROLE && !document.hidden && Date.now() - LAST_LOAD > 60000 && !document.querySelector('dialog[open]')) loadDb(true);
+    });
+  }
+
+  // ---------- stock movements ----------
+  function stockControl(i) {
+    const it = ITEMS[i];
+    const s = sectionBox(t('mv_title')); s.classList.add('stockctl');
+    const row = el('div', 'qtyrow');
+    const minus = mkBtn('−', 'qbtn', () => change(i, 'delta', -1)); minus.setAttribute('aria-label', t('mv_minus'));
+    const val = el('output', 'qval', it.qty == null ? '–' : nf(it.qty));
+    const plus = mkBtn('+', 'qbtn', () => change(i, 'delta', 1)); plus.setAttribute('aria-label', t('mv_plus'));
+    row.append(minus, val, plus); s.appendChild(row);
+    const form = el('form', 'mvform');
+    const mode = el('select'); [['add', 'mv_add'], ['remove', 'mv_remove'], ['set', 'mv_set']].forEach(([v, k]) => mode.appendChild(new Option(t(k), v)));
+    mode.setAttribute('aria-label', t('mv_title'));
+    const amt = el('input'); amt.type = 'number'; amt.min = '0'; amt.step = '1'; amt.inputMode = 'numeric'; amt.placeholder = t('mv_amount'); amt.setAttribute('aria-label', t('mv_amount')); amt.required = true;
+    const why = el('input'); why.type = 'text'; why.maxLength = 120; why.placeholder = t('mv_reason'); why.setAttribute('aria-label', t('mv_reason'));
+    const go = el('button', 'btn primary', t('mv_apply')); go.type = 'submit';
+    form.append(mode, amt, why, go);
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const n = Math.round(Number(amt.value)); if (!Number.isFinite(n) || n < 0) return;
+      const reason = why.value.trim() || null;
+      if (mode.value === 'add') change(i, 'delta', n, reason); else if (mode.value === 'remove') change(i, 'delta', -n, reason); else change(i, 'set', n, reason);
+    });
+    s.appendChild(form);
+    return s;
+  }
+
+  async function change(i, kind, n, reason) {
+    if (BUSY) return; BUSY = true;
+    const it = ITEMS[i];
+    try {
+      let q;
+      if (kind === 'delta') {
+        const r = await sb.rpc('adjust_qty', { p_id: it.id, p_delta: n, p_reason: reason || null });
+        if (r.error) throw r.error; q = r.data;
+      } else {
+        const r = await sb.from('items').update({ qty: n, last_reason: reason || null }).eq('id', it.id).select('qty').single();
+        if (r.error) throw r.error; q = r.data.qty;
+      }
+      it.qty = q; ALERTS[i] = alertsOf(it, today);
+      refresh(false); openDetail(i); toast(t('a_saved'));
+    } catch (e) { toast(t('a_error'), true); }
+    BUSY = false;
+  }
+
+  async function markVerified(i) {
+    try {
+      const r = await sb.from('items').update({ flags: [] }).eq('id', ITEMS[i].id).select('*').single();
+      if (r.error) throw r.error;
+      ITEMS[i] = fromRow(r.data); afterChange(); openDetail(i); toast(t('a_saved'));
+    } catch (e) { toast(t('a_error'), true); }
+  }
+
+  function historySection(i) {
+    const s = sectionBox(t('hist')); const ul = el('ul', 'hist'); s.appendChild(ul);
+    sb.from('movements').select('delta,new_qty,reason,user_email,created_at').eq('item_id', ITEMS[i].id).order('created_at', { ascending: false }).limit(15).then((r) => {
+      if (CUR !== i || !r || r.error || !r.data) return;
+      if (!r.data.length) { ul.appendChild(el('li', 'none', t('hist_none'))); return; }
+      r.data.forEach((m) => {
+        const li = el('li');
+        let when = m.created_at; try { when = new Intl.DateTimeFormat(lang, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(m.created_at)); } catch (e) {}
+        const who = (m.user_email || '').split('@')[0];
+        li.appendChild(el('span', 'when', when + (who ? ' · ' + who : '')));
+        li.appendChild(el('span', m.delta >= 0 ? 'dplus' : 'dminus', (m.delta > 0 ? '+' : '') + nf(m.delta) + ' (' + t('hist_to', { n: nf(m.new_qty) }) + ')'));
+        if (m.reason) li.appendChild(el('span', 'why', m.reason));
+        ul.appendChild(li);
+      });
+    });
+    return s;
+  }
+
+  // ---------- photos ----------
+  async function shrink(file, max, q) {
+    let bmp;
+    try { bmp = await createImageBitmap(file); } catch (e) { bmp = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = URL.createObjectURL(file); }); }
+    const w = bmp.width || bmp.naturalWidth, h = bmp.height || bmp.naturalHeight, k = Math.min(1, max / Math.max(w, h));
+    const c = document.createElement('canvas'); c.width = Math.max(1, Math.round(w * k)); c.height = Math.max(1, Math.round(h * k));
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    return new Promise((res, rej) => c.toBlob((b) => (b ? res(b) : rej(new Error('blob'))), 'image/jpeg', q));
+  }
+
+  async function savePhotos(i, paths) {
+    const r = await sb.from('items').update({ photos: paths }).eq('id', ITEMS[i].id).select('photos').single();
+    if (r.error) throw r.error;
+    ITEMS[i].photoPaths = r.data.photos || [];
+  }
+
+  async function addPhoto(i, file, btn) {
+    if (!file) return;
+    const old = btn.textContent; btn.disabled = true; btn.textContent = t('ph_busy');
+    try {
+      const blob = await shrink(file, 1280, 0.82);
+      const path = ITEMS[i].id + '/' + Date.now().toString(36) + '.jpg';
+      const up = await sb.storage.from('item-photos').upload(path, blob, { contentType: 'image/jpeg', upsert: false });
+      if (up.error) throw up.error;
+      await savePhotos(i, (ITEMS[i].photoPaths || []).concat(path));
+      openDetail(i); toast(t('a_saved'));
+    } catch (e) { toast(t('a_error'), true); btn.disabled = false; btn.textContent = old; }
+  }
+
+  async function removePhoto(i, path) {
+    try {
+      await savePhotos(i, (ITEMS[i].photoPaths || []).filter((p) => p !== path));
+      try { await sb.storage.from('item-photos').remove([path]); } catch (e) {}
+      openDetail(i);
+    } catch (e) { toast(t('a_error'), true); }
+  }
+
+  function photoSection(i) {
+    const it = ITEMS[i], paths = it.photoPaths || [];
+    if (!paths.length && !canEdit()) return null;
+    const s = sectionBox(t('ph_title')); const g = el('div', 'gallery'); s.appendChild(g);
+    if (paths.length) {
+      sb.storage.from('item-photos').createSignedUrls(paths, 3600).then((r) => {
+        if (CUR !== i || !r || !r.data) return;
+        r.data.forEach((o) => {
+          if (!o.signedUrl) return;
+          const fig = el('div', 'ph'); const im = document.createElement('img'); im.src = o.signedUrl; im.alt = nameOf(it); fig.appendChild(im);
+          if (canEdit()) { const x = mkBtn('×', 'phx', () => removePhoto(i, o.path)); x.setAttribute('aria-label', t('ph_remove')); fig.appendChild(x); }
+          g.appendChild(fig);
+        });
+      });
+    }
+    if (canEdit()) {
+      const file = el('input'); file.type = 'file'; file.accept = 'image/*'; file.hidden = true;
+      const add = mkBtn(t('ph_add'), 'btn phadd', () => file.click());
+      file.addEventListener('change', () => { const f = file.files && file.files[0]; file.value = ''; addPhoto(i, f, add); });
+      s.append(file, add);
+    }
+    return s;
+  }
+
+  // ---------- item editor ----------
+  function openEditor(i) {
+    const isNew = i < 0;
+    const it = isNew ? { family: 'stock', qty: 0, section: '', loc: '', _tr: {} } : ITEMS[i];
+    const x = it._tr || {};
+    $('ed-title').textContent = isNew ? t('a_add') : t('a_edit') + ' · ' + nameOf(it);
+    const body = $('ed-body'); body.textContent = '';
+    const form = el('form', 'form'); const F = {};
+    const add = (key, label, type, value, o) => {
+      o = o || {};
+      const lab = el('label', o.full ? 'full' : null); lab.appendChild(el('span', null, label));
+      let inp;
+      if (type === 'select') { inp = el('select'); o.options.forEach(([v, l]) => inp.appendChild(new Option(l, v))); inp.value = value == null ? '' : value; }
+      else if (type === 'textarea') { inp = el('textarea'); inp.rows = 2; inp.value = value || ''; }
+      else { inp = el('input'); inp.type = type; inp.value = value == null ? '' : value; if (type === 'number') { inp.min = '0'; inp.step = '1'; inp.inputMode = 'numeric'; } if (o.list) inp.setAttribute('list', o.list); }
+      if (o.req) inp.required = true;
+      if (type === 'text') inp.maxLength = 200;
+      lab.appendChild(inp); (o.parent || form).appendChild(lab); F[key] = inp; return inp;
+    };
+    add('name', t('fld_name'), 'text', it.name, { full: true, req: true });
+    add('section', t('fld_section'), 'text', it.section, { list: 'dl-sec', req: true });
+    add('loc', t('fld_loc'), 'text', it.loc, { list: 'dl-loc', req: true });
+    add('sub_kind', t('fld_sub_kind'), 'select', it.sub ? it.sub.kind : '', { options: [['', t('fld_none')], ['shelf', t('k_shelf')], ['box', t('k_box')], ['container', t('k_container')]] });
+    add('sub_v', t('fld_sub_v'), 'text', it.sub ? it.sub.v : '');
+    add('family', t('fld_family'), 'select', familyOf(it), { options: [['stock', t('type_stock')], ['asset', t('type_asset')]] });
+    if (isNew) add('qty', t('fld_qty'), 'number', 0);
+    add('min', t('fld_min'), 'number', it.min);
+    add('pack', t('fld_pack'), 'number', it.pack);
+    add('sup', t('fld_sup'), 'text', it.sup);
+    add('lp', t('fld_lp'), 'date', it.lp);
+    add('exp', t('fld_exp'), 'date', it.expiry);
+    add('notes', t('fld_notes'), 'textarea', it.notes, { full: true });
+    const det = el('details'); det.appendChild(el('summary', null, t('fld_trans')));
+    const inner = el('div', 'form inner'); det.appendChild(inner); form.appendChild(det);
+    add('name_it', t('fld_name_it'), 'text', x.name_it, { full: true, parent: inner });
+    add('name_fr', t('fld_name_fr'), 'text', x.name_fr, { full: true, parent: inner });
+    add('notes_it', t('fld_notes_it'), 'textarea', x.notes_it, { full: true, parent: inner });
+    add('notes_fr', t('fld_notes_fr'), 'textarea', x.notes_fr, { full: true, parent: inner });
+    const dls = el('datalist'); dls.id = 'dl-sec'; (META ? META.sections : []).forEach((s) => dls.appendChild(new Option(s)));
+    const dll = el('datalist'); dll.id = 'dl-loc'; Array.from(new Set(ITEMS.map((a) => a.loc))).sort().forEach((s) => dll.appendChild(new Option(s)));
+    form.append(dls, dll);
+    const actions = el('div', 'formactions');
+    const save = el('button', 'btn primary', t('a_save')); save.type = 'submit';
+    actions.append(save, mkBtn(t('a_cancel'), 'btn', () => $('editor').close()));
+    if (!isNew && isAdmin()) {
+      let armed = false;
+      const del = mkBtn(t('a_delete'), 'btn danger', async () => {
+        if (!armed) { armed = true; del.textContent = t('a_delete_confirm'); return; }
+        try {
+          const r = await sb.from('items').delete().eq('id', it.id).select('id');
+          if (r.error || !r.data || !r.data.length) throw r.error || new Error('none');
+          ITEMS.splice(i, 1); afterChange(); $('editor').close(); toast(t('a_saved'));
+        } catch (e) { toast(t('a_error'), true); }
+      });
+      actions.appendChild(del);
+    }
+    form.appendChild(actions);
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const v = (k) => F[k].value.trim();
+      const num = (k) => { const s = v(k); return s === '' ? null : Math.max(0, Math.round(Number(s))); };
+      if (!v('name') || !v('section') || !v('loc')) { toast(t('a_required'), true); return; }
+      const kind = F.sub_kind.value;
+      const p = {
+        name: v('name'), name_it: v('name_it') || null, name_fr: v('name_fr') || null, section: v('section'), loc: v('loc'),
+        sub_kind: kind || null, sub_v: kind ? (v('sub_v') || null) : null, family: F.family.value, min_qty: num('min'), pack: num('pack'),
+        supplier: v('sup') || null, last_purchase: F.lp.value || null, expiry: F.exp.value || null,
+        notes: v('notes') || null, notes_it: v('notes_it') || null, notes_fr: v('notes_fr') || null
+      };
+      save.disabled = true;
+      try {
+        let r;
+        if (isNew) {
+          p.id = 'app-' + Math.random().toString(36).slice(2, 10); p.qty = num('qty') == null ? 0 : num('qty'); p.src = 'ok'; p.basis = 'p'; p.flags = [];
+          r = await sb.from('items').insert(p).select('*').single();
+        } else {
+          r = await sb.from('items').update(p).eq('id', it.id).select('*').single();
+        }
+        if (r.error) throw r.error;
+        const row = fromRow(r.data); let idx;
+        if (isNew) { ITEMS.push(row); idx = ITEMS.length - 1; } else { ITEMS[i] = row; idx = i; }
+        afterChange(); $('editor').close(); openDetail(idx); toast(t('a_saved'));
+      } catch (err) { toast(t('a_error'), true); save.disabled = false; }
+    });
+    body.appendChild(form);
+    $('editor').showModal();
+  }
+
+  // ---------- team (administrators) ----------
+  async function openTeam() {
+    const body = $('tm-body'); body.textContent = '';
+    body.appendChild(el('p', 'muted', t('team_help')));
+    const r = await sb.from('staff').select('user_id,email,role').order('email');
+    if (r.error || !r.data) { toast(t('a_error'), true); return; }
+    const ul = el('ul', 'others');
+    r.data.forEach((m) => {
+      const li = el('li');
+      li.appendChild(el('span', null, (m.email || m.user_id) + (m.user_id === USER.id ? ' (' + t('team_you') + ')' : '')));
+      const sel = el('select'); ['admin', 'editor', 'viewer'].forEach((k) => sel.appendChild(new Option(t('role_' + k), k)));
+      sel.value = m.role; sel.disabled = m.user_id === USER.id;
+      sel.addEventListener('change', async () => {
+        const u = await sb.from('staff').update({ role: sel.value }).eq('user_id', m.user_id).select('role').single();
+        if (u.error || !u.data) { toast(t('a_error'), true); sel.value = m.role; } else { m.role = u.data.role; toast(t('a_saved')); }
+      });
+      li.appendChild(sel); ul.appendChild(li);
+    });
+    body.appendChild(ul);
+    if (!$('team').open) $('team').showModal();
+  }
+
+  // ---------- first import of the catalogue (administrators, empty database only) ----------
+  async function checkImport() {
+    const box = $('importbox'); box.hidden = true;
+    if (ITEMS.length || !isAdmin()) return;
+    try {
+      const inv = await fetch('data/inventory.json', { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error('none'); return r.json(); });
+      const n = inv.items.length;
+      box.textContent = '';
+      const d = el('div'); d.appendChild(el('strong', null, t('imp_title') + ' ')); d.appendChild(document.createTextNode(t('imp_text', { n: nf(n) })));
+      const msg = el('span', 'muted'); msg.id = 'importmsg'; d.append(document.createTextNode(' '), msg);
+      const go = mkBtn(t('imp_btn', { n: nf(n) }), 'btn primary', () => runImport(inv, go, msg));
+      box.append(d, go); box.hidden = false;
+    } catch (e) { /* no catalogue files published: nothing to import */ }
+  }
+
+  async function runImport(inv, btn, msg) {
+    btn.disabled = true;
+    try {
+      const trn = await fetch('data/translations.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : {})).catch(() => ({}));
+      const rows = inv.items.map((it) => toRow(it, trn));
+      for (let a = 0; a < rows.length; a += 200) {
+        msg.textContent = t('imp_prog', { d: nf(a), n: nf(rows.length) });
+        const r = await sb.from('items').upsert(rows.slice(a, a + 200), { onConflict: 'id', ignoreDuplicates: true });
+        if (r.error) throw r.error;
+      }
+      toast(t('imp_done')); await loadDb(false);
+    } catch (e) { msg.textContent = t('imp_err'); btn.disabled = false; }
+  }
+
+  function wireEditing() {
+    $('addbtn').addEventListener('click', () => openEditor(-1));
+    $('btn-team').addEventListener('click', openTeam);
+    $('ed-close').addEventListener('click', () => $('editor').close());
+    $('tm-close').addEventListener('click', () => $('team').close());
+    ['editor', 'team'].forEach((id) => $(id).addEventListener('click', (e) => { if (e.target === $(id)) $(id).close(); }));
+  }
+
+  async function boot() {
+    if (!DB) { load(); return; }
+    sb = window.supabase.createClient(CFG.url, CFG.key, { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: false } });
+    $('app').hidden = true;
+    applyStatic();
+    wireAuth(); wireEditing();
+    sb.auth.onAuthStateChange((ev) => { if (ev === 'SIGNED_OUT' && USER) setTimeout(showLogin, 0); });
+    let session = null;
+    try { const r = await sb.auth.getSession(); session = r && r.data && r.data.session; } catch (e) {}
+    if (session) { USER = session.user; await enter(); } else showLogin();
+  }
+
+  // ---------- data ----------
+  function buildIndex() {
+    IX = ITEMS.map((it) => {
+      const names = [it.name, (TR.items[it.name] || {}).it, (TR.items[it.name] || {}).fr].filter(Boolean);
+      const places = [it.section, it.loc, (TR.sections[it.section] || {}).it, (TR.sections[it.section] || {}).fr, (TR.locations[it.loc] || {}).it, (TR.locations[it.loc] || {}).fr].filter(Boolean);
+      return indexItem(it, names, places);
+    });
+  }
+
+  function init() {
+    if (!DB) derive();
+    const n = META.notice; const txt = n && typeof n === 'object' ? (n[lang] || n.en || '') : (n || '');
+    applyStatic();
+    $('loading').hidden = true; $('list').hidden = false;
+    refresh();
+    stickyOffset();
+    if (txt) { const p = el('p', null, txt); p.style.cssText = 'margin:12px 0 0;padding:10px 14px;background:var(--warn-bg);border-radius:10px'; $('tiles').before(p); }
+  }
+
+  async function load() {
+    applyStatic();
+    try {
+      const [inv, trn] = await Promise.all([
+        fetch('data/inventory.json', { cache: 'no-cache' }).then((r) => { if (!r.ok) throw new Error('inventory'); return r.json(); }),
+        fetch('data/translations.json', { cache: 'no-cache' }).then((r) => (r.ok ? r.json() : {})).catch(() => ({}))
+      ]);
+      META = inv.meta; ITEMS = inv.items; TR = Object.assign({ items: {}, sections: {}, locations: {}, notes: {} }, trn);
+      init();
+    } catch (e) {
+      $('loading').hidden = true; const er = $('error'); er.hidden = false; er.textContent = t('loadError');
+    }
+  }
+  boot();
+})();
+</script>
+</body>
+</html>
