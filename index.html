@@ -210,6 +210,65 @@ dl.facts { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, min
 .banner { margin: 14px 0 0; padding: 14px 16px; background: var(--asset-bg); border-radius: 12px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; color: #4e3a0d; }
 .toast { position: fixed; left: 50%; top: 18px; transform: translateX(-50%); background: var(--petrol); color: #fff; padding: 12px 18px; border-radius: 12px; z-index: 100; box-shadow: 0 8px 24px rgba(20, 30, 36, 0.3); max-width: calc(100vw - 32px); font-weight: 600; }
 .toast.bad { background: var(--crit); }
+/* ---- management dialog: locations, categories, references, verification ---- */
+dialog.wide { width: min(1000px, calc(100vw - 24px)); }
+.tabs { display: flex; gap: 4px; padding: 0 20px; border-bottom: 1px solid var(--line); overflow-x: auto; }
+.tabs[hidden] { display: none; }
+.tabs button { border: 0; background: transparent; padding: 12px 14px; min-height: 46px; font: inherit; font-weight: 600; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; }
+.tabs button[aria-selected="true"] { color: var(--petrol); border-bottom-color: var(--gold); }
+.btn.sm { min-height: 34px; padding: 4px 10px; font-size: 0.82rem; }
+.tacts .btn.danger, .mgacts .btn.danger { margin-left: 0; }
+.mgtop { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 12px; }
+.mgacts { display: flex; flex-wrap: wrap; gap: 8px; }
+.tree { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line-soft); border-radius: 10px; background: #fff; overflow: hidden; }
+.tree li { border-top: 1px solid var(--line-soft); }
+.tree li:first-child { border-top: 0; }
+.trow { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 6px 12px; align-items: center; padding: 8px 12px 8px calc(12px + var(--d, 0) * 22px); }
+.tree li[data-level="1"] { background: var(--stock-bg); }
+.tree li[data-level="1"] .tname strong { font-family: var(--display); letter-spacing: 0.03em; }
+.tname { overflow-wrap: anywhere; }
+.tname small { font-size: 0.8rem; }
+.tcode { display: inline-block; min-width: 3.2em; margin-right: 8px; padding: 1px 7px; border-radius: 6px; background: var(--petrol); color: var(--on-petrol); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.05em; text-align: center; }
+.tcount { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tacts { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge { display: inline-block; border-radius: 999px; padding: 2px 10px; font-size: 0.74rem; font-weight: 700; white-space: nowrap; }
+.badge.ok { background: var(--ok-bg); color: var(--ok); }
+.badge.todo { background: var(--warn-bg); color: var(--warn); }
+.revlist { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line-soft); border-radius: 10px; background: #fff; }
+.revlist li { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 260px); gap: 6px 14px; align-items: center; padding: 8px 12px; border-top: 1px solid var(--line-soft); }
+.revlist li:first-child { border-top: 0; }
+.revlist select { border: 1px solid var(--line); border-radius: 10px; min-height: 40px; padding: 6px 10px; background: #fff; font-size: 0.92rem; width: 100%; }
+.revname small { display: block; }
+.tablescroll { overflow-x: auto; }
+.reftable { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--line-soft); border-radius: 10px; font-size: 0.92rem; }
+.reftable th, .reftable td { padding: 8px 10px; border-top: 1px solid var(--line-soft); text-align: left; vertical-align: middle; }
+.reftable th { border-top: 0; font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); background: var(--stock-bg); }
+.reftable .num { text-align: right; font-variant-numeric: tabular-nums; }
+.vinfo { margin: 0; font-weight: 600; color: var(--petrol); }
+.vprog { display: flex; align-items: center; gap: 12px; font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+.vbar { flex: 1; height: 6px; border-radius: 3px; background: var(--line-soft); overflow: hidden; }
+.vbar span { display: block; height: 100%; background: var(--gold); }
+.vhead p { margin: 2px 0 0; }
+.vname { margin: 0; font-family: var(--display); font-size: 1.3rem; font-weight: 600; color: var(--petrol); overflow-wrap: anywhere; }
+.vphoto { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.vphoto .gallery { display: flex; gap: 8px; }
+.vphoto img { height: 88px; width: auto; border-radius: 8px; border: 1px solid var(--line-soft); }
+.vq .qtyrow { display: flex; align-items: center; justify-content: center; gap: 18px; }
+.qin { width: 130px !important; text-align: center; font-family: var(--display); font-size: 1.8rem !important; font-weight: 600 !important; min-height: 58px !important; color: var(--petrol); }
+.vact { display: grid; gap: 12px; position: sticky; bottom: -22px; background: var(--card); padding: 12px 0 14px; margin-bottom: -8px; border-top: 1px solid var(--line-soft); z-index: 2; }
+.stickyhead { position: sticky; top: -16px; background: var(--card); padding: 10px 0; z-index: 2; border-bottom: 1px solid var(--line-soft); }
+.vact .btn.big { min-height: 54px; font-size: 1.05rem; width: 100%; }
+.vnav { display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; }
+.vend { margin: 0; font-family: var(--display); color: var(--petrol); }
+.vrow { display: flex; flex-wrap: wrap; gap: 8px; }
+.iref { display: block; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.05em; color: var(--asset); font-variant-numeric: tabular-nums; }
+.vtick { display: inline-block; width: 6px; height: 11px; margin-left: 8px; border: solid var(--ok); border-width: 0 2.5px 2.5px 0; transform: rotate(40deg); vertical-align: 1px; }
+@media (max-width: 560px) {
+  .revlist li { grid-template-columns: 1fr; }
+  .trow { grid-template-columns: minmax(0, 1fr) auto; }
+  .trow .badge { grid-column: 2; grid-row: 1; }
+  .trow .tcount { grid-column: 1; }
+}
 @media (max-width: 560px) { .form { grid-template-columns: 1fr; } }
 @media print { .userbar, .banner { display: none !important; } }
 
@@ -252,6 +311,7 @@ dl.facts { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, min
       <p class="meta" id="meta"></p>
       <div class="userbar" id="userbar" hidden>
         <span id="whoami"></span>
+        <button class="linkbtn" id="btn-manage" type="button" data-i18n="mg_open" hidden></button>
         <button class="linkbtn" id="btn-team" type="button" data-i18n="team" hidden></button>
         <button class="linkbtn" id="btn-signout" type="button" data-i18n="signout"></button>
       </div>
@@ -294,6 +354,7 @@ dl.facts { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, min
       <label for="f-section"><span data-i18n="section"></span><select id="f-section"></select></label>
       <label for="f-location"><span data-i18n="location"></span><select id="f-location"></select></label>
       <label for="f-status"><span data-i18n="status"></span><select id="f-status"></select></label>
+      <label for="f-cat" id="lab-cat" hidden><span data-i18n="category"></span><select id="f-cat"></select></label>
       <div class="sortfield"><label for="f-sort"><span data-i18n="sortBy"></span></label><div class="sortctl"><select id="f-sort"></select><button type="button" class="dirbtn" id="f-dir" data-dir="asc"></button></div></div>
     </div>
   </section>
@@ -349,6 +410,23 @@ dl.facts { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, min
     <button class="dclose" id="tm-close" type="button" data-i18n-aria="close">&times;</button>
   </div>
   <div class="dbody" id="tm-body"></div>
+</dialog>
+
+<dialog id="manage" class="wide" aria-labelledby="mg-title">
+  <div class="dhead">
+    <h2 class="dname" id="mg-title"></h2>
+    <button class="dclose" id="mg-close" type="button" data-i18n-aria="close">&times;</button>
+  </div>
+  <div class="tabs" id="mg-tabs" role="tablist" hidden></div>
+  <div class="dbody" id="mg-body"></div>
+</dialog>
+
+<dialog id="mform" aria-labelledby="mf-title">
+  <div class="dhead">
+    <h2 class="dname" id="mf-title"></h2>
+    <button class="dclose" id="mf-close" type="button" data-i18n-aria="close">&times;</button>
+  </div>
+  <div class="dbody" id="mf-body"></div>
 </dialog>
 
 <div class="toast" id="toast" role="status" hidden></div>
@@ -551,6 +629,93 @@ const STRINGS = {
     imp_err: "The import failed. Nothing was overwritten, you can try again.",
     d_expiry: "Expiry date",
     d_updated: "Last change",
+    mg_open: "Management",
+    mg_title: "Management and verification",
+    mg_tab_verify: "Verification",
+    mg_tab_places: "Locations",
+    mg_tab_cats: "Categories",
+    mg_tab_refs: "References",
+    lvl_1: "Site",
+    lvl_2: "Section",
+    lvl_3: "Location",
+    fld_cat: "Category",
+    fld_subcat: "Sub-category",
+    category: "Category",
+    all_cats: "All categories",
+    cat_none: "Not categorised",
+    d_ref: "Reference",
+    d_cat: "Category",
+    d_verif: "Last verified",
+    v_never: "Never verified",
+    st_unverified: "Not yet verified",
+    mg_validated: "Validated",
+    mg_unvalidated: "To validate",
+    mg_validate: "Validate",
+    mg_unvalidate: "Withdraw validation",
+    mg_validate_all: "Validate everything",
+    mg_rename: "Edit",
+    mg_delete: "Delete",
+    mg_cannot_delete: "This entry cannot be deleted because it is still in use.",
+    mg_exists: "This entry already exists.",
+    mg_items: "items",
+    mg_back: "Back",
+    mg_show_list: "Show items",
+    mg_pl_help: "Validate the sites, sections and locations before the team uses them. A shelf or a box stays an item-level detail. Renaming an entry updates every item that uses it.",
+    mg_pl_sum: "Entries: {n}, validated: {v}",
+    mg_add_site: "Add a site",
+    mg_add_child_1: "Add a section",
+    mg_add_child_2: "Add a location",
+    mg_new_1: "New site",
+    mg_new_2: "New section",
+    mg_new_3: "New location",
+    mg_ct_help: "Validate the categories before references are issued. The code of a category is fixed once references have been issued with it.",
+    mg_ct_sum: "Categories: {n}, sub-categories: {s}, validated: {v}",
+    mg_to_classify: "Items to classify ({n})",
+    mg_add_cat: "Add a category",
+    mg_add_sub: "Add a sub-category",
+    mg_new_cat: "New category",
+    mg_new_sub: "New sub-category",
+    mg_code3: "Code (3 letters)",
+    mg_code3_hint: "Three letters, for example CLN. It becomes the start of every reference of this category.",
+    mg_codesub: "Code",
+    mg_codesub_hint: "Short code of the sub-category, letters and digits only.",
+    mg_review: "Review items",
+    mg_review_help: "Move an item by choosing another sub-category, then save all the moves at once.",
+    mg_review_empty: "No item in this sub-category.",
+    mg_save_moves: "Save the moves ({n})",
+    mg_rf_help: "A reference is the category code followed by a number, for example CLN-0042. It does not depend on the location, it is issued once and never changes. Items classified as \"To classify\" receive no reference.",
+    mg_rf_cat: "Category",
+    mg_rf_status: "Status",
+    mg_rf_numbered: "Numbered",
+    mg_rf_wait: "Waiting",
+    mg_rf_next: "First in line",
+    mg_rf_unc: "Items not classified yet: {n}. They receive a reference once they have a category.",
+    mg_rf_generate: "Generate the references ({n})",
+    mg_rf_confirm: "Confirm the numbering ({n})",
+    mg_rf_done: "References generated: {n}.",
+    v_title: "Verification",
+    v_check_item: "Check this item",
+    v_reissue: "Issue a new reference",
+    v_ref_mismatch: "The reference {r} belongs to another category than the current one ({c}).",
+    v_help: "Go through the items one by one: check the quantity, the minimum, the expiry date, the location, take a photo, then confirm.",
+    v_scope_todo: "Not yet verified",
+    v_scope_flag: "Flagged to verify",
+    v_scope_all: "All items",
+    v_count: "Selection: {n} of {t} items",
+    v_start: "Start",
+    v_progress: "Item {i} of {n}",
+    v_last: "Last verified on {d}",
+    v_photo: "Take or add a photo",
+    v_qty: "Counted quantity",
+    v_confirm: "Confirm and continue",
+    v_prev: "Previous",
+    v_skip: "Skip",
+    v_stop: "Stop",
+    v_finished: "Verification finished",
+    v_summary: "Confirmed: {d}. Skipped: {s}.",
+    v_again: "Choose another selection",
+    v_close: "Close",
+    v_reason: "Verification count",
     csv_cols: ['ID', 'Item', 'Original name', 'Section', 'Location', 'Shelf / box / container', 'Type', 'Quantity', 'Minimum', 'Status', 'Units per pack', 'Total units', 'Supplier', 'Last purchase', 'Notes', 'Data to verify']
   },
   it: {
@@ -651,6 +816,93 @@ const STRINGS = {
     imp_err: "Importazione non riuscita. Nulla è stato sovrascritto, puoi riprovare.",
     d_expiry: "Data di scadenza",
     d_updated: "Ultima modifica",
+    mg_open: "Gestione",
+    mg_title: "Gestione e verifica",
+    mg_tab_verify: "Verifica",
+    mg_tab_places: "Ubicazioni",
+    mg_tab_cats: "Categorie",
+    mg_tab_refs: "Riferimenti",
+    lvl_1: "Sito",
+    lvl_2: "Sezione",
+    lvl_3: "Ubicazione",
+    fld_cat: "Categoria",
+    fld_subcat: "Sottocategoria",
+    category: "Categoria",
+    all_cats: "Tutte le categorie",
+    cat_none: "Non classificato",
+    d_ref: "Riferimento",
+    d_cat: "Categoria",
+    d_verif: "Ultima verifica",
+    v_never: "Mai verificato",
+    st_unverified: "Non ancora verificati",
+    mg_validated: "Convalidato",
+    mg_unvalidated: "Da convalidare",
+    mg_validate: "Convalida",
+    mg_unvalidate: "Ritira la convalida",
+    mg_validate_all: "Convalida tutto",
+    mg_rename: "Modifica",
+    mg_delete: "Elimina",
+    mg_cannot_delete: "Questa voce non può essere eliminata perché è ancora in uso.",
+    mg_exists: "Questa voce esiste già.",
+    mg_items: "articoli",
+    mg_back: "Indietro",
+    mg_show_list: "Mostra gli articoli",
+    mg_pl_help: "Convalida i siti, le sezioni e le ubicazioni prima che il team li usi. Lo scaffale o la scatola restano un dettaglio dell'articolo. Rinominare una voce aggiorna tutti gli articoli che la usano.",
+    mg_pl_sum: "Voci: {n}, convalidate: {v}",
+    mg_add_site: "Aggiungi un sito",
+    mg_add_child_1: "Aggiungi una sezione",
+    mg_add_child_2: "Aggiungi un'ubicazione",
+    mg_new_1: "Nuovo sito",
+    mg_new_2: "Nuova sezione",
+    mg_new_3: "Nuova ubicazione",
+    mg_ct_help: "Convalida le categorie prima che vengano emessi i riferimenti. Il codice di una categoria non cambia più dopo l'emissione dei riferimenti.",
+    mg_ct_sum: "Categorie: {n}, sottocategorie: {s}, convalidate: {v}",
+    mg_to_classify: "Articoli da classificare ({n})",
+    mg_add_cat: "Aggiungi una categoria",
+    mg_add_sub: "Aggiungi una sottocategoria",
+    mg_new_cat: "Nuova categoria",
+    mg_new_sub: "Nuova sottocategoria",
+    mg_code3: "Codice (3 lettere)",
+    mg_code3_hint: "Tre lettere, ad esempio CLN. Diventa l'inizio di ogni riferimento di questa categoria.",
+    mg_codesub: "Codice",
+    mg_codesub_hint: "Codice breve della sottocategoria, solo lettere e cifre.",
+    mg_review: "Rivedi gli articoli",
+    mg_review_help: "Sposta un articolo scegliendo un'altra sottocategoria, poi salva tutti gli spostamenti insieme.",
+    mg_review_empty: "Nessun articolo in questa sottocategoria.",
+    mg_save_moves: "Salva gli spostamenti ({n})",
+    mg_rf_help: "Un riferimento è il codice della categoria seguito da un numero, ad esempio CLN-0042. Non dipende dall'ubicazione, viene emesso una sola volta e non cambia più. Gli articoli \"Da classificare\" non ricevono alcun riferimento.",
+    mg_rf_cat: "Categoria",
+    mg_rf_status: "Stato",
+    mg_rf_numbered: "Numerati",
+    mg_rf_wait: "In attesa",
+    mg_rf_next: "Primo della fila",
+    mg_rf_unc: "Articoli non ancora classificati: {n}. Ricevono un riferimento dopo aver ottenuto una categoria.",
+    mg_rf_generate: "Genera i riferimenti ({n})",
+    mg_rf_confirm: "Conferma la numerazione ({n})",
+    mg_rf_done: "Riferimenti generati: {n}.",
+    v_title: "Verifica",
+    v_check_item: "Verifica questo articolo",
+    v_reissue: "Emetti un nuovo riferimento",
+    v_ref_mismatch: "Il riferimento {r} appartiene a una categoria diversa da quella attuale ({c}).",
+    v_help: "Passa in rassegna gli articoli uno per uno: controlla la quantità, il minimo, la scadenza, l'ubicazione, scatta una foto, poi conferma.",
+    v_scope_todo: "Non ancora verificati",
+    v_scope_flag: "Segnalati da verificare",
+    v_scope_all: "Tutti gli articoli",
+    v_count: "Selezione: {n} articoli su {t}",
+    v_start: "Inizia",
+    v_progress: "Articolo {i} di {n}",
+    v_last: "Ultima verifica il {d}",
+    v_photo: "Scatta o aggiungi una foto",
+    v_qty: "Quantità contata",
+    v_confirm: "Conferma e continua",
+    v_prev: "Precedente",
+    v_skip: "Salta",
+    v_stop: "Termina",
+    v_finished: "Verifica terminata",
+    v_summary: "Confermati: {d}. Saltati: {s}.",
+    v_again: "Scegli un'altra selezione",
+    v_close: "Chiudi",
+    v_reason: "Conteggio di verifica",
     csv_cols: ['ID', 'Articolo', 'Nome originale', 'Sezione', 'Ubicazione', 'Scaffale / scatola / contenitore', 'Tipo', 'Quantità', 'Minimo', 'Stato', 'Unità per confezione', 'Unità totali', 'Fornitore', 'Ultimo acquisto', 'Note', 'Dati da verificare']
   },
   fr: {
@@ -751,6 +1003,93 @@ const STRINGS = {
     imp_err: "L'import a échoué. Rien n'a été écrasé, vous pouvez réessayer.",
     d_expiry: "Date de péremption",
     d_updated: "Dernière modification",
+    mg_open: "Gestion",
+    mg_title: "Gestion et vérification",
+    mg_tab_verify: "Vérification",
+    mg_tab_places: "Emplacements",
+    mg_tab_cats: "Catégories",
+    mg_tab_refs: "Références",
+    lvl_1: "Site",
+    lvl_2: "Section",
+    lvl_3: "Emplacement",
+    fld_cat: "Catégorie",
+    fld_subcat: "Sous-catégorie",
+    category: "Catégorie",
+    all_cats: "Toutes les catégories",
+    cat_none: "Non classé",
+    d_ref: "Référence",
+    d_cat: "Catégorie",
+    d_verif: "Dernière vérification",
+    v_never: "Jamais vérifié",
+    st_unverified: "Pas encore vérifiés",
+    mg_validated: "Validé",
+    mg_unvalidated: "À valider",
+    mg_validate: "Valider",
+    mg_unvalidate: "Retirer la validation",
+    mg_validate_all: "Tout valider",
+    mg_rename: "Modifier",
+    mg_delete: "Supprimer",
+    mg_cannot_delete: "Cette entrée ne peut pas être supprimée car elle est encore utilisée.",
+    mg_exists: "Cette entrée existe déjà.",
+    mg_items: "articles",
+    mg_back: "Retour",
+    mg_show_list: "Voir les articles",
+    mg_pl_help: "Validez les sites, les sections et les emplacements avant que l'équipe ne les utilise. L'étagère ou la boîte reste un détail de l'article. Renommer une entrée met à jour tous les articles qui l'utilisent.",
+    mg_pl_sum: "Entrées : {n}, validées : {v}",
+    mg_add_site: "Ajouter un site",
+    mg_add_child_1: "Ajouter une section",
+    mg_add_child_2: "Ajouter un emplacement",
+    mg_new_1: "Nouveau site",
+    mg_new_2: "Nouvelle section",
+    mg_new_3: "Nouvel emplacement",
+    mg_ct_help: "Validez les catégories avant l'émission des références. Le code d'une catégorie ne peut plus changer une fois des références émises avec lui.",
+    mg_ct_sum: "Catégories : {n}, sous-catégories : {s}, validées : {v}",
+    mg_to_classify: "Articles à classer ({n})",
+    mg_add_cat: "Ajouter une catégorie",
+    mg_add_sub: "Ajouter une sous-catégorie",
+    mg_new_cat: "Nouvelle catégorie",
+    mg_new_sub: "Nouvelle sous-catégorie",
+    mg_code3: "Code (3 lettres)",
+    mg_code3_hint: "Trois lettres, par exemple CLN. Il devient le début de chaque référence de cette catégorie.",
+    mg_codesub: "Code",
+    mg_codesub_hint: "Code court de la sous-catégorie, lettres et chiffres uniquement.",
+    mg_review: "Revoir les articles",
+    mg_review_help: "Déplacez un article en choisissant une autre sous-catégorie, puis enregistrez tous les déplacements d'un coup.",
+    mg_review_empty: "Aucun article dans cette sous-catégorie.",
+    mg_save_moves: "Enregistrer les déplacements ({n})",
+    mg_rf_help: "Une référence est le code de la catégorie suivi d'un numéro, par exemple CLN-0042. Elle ne dépend pas de l'emplacement, elle est émise une seule fois et ne change plus. Les articles \"À classer\" ne reçoivent aucune référence.",
+    mg_rf_cat: "Catégorie",
+    mg_rf_status: "Statut",
+    mg_rf_numbered: "Numérotés",
+    mg_rf_wait: "En attente",
+    mg_rf_next: "Premier en file",
+    mg_rf_unc: "Articles pas encore classés : {n}. Ils reçoivent une référence une fois rattachés à une catégorie.",
+    mg_rf_generate: "Générer les références ({n})",
+    mg_rf_confirm: "Confirmer la numérotation ({n})",
+    mg_rf_done: "Références générées : {n}.",
+    v_title: "Vérification",
+    v_check_item: "Vérifier cet article",
+    v_reissue: "Émettre une nouvelle référence",
+    v_ref_mismatch: "La référence {r} appartient à une autre catégorie que l'actuelle ({c}).",
+    v_help: "Passez les articles en revue un par un : contrôlez la quantité, le minimum, la date de péremption, l'emplacement, prenez une photo, puis confirmez.",
+    v_scope_todo: "Pas encore vérifiés",
+    v_scope_flag: "Signalés à vérifier",
+    v_scope_all: "Tous les articles",
+    v_count: "Sélection : {n} articles sur {t}",
+    v_start: "Commencer",
+    v_progress: "Article {i} sur {n}",
+    v_last: "Dernière vérification le {d}",
+    v_photo: "Prendre ou ajouter une photo",
+    v_qty: "Quantité comptée",
+    v_confirm: "Confirmer et continuer",
+    v_prev: "Précédent",
+    v_skip: "Passer",
+    v_stop: "Terminer",
+    v_finished: "Vérification terminée",
+    v_summary: "Confirmés : {d}. Passés : {s}.",
+    v_again: "Choisir une autre sélection",
+    v_close: "Fermer",
+    v_reason: "Comptage de vérification",
     csv_cols: ['ID', 'Article', "Nom d'origine", 'Section', 'Emplacement', 'Étagère / boîte / conteneur', 'Type', 'Quantité', 'Minimum', 'Statut', 'Unités par conditionnement', 'Unités au total', 'Fournisseur', 'Dernier achat', 'Notes', 'Données à vérifier']
   }
 };
@@ -764,7 +1103,7 @@ const STRINGS = {
   try { const s = localStorage.getItem('alice-lang'); if (s && STRINGS[s]) lang = s; } catch (e) {}
   let META = null, ITEMS = [], TR = { items: {}, sections: {}, locations: {}, notes: {} };
   let IX = [], ALERTS = [], KEYS = [], BYKEY = new Map();
-  const S = { fam: 'all', q: '', sec: 'all', loc: 'all', st: 'all', sort: 'auto', dir: 'asc', shown: PAGE, tile: null };
+  const S = { fam: 'all', q: '', sec: 'all', loc: 'all', st: 'all', sort: 'auto', dir: 'asc', shown: PAGE, tile: null, cat: 'all' };
   let VIEW = [];
 
   const t = (k, v) => {
@@ -802,17 +1141,18 @@ const STRINGS = {
     const prev = S.sec;
     secSel.textContent = '';
     secSel.appendChild(new Option(t('all_sections'), 'all'));
-    (META ? META.sections : []).forEach((s) => secSel.appendChild(new Option(tr('sections', s), s)));
+    fillSectionOptions(secSel);
     secSel.value = prev;
     fillLocations();
     const st = $('f-status'); st.textContent = '';
     const hasExpiry = ITEMS.some((i) => i.expiry);
-    ['all', 'attention', 'out', 'low'].concat(hasExpiry ? ['expiring', 'expired'] : [], ['ok', 'verify']).forEach((k) => st.appendChild(new Option(t('st_' + k), k)));
+    ['all', 'attention', 'out', 'low'].concat(hasExpiry ? ['expiring', 'expired'] : [], ['ok', 'verify'], REFS() ? ['unverified'] : []).forEach((k) => st.appendChild(new Option(t('st_' + k), k)));
     st.value = S.st;
     const so = $('f-sort'); so.textContent = '';
     [['auto', 'so_auto'], ['name', 'h_item'], ['place', 'h_place'], ['type', 'h_type'], ['qty', 'h_qty'], ['min', 'h_min'], ['status', 'h_status']].forEach(([v, k]) => so.appendChild(new Option(t(k), v)));
     so.value = S.sort;
     syncSort();
+    fillCatFilter();
   }
 
   function syncSort() {
@@ -883,6 +1223,7 @@ const STRINGS = {
   // ---------- filtering and sorting ----------
   function compute() {
     const words = norm(S.q).split(' ').filter(Boolean);
+    const byRef = refQuery(S.q);
     const qs = norm(S.q);
     const scored = [];
     for (let i = 0; i < ITEMS.length; i++) {
@@ -890,6 +1231,7 @@ const STRINGS = {
       if (S.fam !== 'all' && familyOf(it) !== S.fam) continue;
       if (S.sec !== 'all' && it.section !== S.sec) continue;
       if (S.loc !== 'all' && (it.section + '||' + it.loc) !== S.loc) continue;
+      if (S.cat !== 'all' && !(it.catId && (it.catId === S.cat || it.catId.startsWith(S.cat + '.')))) continue;
       const a = ALERTS[i];
       if (S.st === 'attention' && !a.length) continue;
       if (S.st === 'out' && !a.includes('out')) continue;
@@ -898,8 +1240,10 @@ const STRINGS = {
       if (S.st === 'expired' && !a.includes('expired')) continue;
       if (S.st === 'ok' && a.length) continue;
       if (S.st === 'verify' && !(it.flags && it.flags.length)) continue;
+      if (S.st === 'unverified' && it.vAt) continue;
       let sc = 0;
-      if (words.length) { sc = searchScore(IX[i], words, qs); if (!sc) continue; }
+      if (byRef) { if (it.ref !== byRef) continue; sc = 1000; }
+      else if (words.length) { sc = searchScore(IX[i], words, qs); if (!sc) continue; }
       scored.push({ i, sc });
     }
     const dir = S.dir === 'desc' ? -1 : 1;
@@ -936,7 +1280,9 @@ const STRINGS = {
       const tr_ = el('tr'); tr_.tabIndex = 0; tr_.dataset.i = i; tr_.setAttribute('role', 'button');
       const c1 = el('td', 'c-name'); const nm = el('span', 'iname', nameOf(it)); c1.appendChild(nm);
       if (it.flags && it.flags.length) { const f = el('span', 'vflag', '!'); f.title = t('st_verify'); f.setAttribute('aria-label', t('st_verify')); nm.appendChild(f); }
+      if (it.vAt) { const k = el('span', 'vtick'); k.title = t('d_verif') + ': ' + fmtDate(it.vAt); nm.appendChild(k); }
       if (lang !== 'en' && nameOf(it) !== it.name) c1.appendChild(el('span', 'isub', it.name));
+      if (it.ref) c1.appendChild(el('span', 'iref', it.ref));
       const c2 = el('td', 'c-place'); const pl = el('span', 'iplace', locOf(it) + (it.sub ? ' · ' + subOf(it) : '')); pl.appendChild(el('span', 'sec', secOf(it))); c2.appendChild(pl);
       const c3 = el('td', 'c-type'); c3.appendChild(el('span', 'chip ' + familyOf(it), t('type_' + familyOf(it))));
       const c4 = el('td', 'c-qty num'); c4.appendChild(el('span', 'qty', it.qty == null ? '–' : nf(it.qty)));
@@ -982,6 +1328,7 @@ const STRINGS = {
     if (DB) { const ps = photoSection(i); if (ps) body.appendChild(ps); }
     if (it.photos && it.photos.length) { const g = el('div', 'gallery'); it.photos.forEach((p) => { const im = document.createElement('img'); im.src = p; im.alt = nameOf(it); im.loading = 'lazy'; g.appendChild(im); }); body.appendChild(g); }
     const facts = el('dl', 'facts');
+    if (DB) detailExtras(facts, it);
     fact(facts, t('d_qty'), it.qty == null ? '–' : nf(it.qty));
     if (familyOf(it) === 'stock') fact(facts, t('d_min'), it.min == null ? t('d_notset') : nf(it.min));
     if (it.pack) fact(facts, t('d_pack'), nf(it.pack));
@@ -994,7 +1341,7 @@ const STRINGS = {
     if (it.expiry) fact(facts, t('d_expiry'), fmtDate(it.expiry));
     if (it.notes) fact(facts, t('d_notes'), tr('notes', it.notes));
     body.appendChild(facts);
-    if (DB && canEdit()) body.appendChild(stockControl(i));
+    if (DB && canEdit()) { body.appendChild(stockControl(i)); if (REFS()) body.appendChild(verifySection(i)); }
     const same = (BYKEY.get(KEYS[i]) || []).filter((j) => j !== i);
     if (same.length) {
       const s = el('div', 'sect'); s.appendChild(el('h3', null, t('d_elsewhere')));
@@ -1040,6 +1387,7 @@ const STRINGS = {
   $('f-section').addEventListener('change', (e) => { S.sec = e.target.value; S.loc = 'all'; fillLocations(); refresh(); });
   $('f-location').addEventListener('change', (e) => { S.loc = e.target.value; refresh(); });
   $('f-status').addEventListener('change', (e) => { S.st = e.target.value; refresh(); });
+  $('f-cat').addEventListener('change', (e) => { S.cat = e.target.value; refresh(); });
   $('f-sort').addEventListener('change', (e) => { S.sort = e.target.value; S.dir = 'asc'; refresh(); });
   $('f-dir').addEventListener('click', () => { S.dir = S.dir === 'desc' ? 'asc' : 'desc'; refresh(); });
   $('list').querySelector('thead').addEventListener('click', (e) => {
@@ -1056,7 +1404,7 @@ const STRINGS = {
   $('rows').addEventListener('click', (e) => { const r = e.target.closest('tr[data-i]'); if (r) openDetail(Number(r.dataset.i)); });
   $('rows').addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { const r = e.target.closest('tr[data-i]'); if (r) { e.preventDefault(); openDetail(Number(r.dataset.i)); } } });
   $('morebtn').addEventListener('click', () => { S.shown += PAGE; renderRows(); });
-  $('reset').addEventListener('click', () => { Object.assign(S, { q: '', sec: 'all', loc: 'all', st: 'all', sort: 'auto', dir: 'asc' }); $('q').value = ''; fillSelects(); refresh(); });
+  $('reset').addEventListener('click', () => { Object.assign(S, { q: '', sec: 'all', loc: 'all', st: 'all', cat: 'all', sort: 'auto', dir: 'asc' }); $('q').value = ''; fillSelects(); refresh(); });
   $('export').addEventListener('click', exportCsv);
   $('d-close').addEventListener('click', () => $('detail').close());
   $('detail').addEventListener('click', (e) => { if (e.target === $('detail')) $('detail').close(); });
@@ -1082,9 +1430,10 @@ const STRINGS = {
   const sectionBox = (title) => { const s = el('div', 'sect'); s.appendChild(el('h3', null, title)); return s; };
 
   let toastTimer = null;
+  function toastHome() { const od = document.querySelectorAll('dialog[open]'); (od.length ? od[od.length - 1] : document.body).appendChild($('toast')); }
   function toast(msg, bad) {
     const e = $('toast');
-    (document.querySelector('dialog[open]') || document.body).appendChild(e);
+    toastHome();
     e.textContent = msg; e.className = 'toast' + (bad ? ' bad' : ''); e.hidden = false;
     clearTimeout(toastTimer); toastTimer = setTimeout(() => { e.hidden = true; }, 3800);
   }
@@ -1101,6 +1450,7 @@ const STRINGS = {
     if (r.expiry) it.expiry = r.expiry;
     it.photoPaths = r.photos || [];
     it.upd = r.updated_at || '';
+    it.placeId = r.place_id || null; it.catId = r.category_id || null; it.ref = r.ref || null; it.vAt = r.verified_at || null; it.vBy = r.verified_email || null;
     it._tr = { name_it: r.name_it, name_fr: r.name_fr, notes_it: r.notes_it, notes_fr: r.notes_fr };
     return it;
   }
@@ -1126,7 +1476,11 @@ const STRINGS = {
   }
 
   function rebuildTR() {
-    TR = { items: {}, sections: PLACES.sections, locations: PLACES.locations, notes: {} };
+    TR = { items: {}, sections: Object.assign({}, PLACES.sections), locations: Object.assign({}, PLACES.locations), notes: {} };
+    PL.forEach((p) => {
+      if (p.level === 1 || !(p.name_it || p.name_fr)) return;
+      (p.level === 2 ? TR.sections : TR.locations)[p.name] = { it: p.name_it || '', fr: p.name_fr || '' };
+    });
     ITEMS.forEach((it) => {
       const x = it._tr || {};
       if (x.name_it || x.name_fr) TR.items[it.name] = { it: x.name_it || '', fr: x.name_fr || '' };
@@ -1135,7 +1489,8 @@ const STRINGS = {
   }
 
   function rebuildMeta() {
-    const order = PLACES.order.slice();
+    let order = PLACES.order.slice();
+    if (PL.length) order = kids(PL, null).flatMap((site) => kids(PL, site.id).map((r) => r.name));
     ITEMS.forEach((it) => { if (!order.includes(it.section)) order.push(it.section); });
     META = { sections: order.filter((s) => ITEMS.some((it) => it.section === s)), generated_at: ITEMS.reduce((m, it) => (it.upd && it.upd > m ? it.upd : m), '') || new Date().toISOString() };
   }
@@ -1150,13 +1505,14 @@ const STRINGS = {
     $('whoami').textContent = (USER.email || '') + (ROLE ? ' · ' + t('role_' + ROLE) : '');
     $('btn-team').hidden = !isAdmin();
     $('addbtn').hidden = !canEdit();
+    $('btn-manage').hidden = !(canEdit() && REFS());
   }
 
   function showLogin() {
-    ROLE = null; USER = null; ITEMS = []; VIEW = []; ALERTS = []; IX = [];
+    ROLE = null; USER = null; ITEMS = []; VIEW = []; ALERTS = []; IX = []; PL = []; CT = []; PLM = new Map(); CTM = new Map();
     $('app').hidden = true; $('login').hidden = false; $('userbar').hidden = true; $('importbox').hidden = true;
     $('rows').textContent = ''; $('lg-pass').value = '';
-    ['detail', 'editor', 'team'].forEach((id) => { if ($(id).open) $(id).close(); });
+    ['detail', 'editor', 'team', 'mform', 'manage'].forEach((id) => { if ($(id).open) $(id).close(); });
     setTimeout(() => $('lg-email').focus(), 0);
   }
 
@@ -1169,6 +1525,7 @@ const STRINGS = {
       if (me.error) throw me.error;
       if (!me.data) { ROLE = null; renderUser(); $('loading').hidden = true; const er = $('error'); er.hidden = false; er.textContent = t('noaccess'); return; }
       ROLE = me.data.role;
+      await loadRef();
       const rows = [];
       for (let from = 0; ; from += 1000) {
         const r = await sb.from('items').select('*').order('id').range(from, from + 999);
@@ -1292,7 +1649,7 @@ const STRINGS = {
     ITEMS[i].photoPaths = r.data.photos || [];
   }
 
-  async function addPhoto(i, file, btn) {
+  async function addPhoto(i, file, btn, after) {
     if (!file) return;
     const old = btn.textContent; btn.disabled = true; btn.textContent = t('ph_busy');
     try {
@@ -1301,7 +1658,8 @@ const STRINGS = {
       const up = await sb.storage.from('item-photos').upload(path, blob, { contentType: 'image/jpeg', upsert: false });
       if (up.error) throw up.error;
       await savePhotos(i, (ITEMS[i].photoPaths || []).concat(path));
-      openDetail(i); toast(t('a_saved'));
+      if (after) after(); else openDetail(i);
+      toast(t('a_saved'));
     } catch (e) { toast(t('a_error'), true); btn.disabled = false; btn.textContent = old; }
   }
 
@@ -1357,8 +1715,16 @@ const STRINGS = {
       lab.appendChild(inp); (o.parent || form).appendChild(lab); F[key] = inp; return inp;
     };
     add('name', t('fld_name'), 'text', it.name, { full: true, req: true });
-    add('section', t('fld_section'), 'text', it.section, { list: 'dl-sec', req: true });
-    add('loc', t('fld_loc'), 'text', it.loc, { list: 'dl-loc', req: true });
+    let PC = null, CC = null;
+    if (REFS()) {
+      const host = el('div', 'form inner full'); host.style.gridColumn = '1 / -1';
+      PC = cascade(host, [t('lvl_1'), t('lvl_2'), t('lvl_3')], PL, placeChain(it.placeId).map((p) => p.id), false);
+      CC = cascade(host, [t('fld_cat'), t('fld_subcat')], CT, catChain(it.catId).map((c) => c.id), true);
+      form.appendChild(host);
+    } else {
+      add('section', t('fld_section'), 'text', it.section, { list: 'dl-sec', req: true });
+      add('loc', t('fld_loc'), 'text', it.loc, { list: 'dl-loc', req: true });
+    }
     add('sub_kind', t('fld_sub_kind'), 'select', it.sub ? it.sub.kind : '', { options: [['', t('fld_none')], ['shelf', t('k_shelf')], ['box', t('k_box')], ['container', t('k_container')]] });
     add('sub_v', t('fld_sub_v'), 'text', it.sub ? it.sub.v : '');
     add('family', t('fld_family'), 'select', familyOf(it), { options: [['stock', t('type_stock')], ['asset', t('type_asset')]] });
@@ -1375,9 +1741,11 @@ const STRINGS = {
     add('name_fr', t('fld_name_fr'), 'text', x.name_fr, { full: true, parent: inner });
     add('notes_it', t('fld_notes_it'), 'textarea', x.notes_it, { full: true, parent: inner });
     add('notes_fr', t('fld_notes_fr'), 'textarea', x.notes_fr, { full: true, parent: inner });
-    const dls = el('datalist'); dls.id = 'dl-sec'; (META ? META.sections : []).forEach((s) => dls.appendChild(new Option(s)));
-    const dll = el('datalist'); dll.id = 'dl-loc'; Array.from(new Set(ITEMS.map((a) => a.loc))).sort().forEach((s) => dll.appendChild(new Option(s)));
-    form.append(dls, dll);
+    if (!REFS()) {
+      const dls = el('datalist'); dls.id = 'dl-sec'; (META ? META.sections : []).forEach((s) => dls.appendChild(new Option(s)));
+      const dll = el('datalist'); dll.id = 'dl-loc'; Array.from(new Set(ITEMS.map((a) => a.loc))).sort().forEach((s) => dll.appendChild(new Option(s)));
+      form.append(dls, dll);
+    }
     const actions = el('div', 'formactions');
     const save = el('button', 'btn primary', t('a_save')); save.type = 'submit';
     actions.append(save, mkBtn(t('a_cancel'), 'btn', () => $('editor').close()));
@@ -1398,14 +1766,19 @@ const STRINGS = {
       e.preventDefault();
       const v = (k) => F[k].value.trim();
       const num = (k) => { const s = v(k); return s === '' ? null : Math.max(0, Math.round(Number(s))); };
-      if (!v('name') || !v('section') || !v('loc')) { toast(t('a_required'), true); return; }
+      if (!v('name') || (REFS() ? !PC.get() : (!v('section') || !v('loc')))) { toast(t('a_required'), true); return; }
       const kind = F.sub_kind.value;
       const p = {
-        name: v('name'), name_it: v('name_it') || null, name_fr: v('name_fr') || null, section: v('section'), loc: v('loc'),
+        name: v('name'), name_it: v('name_it') || null, name_fr: v('name_fr') || null,
         sub_kind: kind || null, sub_v: kind ? (v('sub_v') || null) : null, family: F.family.value, min_qty: num('min'), pack: num('pack'),
         supplier: v('sup') || null, last_purchase: F.lp.value || null, expiry: F.exp.value || null,
         notes: v('notes') || null, notes_it: v('notes_it') || null, notes_fr: v('notes_fr') || null
       };
+      if (REFS()) {
+        const pid = PC.get(), cid = CC.get();
+        if (isNew || pid !== it.placeId) { const ch = placeChain(pid); p.place_id = pid; p.section = ch[1].name; p.loc = ch[2].name; }
+        if (isNew ? cid : cid !== (it.catId || null)) p.category_id = cid;
+      } else { p.section = v('section'); p.loc = v('loc'); }
       save.disabled = true;
       try {
         let r;
@@ -1479,9 +1852,13 @@ const STRINGS = {
   function wireEditing() {
     $('addbtn').addEventListener('click', () => openEditor(-1));
     $('btn-team').addEventListener('click', openTeam);
+    $('btn-manage').addEventListener('click', () => openManage('verify'));
     $('ed-close').addEventListener('click', () => $('editor').close());
     $('tm-close').addEventListener('click', () => $('team').close());
-    ['editor', 'team'].forEach((id) => $(id).addEventListener('click', (e) => { if (e.target === $(id)) $(id).close(); }));
+    $('mg-close').addEventListener('click', () => $('manage').close());
+    $('mf-close').addEventListener('click', () => $('mform').close());
+    $('manage').addEventListener('close', () => { if (MG.dirty) { MG.dirty = false; afterChange(); } });
+    ['editor', 'team', 'mform'].forEach((id) => $(id).addEventListener('click', (e) => { if (e.target === $(id)) $(id).close(); }));
   }
 
   async function boot() {
@@ -1496,11 +1873,529 @@ const STRINGS = {
     if (session) { USER = session.user; await enter(); } else showLogin();
   }
 
+  // ---------- referentials: places (site > room > location) and categories ----------
+  let PL = [], CT = [], PLM = new Map(), CTM = new Map();
+  const REFS = () => DB && PL.length > 0 && CT.length > 0;
+  const bySort = (a, b) => (a.sort - b.sort) || String(a.name).localeCompare(String(b.name), 'en', { numeric: true });
+  const lname = (o) => (o ? ((lang === 'it' ? o.name_it : lang === 'fr' ? o.name_fr : '') || o.name) : '');
+  const kids = (arr, pid) => arr.filter((x) => (x.parent_id || null) === pid).sort(bySort);
+
+  async function loadRef() {
+    try {
+      const a = await sb.from('places').select('*').order('sort').range(0, 999);
+      const b = await sb.from('categories').select('*').order('sort').range(0, 999);
+      if (a.error || b.error) throw (a.error || b.error);
+      PL = a.data || []; CT = b.data || [];
+    } catch (e) { PL = []; CT = []; }
+    PLM = new Map(PL.map((p) => [p.id, p])); CTM = new Map(CT.map((c) => [c.id, c]));
+    if (typeof MG !== 'undefined') MG.dirty = true;
+  }
+
+  const placeChain = (id) => { const c = []; let p = id ? PLM.get(id) : null; while (p) { c.unshift(p); p = p.parent_id ? PLM.get(p.parent_id) : null; } return c; };
+  const placeText = (id) => placeChain(id).map(lname).join(' › ');
+  const catChain = (id) => { const c = []; let p = id ? CTM.get(id) : null; while (p) { c.unshift(p); p = p.parent_id ? CTM.get(p.parent_id) : null; } return c; };
+  const catText = (id) => catChain(id).map(lname).join(' › ');
+  const catWords = (it) => catChain(it.catId).flatMap((c) => [c.name, c.name_it, c.name_fr]);
+  const catTop = (it) => (it.catId ? it.catId.split('.')[0] : '');
+  const nameLine = (o) => lname(o) + (lang !== 'en' && lname(o) !== o.name ? ' (' + o.name + ')' : '');
+
+  // Three or two linked selects. nodes = places or categories, chain = ids of the current value (root to leaf).
+  function cascade(host, labels, nodes, chain, optional) {
+    const sels = labels.map((lab) => { const l = el('label'); l.appendChild(el('span', null, lab)); const s = el('select'); l.appendChild(s); host.appendChild(l); return s; });
+    const last = sels.length - 1;
+    const usable = (n) => (isAdmin() ? n.active || chain.includes(n.id) : (n.active && n.validated_at) || chain.includes(n.id));
+    const fill = (lv, parentId, want) => {
+      const s = sels[lv]; s.textContent = '';
+      if (optional) s.appendChild(new Option(t('fld_none'), ''));
+      if (parentId !== undefined) {
+        nodes.filter((n) => (n.parent_id || null) === parentId && usable(n)).sort(bySort).forEach((n) => s.appendChild(new Option(lname(n) + (n.validated_at ? '' : ' · ' + t('mg_unvalidated')), n.id)));
+      }
+      if (want && Array.from(s.options).some((o) => o.value === want)) s.value = want;
+      if (lv < last) fill(lv + 1, s.value ? s.value : undefined, chain[lv + 1]);
+    };
+    sels.forEach((s, lv) => { if (lv < last) s.addEventListener('change', () => fill(lv + 1, s.value ? s.value : undefined)); });
+    fill(0, null, chain[0]);
+    return { get: () => sels[last].value || null, sels };
+  }
+
+  // ---------- item editor extras, detail extras, verification stamp ----------
+  function detailExtras(facts, it) {
+    if (it.ref) fact(facts, t('d_ref'), it.ref);
+    if (!REFS()) return;
+    fact(facts, t('d_cat'), it.catId ? catText(it.catId) : t('cat_none'));
+    const who = (it.vBy || '').split('@')[0];
+    fact(facts, t('d_verif'), it.vAt ? fmtDate(it.vAt) + (who ? ' · ' + who : '') : t('v_never'));
+  }
+
+  function verifySection(i) {
+    const it = ITEMS[i];
+    const s = sectionBox(t('v_title'));
+    const row = el('div', 'vrow');
+    row.appendChild(mkBtn(t('v_check_item'), 'btn primary', () => { $('detail').close(); openManage('verify', [i]); }));
+    s.appendChild(row);
+    if (isAdmin() && it.ref && it.catId && it.ref.split('-')[0] !== catTop(it)) {
+      s.appendChild(el('p', 'muted', t('v_ref_mismatch', { r: it.ref, c: catTop(it) })));
+      let armed = false;
+      const b = mkBtn(t('v_reissue'), 'btn', async () => {
+        if (!armed) { armed = true; b.textContent = t('a_delete_confirm'); return; }
+        const r = await sb.rpc('reissue_ref', { p_id: it.id });
+        if (r.error) { toast(t('a_error'), true); return; }
+        const g = await sb.from('items').select('*').eq('id', it.id).single();
+        if (!g.error) { ITEMS[i] = fromRow(g.data); afterChange(); openDetail(i); }
+        toast(t('a_saved'));
+      });
+      s.appendChild(b);
+    }
+    return s;
+  }
+
+  // ---------- manage dialog ----------
+  const MG = { tab: null, dirty: false };
+
+  function openManage(tab, queue) {
+    if (!canEdit() || !REFS()) return;
+    const tabs = isAdmin() ? ['verify', 'places', 'cats', 'refs'] : ['verify'];
+    const bar = $('mg-tabs'); bar.textContent = '';
+    tabs.forEach((k) => { const b = el('button', null, t('mg_tab_' + k)); b.type = 'button'; b.dataset.tab = k; b.setAttribute('role', 'tab'); b.addEventListener('click', () => mgShow(k)); bar.appendChild(b); });
+    bar.hidden = tabs.length < 2;
+    if (!$('manage').open) $('manage').showModal();
+    mgShow(tabs.includes(tab) ? tab : tabs[0], queue);
+  }
+
+  function mgShow(tab, queue) {
+    MG.tab = tab;
+    $('mg-tabs').querySelectorAll('button').forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === tab)));
+    $('mg-title').textContent = t('mg_title');
+    const body = $('mg-body'); body.textContent = ''; body.scrollTop = 0;
+    if (tab === 'verify') tabVerify(body, queue);
+    else if (tab === 'places') tabPlaces(body);
+    else if (tab === 'cats') tabCats(body);
+    else tabRefs(body);
+  }
+
+  const reloadAll = async () => { await loadDb(true); MG.dirty = false; };
+
+  // Small form dialog: fields = [{ k, label, value, req, maxlength, pattern, hint }]
+  function formDialog(title, fields, onSubmit) {
+    $('mf-title').textContent = title;
+    const body = $('mf-body'); body.textContent = '';
+    const form = el('form', 'form'); const F = {};
+    fields.forEach((f) => {
+      const lab = el('label', 'full'); lab.appendChild(el('span', null, f.label));
+      const inp = el('input'); inp.type = 'text'; inp.value = f.value || ''; inp.maxLength = f.maxlength || 120; if (f.req) inp.required = true; if (f.pattern) inp.pattern = f.pattern;
+      lab.appendChild(inp); if (f.hint) lab.appendChild(el('small', 'muted', f.hint));
+      form.appendChild(lab); F[f.k] = inp;
+    });
+    const act = el('div', 'formactions'); const ok = el('button', 'btn primary', t('a_save')); ok.type = 'submit';
+    act.append(ok, mkBtn(t('a_cancel'), 'btn', () => $('mform').close())); form.appendChild(act);
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); ok.disabled = true;
+      const v = {}; Object.keys(F).forEach((k) => { v[k] = F[k].value.trim(); });
+      try { if (await onSubmit(v) !== false) { $('mform').close(); toastHome(); } } catch (x) { toast(t('a_error'), true); }
+      ok.disabled = false;
+    });
+    body.appendChild(form);
+    $('mform').showModal();
+    const first = form.querySelector('input'); if (first) first.focus();
+  }
+
+  const badge = (o) => { const b = el('span', 'badge ' + (o.validated_at ? 'ok' : 'todo'), o.validated_at ? t('mg_validated') : t('mg_unvalidated')); if (o.validated_at) b.title = fmtDate(o.validated_at); return b; };
+  const subtree = (arr, id) => { const out = [id]; kids(arr, id).forEach((k) => out.push(...subtree(arr, k.id))); return out; };
+  const armBtn = (label, fn, cls) => { let armed = false; const b = mkBtn(label, cls || 'btn sm danger', async () => { if (!armed) { armed = true; b.textContent = t('a_delete_confirm'); return; } await fn(); }); return b; };
+
+  // ---------- places tab (administrators) ----------
+  function tabPlaces(body) {
+    const cnt = new Map(); ITEMS.forEach((it) => { if (it.placeId) cnt.set(it.placeId, (cnt.get(it.placeId) || 0) + 1); });
+    const total = (p) => (p.level === 3 ? (cnt.get(p.id) || 0) : kids(PL, p.id).reduce((s, k) => s + total(k), 0));
+    const nVal = PL.filter((p) => p.validated_at).length;
+    body.appendChild(el('p', 'muted', t('mg_pl_help')));
+    const top = el('div', 'mgtop');
+    top.appendChild(el('strong', null, t('mg_pl_sum', { n: nf(PL.length), v: nf(nVal) })));
+    const acts = el('div', 'mgacts');
+    acts.appendChild(mkBtn(t('mg_add_site'), 'btn sm', () => placeForm(null)));
+    if (nVal < PL.length) acts.appendChild(mkBtn(t('mg_validate_all'), 'btn sm primary', async () => {
+      const r = await sb.from('places').update({ validated_at: new Date().toISOString() }).is('validated_at', null).select('id');
+      if (r.error) { toast(t('a_error'), true); return; }
+      await loadRef(); mgShow('places'); toast(t('a_saved'));
+    }));
+    top.appendChild(acts); body.appendChild(top);
+    const ul = el('ul', 'tree');
+    const row = (p, depth) => {
+      const li = el('li'); li.dataset.level = p.level; li.style.setProperty('--d', depth);
+      const line = el('div', 'trow');
+      const nm = el('span', 'tname'); nm.appendChild(el('strong', null, lname(p))); if (lang !== 'en' && lname(p) !== p.name) nm.appendChild(el('small', 'muted', ' ' + p.name));
+      const tc = el('span', 'tcount', nf(total(p))); tc.title = nf(total(p)) + ' ' + t('mg_items');
+      line.append(nm, tc, badge(p));
+      const a = el('span', 'tacts');
+      a.appendChild(mkBtn(t('mg_rename'), 'btn sm', () => placeForm(p, true)));
+      if (p.level < 3) a.appendChild(mkBtn(t('mg_add_child_' + p.level), 'btn sm', () => placeForm(p)));
+      if (p.validated_at) a.appendChild(mkBtn(t('mg_unvalidate'), 'btn sm', async () => {
+        const r = await sb.from('places').update({ validated_at: null }).eq('id', p.id).select('id'); if (r.error) { toast(t('a_error'), true); return; }
+        await loadRef(); mgShow('places');
+      }));
+      else a.appendChild(mkBtn(t('mg_validate'), 'btn sm primary', async () => {
+        const r = await sb.from('places').update({ validated_at: new Date().toISOString() }).in('id', subtree(PL, p.id)).select('id'); if (r.error) { toast(t('a_error'), true); return; }
+        await loadRef(); mgShow('places');
+      }));
+      if (!total(p) && !kids(PL, p.id).length) a.appendChild(armBtn(t('mg_delete'), async () => {
+        const r = await sb.from('places').delete().eq('id', p.id).select('id'); if (r.error || !r.data || !r.data.length) { toast(t('mg_cannot_delete'), true); return; }
+        await loadRef(); mgShow('places');
+      }));
+      line.appendChild(a); li.appendChild(line); ul.appendChild(li);
+      kids(PL, p.id).forEach((k) => row(k, depth + 1));
+    };
+    kids(PL, null).forEach((p) => row(p, 0));
+    body.appendChild(ul);
+  }
+
+  function placeForm(p, editing) {
+    const level = editing ? p.level : (p ? p.level + 1 : 1);
+    const title = editing ? t('mg_rename') + ' · ' + lname(p) : t('mg_new_' + level);
+    formDialog(title, [
+      { k: 'name', label: t('fld_name'), value: editing ? p.name : '', req: true },
+      { k: 'name_it', label: t('fld_name_it'), value: editing ? p.name_it : '' },
+      { k: 'name_fr', label: t('fld_name_fr'), value: editing ? p.name_fr : '' }
+    ], async (v) => {
+      let r;
+      const f = { name: v.name, name_it: v.name_it || null, name_fr: v.name_fr || null };
+      if (editing) r = await sb.from('places').update(f).eq('id', p.id).select('*').single();
+      else r = await sb.from('places').insert(Object.assign({ parent_id: p ? p.id : null, level: level, sort: kids(PL, p ? p.id : null).length + 1 }, f)).select('*').single();
+      if (r.error) { toast(r.error.code === '23505' ? t('mg_exists') : t('a_error'), true); return false; }
+      await loadRef();
+      if (editing && p.name !== v.name) await reloadAll();
+      mgShow('places'); toast(t('a_saved'));
+    });
+  }
+
+  // ---------- categories tab (administrators) ----------
+  function tabCats(body, openId) {
+    const cnt = new Map(); ITEMS.forEach((it) => { if (it.catId) cnt.set(it.catId, (cnt.get(it.catId) || 0) + 1); });
+    const total = (c) => (c.level === 2 ? (cnt.get(c.id) || 0) : kids(CT, c.id).reduce((s, k) => s + (cnt.get(k.id) || 0), 0));
+    const nVal = CT.filter((c) => c.validated_at).length;
+    body.appendChild(el('p', 'muted', t('mg_ct_help')));
+    const top = el('div', 'mgtop');
+    top.appendChild(el('strong', null, t('mg_ct_sum', { n: nf(CT.filter((c) => c.level === 1).length), s: nf(CT.filter((c) => c.level === 2).length), v: nf(nVal) })));
+    const acts = el('div', 'mgacts');
+    const unc = cnt.get('OTH.unc') || 0;
+    if (unc) acts.appendChild(mkBtn(t('mg_to_classify', { n: nf(unc) }), 'btn sm', () => { body.textContent = ''; catReview(body, 'OTH.unc'); }));
+    acts.appendChild(mkBtn(t('mg_add_cat'), 'btn sm', () => catForm(null)));
+    if (nVal < CT.length) acts.appendChild(mkBtn(t('mg_validate_all'), 'btn sm primary', async () => {
+      const r = await sb.from('categories').update({ validated_at: new Date().toISOString() }).is('validated_at', null).select('id');
+      if (r.error) { toast(t('a_error'), true); return; }
+      await loadRef(); mgShow('cats'); toast(t('a_saved'));
+    }));
+    top.appendChild(acts); body.appendChild(top);
+    const ul = el('ul', 'tree');
+    const row = (c, depth) => {
+      const li = el('li'); li.dataset.level = c.level; li.style.setProperty('--d', depth);
+      const line = el('div', 'trow');
+      const nm = el('span', 'tname');
+      if (c.level === 1) nm.appendChild(el('code', 'tcode', c.code));
+      nm.appendChild(el('strong', null, lname(c))); if (lang !== 'en' && lname(c) !== c.name) nm.appendChild(el('small', 'muted', ' ' + c.name));
+      const tc = el('span', 'tcount', nf(total(c))); tc.title = nf(total(c)) + ' ' + t('mg_items');
+      line.append(nm, tc, badge(c));
+      const a = el('span', 'tacts');
+      if (c.level === 2) a.appendChild(mkBtn(t('mg_review'), 'btn sm', () => { body.textContent = ''; catReview(body, c.id); }));
+      a.appendChild(mkBtn(t('mg_show_list'), 'btn sm', () => { S.cat = c.id; fillCatFilter(); refresh(); $('manage').close(); }));
+      a.appendChild(mkBtn(t('mg_rename'), 'btn sm', () => catForm(c, true)));
+      if (c.level === 1) a.appendChild(mkBtn(t('mg_add_sub'), 'btn sm', () => catForm(c)));
+      if (c.validated_at) a.appendChild(mkBtn(t('mg_unvalidate'), 'btn sm', async () => {
+        const r = await sb.from('categories').update({ validated_at: null }).eq('id', c.id).select('id'); if (r.error) { toast(t('a_error'), true); return; }
+        await loadRef(); mgShow('cats');
+      }));
+      else a.appendChild(mkBtn(t('mg_validate'), 'btn sm primary', async () => {
+        const r = await sb.from('categories').update({ validated_at: new Date().toISOString() }).in('id', subtree(CT, c.id)).select('id'); if (r.error) { toast(t('a_error'), true); return; }
+        await loadRef(); mgShow('cats');
+      }));
+      if (!total(c) && !kids(CT, c.id).length) a.appendChild(armBtn(t('mg_delete'), async () => {
+        const r = await sb.from('categories').delete().eq('id', c.id).select('id'); if (r.error || !r.data || !r.data.length) { toast(t('mg_cannot_delete'), true); return; }
+        await loadRef(); mgShow('cats');
+      }));
+      line.appendChild(a); li.appendChild(line); ul.appendChild(li);
+      kids(CT, c.id).forEach((k) => row(k, depth + 1));
+    };
+    kids(CT, null).forEach((c) => row(c, 0));
+    body.appendChild(ul);
+  }
+
+  function catForm(c, editing) {
+    const level = editing ? c.level : (c ? 2 : 1);
+    const fields = [];
+    if (!editing) fields.push(level === 1
+      ? { k: 'code', label: t('mg_code3'), req: true, maxlength: 3, pattern: '[A-Za-z]{3}', hint: t('mg_code3_hint') }
+      : { k: 'code', label: t('mg_codesub'), req: true, maxlength: 12, pattern: '[A-Za-z0-9]{2,12}', hint: t('mg_codesub_hint') });
+    fields.push({ k: 'name', label: t('fld_name'), value: editing ? c.name : '', req: true }, { k: 'name_it', label: t('fld_name_it'), value: editing ? c.name_it : '' }, { k: 'name_fr', label: t('fld_name_fr'), value: editing ? c.name_fr : '' });
+    formDialog(editing ? t('mg_rename') + ' · ' + lname(c) : t(level === 1 ? 'mg_new_cat' : 'mg_new_sub'), fields, async (v) => {
+      const f = { name: v.name, name_it: v.name_it || null, name_fr: v.name_fr || null };
+      let r;
+      if (editing) r = await sb.from('categories').update(f).eq('id', c.id).select('*').single();
+      else {
+        const code = level === 1 ? v.code.toUpperCase() : v.code.toLowerCase();
+        r = await sb.from('categories').insert(Object.assign({ id: level === 1 ? code : c.id + '.' + code, parent_id: level === 1 ? null : c.id, level: level, code: code, sort: kids(CT, level === 1 ? null : c.id).length + 1 }, f)).select('*').single();
+      }
+      if (r.error) { toast(r.error.code === '23505' ? t('mg_exists') : t('a_error'), true); return false; }
+      await loadRef(); mgShow('cats'); toast(t('a_saved'));
+    });
+  }
+
+  // Review of one sub-category: every item can be moved to another one, then saved in one go.
+  function catReview(body, id) {
+    const c = CTM.get(id);
+    const head = el('div', 'mgtop stickyhead');
+    head.appendChild(mkBtn('‹ ' + t('mg_back'), 'btn sm', () => mgShow('cats')));
+    head.appendChild(el('strong', null, catText(id)));
+    body.appendChild(head);
+    body.appendChild(el('p', 'muted', t('mg_review_help')));
+    const items = ITEMS.map((it, i) => i).filter((i) => ITEMS[i].catId === id).sort((a, b) => nameOf(ITEMS[a]).localeCompare(nameOf(ITEMS[b]), lang, { numeric: true, sensitivity: 'base' }));
+    const moves = new Map();
+    const saves = [];
+    const doSave = async () => {
+      saves.forEach((b) => { b.disabled = true; });
+      try {
+        const byTarget = new Map();
+        moves.forEach((target, i) => { if (!byTarget.has(target)) byTarget.set(target, []); byTarget.get(target).push(ITEMS[i].id); });
+        for (const [target, ids] of byTarget) {
+          for (let a = 0; a < ids.length; a += 80) {
+            const r = await sb.from('items').update({ category_id: target }).in('id', ids.slice(a, a + 80)).select('id');
+            if (r.error) throw r.error;
+          }
+        }
+        moves.forEach((target, i) => { ITEMS[i].catId = target; });
+        MG.dirty = true; toast(t('a_saved')); body.textContent = ''; mgShow('cats');
+      } catch (e) { toast(t('a_error'), true); saves.forEach((b) => { b.disabled = false; }); }
+    };
+    const mkSave = () => { const b = mkBtn('', 'btn primary sm', doSave); saves.push(b); return b; };
+    const upd = () => { saves.forEach((b) => { b.textContent = t('mg_save_moves', { n: nf(moves.size) }); b.disabled = moves.size === 0; }); };
+    head.appendChild(mkSave());
+    upd();
+    if (!items.length) body.appendChild(el('p', 'muted', t('mg_review_empty')));
+    const list = el('ul', 'revlist');
+    items.forEach((i) => {
+      const it = ITEMS[i];
+      const li = el('li');
+      const left = el('div', 'revname'); left.appendChild(el('strong', null, nameOf(it)));
+      left.appendChild(el('small', 'muted', [placeText(it.placeId), it.ref].filter(Boolean).join(' · ')));
+      const sel = el('select'); sel.setAttribute('aria-label', t('d_cat'));
+      kids(CT, null).forEach((top) => {
+        const g = document.createElement('optgroup'); g.label = lname(top);
+        kids(CT, top.id).forEach((s) => g.appendChild(new Option(lname(s), s.id)));
+        sel.appendChild(g);
+      });
+      sel.value = id;
+      sel.addEventListener('change', () => { if (sel.value === id) moves.delete(i); else moves.set(i, sel.value); upd(); });
+      li.append(left, sel); list.appendChild(li);
+    });
+    body.appendChild(list);
+    const foot = el('div', 'formactions'); foot.appendChild(mkSave()); body.appendChild(foot); upd();
+  }
+
+  // ---------- references tab (administrators) ----------
+  function tabRefs(body) {
+    body.appendChild(el('p', 'muted', t('mg_rf_help')));
+    const rows = kids(CT, null).map((top) => {
+      const mine = ITEMS.filter((it) => catTop(it) === top.id && it.catId !== 'OTH.unc');
+      const numbered = mine.filter((it) => it.ref).length;
+      const wait = mine.length - numbered;
+      const first = mine.filter((it) => !it.ref).sort((a, b) => nameOf(a).localeCompare(nameOf(b), 'en', { sensitivity: 'base' }))[0];
+      return { top, mine, numbered, wait, first };
+    });
+    const unclassified = ITEMS.filter((it) => !it.catId || it.catId === 'OTH.unc').length;
+    const tbl = el('table', 'reftable');
+    const thead = el('thead'); const hr = el('tr'); ['mg_rf_cat', 'mg_rf_status', 'mg_rf_numbered', 'mg_rf_wait', 'mg_rf_next'].forEach((k) => hr.appendChild(el('th', null, t(k)))); thead.appendChild(hr); tbl.appendChild(thead);
+    const tb = el('tbody'); let todo = 0;
+    rows.forEach((r) => {
+      if (!r.mine.length && !r.numbered) return;
+      const tr_ = el('tr');
+      const c1 = el('td'); c1.appendChild(el('code', 'tcode', r.top.code)); c1.appendChild(document.createTextNode(' ' + lname(r.top)));
+      const c2 = el('td'); c2.appendChild(badge(r.top));
+      const c3 = el('td', 'num', nf(r.numbered));
+      const c4 = el('td', 'num', nf(r.wait));
+      const c5 = el('td', null, r.wait && r.top.validated_at && r.first ? r.top.code + '-… · ' + nameOf(r.first) : '');
+      if (r.top.validated_at) todo += r.wait;
+      [c1, c2, c3, c4, c5].forEach((c) => tr_.appendChild(c)); tb.appendChild(tr_);
+    });
+    tbl.appendChild(tb); body.appendChild(el('div', 'tablescroll')).appendChild(tbl);
+    body.appendChild(el('p', 'muted', t('mg_rf_unc', { n: nf(unclassified) })));
+    const act = el('div', 'formactions');
+    let armed = false;
+    const go = mkBtn(t('mg_rf_generate', { n: nf(todo) }), 'btn primary', async () => {
+      if (!armed) { armed = true; go.textContent = t('mg_rf_confirm', { n: nf(todo) }); return; }
+      go.disabled = true;
+      const r = await sb.rpc('assign_refs');
+      if (r.error) { toast(t('a_error'), true); go.disabled = false; return; }
+      await reloadAll(); mgShow('refs'); toast(t('mg_rf_done', { n: nf(r.data || 0) }));
+    });
+    go.disabled = todo === 0;
+    act.appendChild(go); body.appendChild(act);
+  }
+
+  // ---------- verification tab: count and confirm item by item ----------
+  const VQ = { list: [], pos: 0, done: 0, skipped: 0 };
+
+  function tabVerify(body, queue) {
+    if (queue && queue.length) { VQ.list = queue.slice(); VQ.pos = 0; VQ.done = 0; VQ.skipped = 0; verifyCard(body); return; }
+    body.appendChild(el('p', 'muted', t('v_help')));
+    const form = el('div', 'form');
+    const pc = cascade(form, [t('lvl_1'), t('lvl_2'), t('lvl_3')], PL, [], true);
+    const cc = cascade(form, [t('fld_cat'), t('fld_subcat')], CT, [], true);
+    const lab = el('label'); lab.appendChild(el('span', null, t('status')));
+    const st = el('select'); [['todo', 'v_scope_todo'], ['flag', 'v_scope_flag'], ['all', 'v_scope_all']].forEach(([v, k]) => st.appendChild(new Option(t(k), v))); lab.appendChild(st); form.appendChild(lab);
+    body.appendChild(form);
+    const info = el('p', 'vinfo'); body.appendChild(info);
+    const build = () => {
+      const [s1, s2, s3] = pc.sels.map((s) => s.value); const [c1, c2] = cc.sels.map((s) => s.value);
+      const idx = [];
+      ITEMS.forEach((it, i) => {
+        if (s3 && it.placeId !== s3) return;
+        const ch = placeChain(it.placeId);
+        if (!s3 && s2 && (!ch[1] || ch[1].id !== s2)) return;
+        if (!s3 && !s2 && s1 && (!ch[0] || ch[0].id !== s1)) return;
+        if (c2 && it.catId !== c2) return;
+        if (!c2 && c1 && catTop(it) !== c1) return;
+        if (st.value === 'todo' && it.vAt) return;
+        if (st.value === 'flag' && !(it.flags && it.flags.length)) return;
+        idx.push(i);
+      });
+      const pos = (it) => placeChain(it.placeId).map((p) => String(p.sort).padStart(4, '0') + p.name).join('|');
+      idx.sort((a, b) => pos(ITEMS[a]).localeCompare(pos(ITEMS[b]), 'en', { numeric: true }) || String(ITEMS[a].sub ? ITEMS[a].sub.v : '').localeCompare(String(ITEMS[b].sub ? ITEMS[b].sub.v : ''), 'en', { numeric: true }) || nameOf(ITEMS[a]).localeCompare(nameOf(ITEMS[b]), lang, { sensitivity: 'base' }));
+      return idx;
+    };
+    const go = mkBtn('', 'btn primary', () => { const q = build(); if (!q.length) return; VQ.list = q; VQ.pos = 0; VQ.done = 0; VQ.skipped = 0; body.textContent = ''; verifyCard(body); });
+    const upd = () => { const n = build().length; info.textContent = t('v_count', { n: nf(n), t: nf(ITEMS.length) }); go.textContent = t('v_start'); go.disabled = n === 0; };
+    form.addEventListener('change', upd); upd();
+    const act = el('div', 'formactions'); act.appendChild(go); body.appendChild(act);
+  }
+
+  function verifyCard(body) {
+    body.textContent = '';
+    if (VQ.pos >= VQ.list.length) {
+      body.appendChild(el('h3', 'vend', t('v_finished')));
+      body.appendChild(el('p', null, t('v_summary', { d: nf(VQ.done), s: nf(VQ.skipped) })));
+      const act = el('div', 'formactions'); act.appendChild(mkBtn(t('v_again'), 'btn primary', () => mgShow('verify'))); act.appendChild(mkBtn(t('v_close'), 'btn', () => $('manage').close()));
+      body.appendChild(act); MG.dirty = true; return;
+    }
+    const i = VQ.list[VQ.pos], it = ITEMS[i];
+    const pr = el('div', 'vprog');
+    pr.appendChild(el('span', null, t('v_progress', { i: nf(VQ.pos + 1), n: nf(VQ.list.length) })));
+    const bar = el('div', 'vbar'); const fillbar = el('span'); fillbar.style.width = Math.round(VQ.pos / VQ.list.length * 100) + '%'; bar.appendChild(fillbar); pr.appendChild(bar);
+    body.appendChild(pr);
+    const head = el('div', 'vhead');
+    head.appendChild(el('h3', 'vname', nameOf(it)));
+    if (lang !== 'en' && nameOf(it) !== it.name) head.appendChild(el('p', 'muted', it.name));
+    const meta = [it.ref, it.catId ? catText(it.catId) : t('cat_none')].filter(Boolean).join(' · ');
+    head.appendChild(el('p', 'muted', meta));
+    body.appendChild(head);
+    if (it.flags && it.flags.length) { const ul = el('ul', 'checks'); it.flags.forEach((f) => ul.appendChild(el('li', null, t('f_' + f)))); body.appendChild(ul); }
+    if (it.vAt) body.appendChild(el('p', 'muted', t('v_last', { d: fmtDate(it.vAt) })));
+
+    // photo
+    const ph = el('div', 'vphoto'); body.appendChild(ph);
+    const showPhoto = () => {
+      ph.textContent = '';
+      const paths = ITEMS[i].photoPaths || [];
+      if (paths.length) sb.storage.from('item-photos').createSignedUrls(paths.slice(0, 3), 3600).then((r) => {
+        if (!r || !r.data || VQ.list[VQ.pos] !== i) return;
+        const g = el('div', 'gallery'); r.data.forEach((o) => { if (!o.signedUrl) return; const im = document.createElement('img'); im.src = o.signedUrl; im.alt = nameOf(it); g.appendChild(im); }); ph.prepend(g);
+      });
+      const file = el('input'); file.type = 'file'; file.accept = 'image/*'; file.setAttribute('capture', 'environment'); file.hidden = true;
+      const add = mkBtn(t('v_photo'), 'btn', () => file.click());
+      file.addEventListener('change', () => { const f = file.files && file.files[0]; file.value = ''; addPhoto(i, f, add, showPhoto); });
+      ph.append(file, add);
+    };
+    showPhoto();
+
+    // fields
+    const form = el('div', 'form vform'); body.appendChild(form);
+    const qlab = el('label', 'full vq'); qlab.appendChild(el('span', null, t('v_qty')));
+    const qrow = el('div', 'qtyrow');
+    const qin = el('input', 'qin'); qin.type = 'number'; qin.min = '0'; qin.step = '1'; qin.inputMode = 'numeric'; qin.value = it.qty == null ? '' : it.qty;
+    const dec = mkBtn('−', 'qbtn', () => { qin.value = String(Math.max(0, (Number(qin.value) || 0) - 1)); });
+    const inc = mkBtn('+', 'qbtn', () => { qin.value = String((Number(qin.value) || 0) + 1); });
+    qrow.append(dec, qin, inc); qlab.appendChild(qrow); form.appendChild(qlab);
+    const isStock = familyOf(it) === 'stock';
+    let minIn = null, expIn = null;
+    if (isStock || it.min != null) {
+      const l1 = el('label'); l1.appendChild(el('span', null, t('fld_min'))); minIn = el('input'); minIn.type = 'number'; minIn.min = '0'; minIn.step = '1'; minIn.inputMode = 'numeric'; minIn.value = it.min == null ? '' : it.min; l1.appendChild(minIn); form.appendChild(l1);
+    }
+    if (isStock || it.expiry) {
+      const l2 = el('label'); l2.appendChild(el('span', null, t('fld_exp'))); expIn = el('input'); expIn.type = 'date'; expIn.value = it.expiry || ''; l2.appendChild(expIn); form.appendChild(l2);
+    }
+    const pc = cascade(form, [t('lvl_1'), t('lvl_2'), t('lvl_3')], PL, placeChain(it.placeId).map((p) => p.id), false);
+    const kl = el('label'); kl.appendChild(el('span', null, t('fld_sub_kind')));
+    const kind = el('select'); [['', t('fld_none')], ['shelf', t('k_shelf')], ['box', t('k_box')], ['container', t('k_container')]].forEach(([v, l]) => kind.appendChild(new Option(l, v))); kind.value = it.sub ? it.sub.kind : ''; kl.appendChild(kind); form.appendChild(kl);
+    const vl = el('label'); vl.appendChild(el('span', null, t('fld_sub_v'))); const subv = el('input'); subv.type = 'text'; subv.maxLength = 60; subv.value = it.sub ? it.sub.v : ''; vl.appendChild(subv); form.appendChild(vl);
+    const cc = cascade(form, [t('fld_cat'), t('fld_subcat')], CT, catChain(it.catId).map((c) => c.id), true);
+
+    // actions
+    const act = el('div', 'formactions vact');
+    const next = () => { VQ.pos++; verifyCard(body); body.scrollTop = 0; };
+    const confirm = mkBtn(t('v_confirm'), 'btn primary big', async () => {
+      confirm.disabled = true;
+      const num = (inp) => (inp.value.trim() === '' ? null : Math.max(0, Math.round(Number(inp.value))));
+      const p = { verified_at: new Date().toISOString(), flags: [] };
+      const q = num(qin); if (q != null && q !== it.qty) { p.qty = q; p.last_reason = t('v_reason'); }
+      if (minIn) { const m = num(minIn); if (m !== (it.min == null ? null : it.min)) p.min_qty = m; }
+      if (expIn) { const e = expIn.value || null; if (e !== (it.expiry || null)) p.expiry = e; }
+      const pid = pc.get(); if (pid && pid !== it.placeId) p.place_id = pid;
+      const k = kind.value || null, sv = k ? (subv.value.trim() || null) : null;
+      if (k !== (it.sub ? it.sub.kind : null) || sv !== (it.sub ? String(it.sub.v) : null)) { p.sub_kind = k; p.sub_v = sv; }
+      const cid = cc.get(); if (cid !== (it.catId || null)) p.category_id = cid;
+      try {
+        const r = await sb.from('items').update(p).eq('id', it.id).select('*').single();
+        if (r.error) throw r.error;
+        ITEMS[i] = fromRow(r.data); ALERTS[i] = alertsOf(ITEMS[i], today);
+        VQ.done++; MG.dirty = true; next();
+      } catch (e) { toast(t('a_error'), true); confirm.disabled = false; }
+    });
+    act.appendChild(confirm);
+    const nav = el('div', 'vnav');
+    nav.appendChild(mkBtn('‹ ' + t('v_prev'), 'btn', () => { if (VQ.pos > 0) { VQ.pos--; verifyCard(body); } }));
+    nav.appendChild(mkBtn(t('v_skip') + ' ›', 'btn', () => { VQ.skipped++; next(); }));
+    nav.appendChild(mkBtn(t('v_stop'), 'btn', () => { VQ.pos = VQ.list.length; verifyCard(body); }));
+    act.appendChild(nav); body.appendChild(act);
+  }
+
+  // A query shaped like a reference (CLN-0042, cln42) finds that exact item when it exists.
+  function refQuery(q) {
+    const m = String(q || '').trim().toUpperCase().match(/^([A-Z]{3})[\s-]?(\d{1,4})$/);
+    if (!m) return null;
+    const r = m[1] + '-' + m[2].padStart(4, '0');
+    return ITEMS.some((it) => it.ref === r) ? r : null;
+  }
+
+  // ---------- list integration: category filter, section groups ----------
+  function fillCatFilter() {
+    const lab = $('lab-cat'); if (!lab) return;
+    lab.hidden = !REFS();
+    if (lab.hidden) return;
+    const cnt = new Map(); ITEMS.forEach((it) => { if (it.catId) { cnt.set(it.catId, (cnt.get(it.catId) || 0) + 1); const top = it.catId.split('.')[0]; cnt.set(top, (cnt.get(top) || 0) + 1); } });
+    const sel = $('f-cat'); sel.textContent = ''; sel.appendChild(new Option(t('all_cats'), 'all'));
+    kids(CT, null).forEach((top) => {
+      if (!cnt.get(top.id)) return;
+      sel.appendChild(new Option(lname(top) + ' (' + nf(cnt.get(top.id)) + ')', top.id));
+      kids(CT, top.id).forEach((s) => { if (cnt.get(s.id)) sel.appendChild(new Option('   ' + lname(s) + ' (' + nf(cnt.get(s.id)) + ')', s.id)); });
+    });
+    if (S.cat !== 'all' && !cnt.get(S.cat)) S.cat = 'all';
+    sel.value = S.cat;
+  }
+
+  // Sections grouped by site when the places tree is loaded.
+  function fillSectionOptions(sel) {
+    const have = new Set(META ? META.sections : []);
+    if (!REFS()) { (META ? META.sections : []).forEach((s) => sel.appendChild(new Option(tr('sections', s), s))); return; }
+    const done = new Set();
+    kids(PL, null).forEach((site) => {
+      const g = document.createElement('optgroup'); g.label = lname(site);
+      kids(PL, site.id).forEach((room) => { if (have.has(room.name)) { g.appendChild(new Option(lname(room), room.name)); done.add(room.name); } });
+      if (g.children.length) sel.appendChild(g);
+    });
+    (META ? META.sections : []).forEach((s) => { if (!done.has(s)) sel.appendChild(new Option(tr('sections', s), s)); });
+  }
   // ---------- data ----------
   function buildIndex() {
     IX = ITEMS.map((it) => {
-      const names = [it.name, (TR.items[it.name] || {}).it, (TR.items[it.name] || {}).fr].filter(Boolean);
-      const places = [it.section, it.loc, (TR.sections[it.section] || {}).it, (TR.sections[it.section] || {}).fr, (TR.locations[it.loc] || {}).it, (TR.locations[it.loc] || {}).fr].filter(Boolean);
+      const names = [it.name, (TR.items[it.name] || {}).it, (TR.items[it.name] || {}).fr, it.ref].filter(Boolean);
+      const places = [it.section, it.loc, (TR.sections[it.section] || {}).it, (TR.sections[it.section] || {}).fr, (TR.locations[it.loc] || {}).it, (TR.locations[it.loc] || {}).fr].concat(catWords(it)).filter(Boolean);
       return indexItem(it, names, places);
     });
   }
