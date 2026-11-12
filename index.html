@@ -272,6 +272,112 @@ dialog.wide { width: min(1000px, calc(100vw - 24px)); }
 @media (max-width: 560px) { .form { grid-template-columns: 1fr; } }
 @media print { .userbar, .banner { display: none !important; } }
 
+/* ---- thumbnails, gallery view, detail, storekeeper tools ---- */
+:root { --th: 56px; --gcard: 190px; }
+.nmwrap { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.nmtxt { min-width: 0; }
+.thumb { flex: none; width: var(--th); height: var(--th); border-radius: 10px; background: var(--stock-bg); color: #9d938d; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; border: 1px solid var(--line-soft); }
+.thumb > svg { width: 26px; height: 26px; flex: none; }
+.view-grid .thumb > svg { width: 44px; height: 44px; }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #fff; }
+.thumb.wait { background: linear-gradient(100deg, var(--stock-bg) 30%, #f6f3f1 50%, var(--stock-bg) 70%); background-size: 200% 100%; }
+@media (prefers-reduced-motion: no-preference) { .thumb.wait { animation: shimmer 1.4s linear infinite; } }
+@keyframes shimmer { to { background-position: -200% 0; } }
+.list td.c-name, .list td { vertical-align: middle; }
+.viewsw { display: inline-flex; border: 1px solid var(--petrol); border-radius: 10px; overflow: hidden; }
+.viewsw button { border: 0; background: var(--card); width: 44px; min-height: 40px; cursor: pointer; color: var(--petrol); display: inline-flex; align-items: center; justify-content: center; }
+.viewsw button + button { border-left: 1px solid var(--petrol); }
+.viewsw button[aria-pressed="true"] { background: var(--petrol); color: var(--gold-soft); }
+.actions { align-items: center; }
+
+.view-grid .list thead { display: none; }
+.view-grid table.list, .view-grid .list tbody { display: block; width: 100%; }
+.view-grid .list tbody { display: grid; grid-template-columns: repeat(auto-fill, minmax(var(--gcard), 1fr)); gap: 12px; padding: 12px; }
+.view-grid .list tbody tr { display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name name" "place place" "qty status"; gap: 6px 8px; padding: 0 0 12px; border: 1px solid var(--line-soft); border-radius: 12px; background: #fff; overflow: hidden; align-content: start; }
+.view-grid .list tbody tr:first-child { border-top: 1px solid var(--line-soft); }
+.view-grid .list td { padding: 0 12px; display: block; width: auto; }
+.view-grid .list td.c-name { grid-area: name; padding: 0; }
+.view-grid .list td.c-place { grid-area: place; }
+.view-grid .list td.c-qty { grid-area: qty; text-align: left; align-self: center; }
+.view-grid .list td.c-status { grid-area: status; text-align: right; align-self: center; }
+.view-grid .list td.c-type, .view-grid .list td.c-min { display: none; }
+.view-grid .nmwrap { flex-direction: column; align-items: stretch; gap: 8px; }
+.view-grid .thumb { width: 100%; height: auto; aspect-ratio: 4 / 3; border-radius: 0; border: 0; border-bottom: 1px solid var(--line-soft); }
+.view-grid .nmtxt { padding: 0 12px; }
+.view-grid .iplace { font-size: 0.86rem; }
+
+/* detail */
+.hero { display: grid; gap: 8px; justify-items: start; }
+.herostage { width: 100%; background: #fff; border: 1px solid var(--line-soft); border-radius: 12px; height: clamp(190px, 36vh, 360px); display: flex; align-items: center; justify-content: center; overflow: hidden; color: #b9b0aa; }
+.herostage img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.herostage svg { width: 72px; height: 72px; }
+.herostage.wait { background: var(--stock-bg); }
+.herostrip { display: flex; gap: 8px; overflow-x: auto; max-width: 100%; padding-bottom: 2px; }
+.hth { position: relative; flex: none; }
+.hthb { border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 0; width: 64px; height: 64px; overflow: hidden; cursor: pointer; }
+.hthb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hth .phx { top: 3px; right: 3px; width: 24px; height: 24px; font-size: 1rem; }
+.chip.refchip { background: var(--asset-bg); color: var(--asset); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+.chip.catchip { background: var(--stock-bg); color: var(--stock); font-weight: 600; white-space: normal; }
+.chip.refchip::before, .chip.catchip::before { display: none; }
+.keyfig { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.kf { background: #fff; border: 1px solid var(--line-soft); border-radius: 12px; padding: 10px 14px; display: flex; flex-direction: column; gap: 2px; }
+.kf .kl { font-size: 0.74rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.kf .kv { font-family: var(--display); font-size: 1.7rem; font-weight: 600; color: var(--petrol); font-variant-numeric: tabular-nums; line-height: 1.15; }
+.kf .kv small { font-family: var(--body); font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+.kf.bad .kv { color: var(--crit); } .kf.warn .kv { color: var(--warn); }
+details.more > summary { cursor: pointer; font-weight: 600; color: var(--petrol); padding: 8px 0; min-height: 40px; }
+details.more[open] > summary { margin-bottom: 8px; }
+details.more > .sect { margin-top: 14px; }
+.mgmt { border-top: 2px solid var(--gold-soft); padding-top: 14px; display: grid; gap: 18px; }
+.mgh { margin: 0; font-family: var(--display); font-size: 1rem; letter-spacing: 0.05em; color: var(--petrol); }
+.subh { margin: 14px 0 6px; font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.costhost { display: grid; gap: 10px; }
+form.inline { display: flex; flex-wrap: wrap; gap: 8px; align-items: flex-end; }
+form.inline label { display: flex; flex-direction: column; gap: 3px; font-size: 0.78rem; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
+form.inline input { border: 1px solid var(--line); border-radius: 10px; min-height: 44px; padding: 8px 12px; font-size: 1rem; background: #fff; width: 170px; max-width: 100%; }
+.hist .up { color: var(--crit); font-weight: 700; } .hist .down { color: var(--ok); font-weight: 700; }
+.hist .warnqty { color: var(--warn); font-weight: 700; text-align: right; }
+.form label.chk { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 10px; text-transform: none; letter-spacing: 0; font-size: 0.95rem; color: var(--ink); font-weight: 500; }
+.form label.chk input { width: 22px; height: 22px; min-height: 0; padding: 0; }
+.form label.chk small { flex-basis: 100%; }
+.form .fhead { margin: 4px 0 8px; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--petrol); }
+.preview { background: var(--stock-bg); border-radius: 10px; padding: 8px 12px; margin-bottom: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.preview p { margin: 3px 0; }
+.preview .warnline { color: var(--warn); }
+.preview .muted { font-weight: 500; }
+.grouph { margin: 18px 0 6px; font-size: 0.95rem; color: var(--petrol); }
+.clickrow { cursor: pointer; } .clickrow:hover { background: #f1ece6; }
+.reftable td .btn { white-space: nowrap; }
+.others.team li.member { display: grid; grid-template-columns: minmax(0, 1fr) auto auto auto; gap: 8px 12px; align-items: center; }
+.others.team li.member select { border: 1px solid var(--line); border-radius: 10px; min-height: 40px; padding: 4px 8px; background: #fff; }
+.who { display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; }
+.activechk { display: inline-flex; align-items: center; gap: 6px; font-size: 0.88rem; }
+.activechk input { width: 20px; height: 20px; }
+.team + .sect, #tm-body .sect { margin-top: 6px; }
+dialog#team { width: min(760px, calc(100vw - 24px)); }
+@media (max-width: 760px) {
+  :root { --th: 60px; --gcard: 150px; }
+  .view-grid .list tbody { padding: 10px; gap: 10px; }
+  dialog#detail { width: 100vw; max-width: 100vw; margin: auto 0 0; border-radius: 16px 16px 0 0; max-height: 94vh; }
+  dialog#detail .dbody { max-height: calc(94vh - 96px); }
+  .others.team li.member { grid-template-columns: 1fr; }
+  .keyfig { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .herostage { height: clamp(170px, 30vh, 280px); }
+}
+@media (min-width: 761px) and (max-width: 1099px) { :root { --th: 56px; --gcard: 200px; } dialog#detail { width: min(760px, calc(100vw - 32px)); } }
+@media (min-width: 1100px) { dialog#detail { width: min(880px, calc(100vw - 48px)); } :root { --gcard: 210px; } }
+@media (min-width: 1600px) {
+  .wrap { max-width: 1560px; }
+  body { font-size: 17px; }
+  :root { --th: 72px; --gcard: 230px; }
+  .tiles { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+  dialog#detail { width: min(1000px, calc(100vw - 64px)); }
+  .herostage { height: clamp(240px, 40vh, 440px); }
+}
+@media (min-width: 2200px) { .wrap { max-width: 2000px; } body { font-size: 18px; } :root { --th: 84px; --gcard: 260px; } }
+@media print { .viewsw { display: none !important; } }
+
 @media (max-width: 760px) {
   .wrap { padding: 0 14px; }
   .headright { align-items: flex-start; }
@@ -307,12 +413,15 @@ dialog.wide { width: min(1000px, calc(100vw - 24px)); }
         <button type="button" data-lang="en" lang="en" title="English" aria-label="English">EN</button>
         <button type="button" data-lang="it" lang="it" title="Italiano" aria-label="Italiano">IT</button>
         <button type="button" data-lang="fr" lang="fr" title="Français" aria-label="Français">FR</button>
+        <button type="button" data-lang="pt" lang="pt" title="Português" aria-label="Português">PT</button>
+        <button type="button" data-lang="zu" lang="zu" title="isiZulu" aria-label="isiZulu">ZU</button>
       </div>
       <p class="meta" id="meta"></p>
       <div class="userbar" id="userbar" hidden>
         <span id="whoami"></span>
         <button class="linkbtn" id="btn-manage" type="button" data-i18n="mg_open" hidden></button>
         <button class="linkbtn" id="btn-team" type="button" data-i18n="team" hidden></button>
+        <button class="linkbtn" id="btn-pass" type="button" data-i18n="pw_change"></button>
         <button class="linkbtn" id="btn-signout" type="button" data-i18n="signout"></button>
       </div>
     </div>
@@ -361,7 +470,7 @@ dialog.wide { width: min(1000px, calc(100vw - 24px)); }
 
   <div class="resultbar">
     <div class="count" id="count" role="status" aria-live="polite"></div>
-    <div class="actions"><button class="btn primary" id="addbtn" type="button" data-i18n="a_add" hidden></button><button class="btn" id="export" type="button" data-i18n="exportCsv"></button></div>
+    <div class="actions"><div class="viewsw" id="viewsw" role="group" data-i18n-aria="view_aria"><button type="button" data-view="list" data-i18n-aria="view_list" aria-pressed="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button><button type="button" data-view="grid" data-i18n-aria="view_grid" aria-pressed="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1"/></svg></button></div><button class="btn primary" id="addbtn" type="button" data-i18n="a_add" hidden></button><button class="btn" id="export" type="button" data-i18n="exportCsv"></button></div>
   </div>
 
   <div class="tablewrap" id="tablewrap">
@@ -619,7 +728,7 @@ const STRINGS = {
     fld_none: "None",
     team: "Team",
     team_title: "Team access",
-    team_help: "New people are added in the Supabase dashboard (Authentication, Users) and start as viewers.",
+    team_help: "Manage who can use the inventory and what each person can do.",
     team_you: "you",
     imp_title: "The database is empty.",
     imp_text: "The catalogue contains {n} items, ready to import.",
@@ -716,6 +825,135 @@ const STRINGS = {
     v_again: "Choose another selection",
     v_close: "Close",
     v_reason: "Verification count",
+    mg_open_sk: "Stock control",
+    pw_change: "Change password",
+    view_aria: "Display",
+    view_list: "List view",
+    view_grid: "Gallery view",
+    role_storekeeper: "Storekeeper",
+    mt_note: "Machine translation.",
+    mg_tab_reorder: "Reorder",
+    mg_tab_expiry: "Expiry",
+    mg_tab_value: "Valuation",
+    mg_tab_settings: "Settings",
+    fld_name_pt: "Name (Portuguese)",
+    fld_name_zu: "Name (Zulu)",
+    fld_notes_pt: "Notes (Portuguese)",
+    fld_notes_zu: "Notes (Zulu)",
+    fld_reorder: "Reorder quantity",
+    fld_supref: "Supplier reference",
+    fld_unit: "Unit",
+    d_mgmt: "Management",
+    d_more: "More details",
+    d_supref: "Supplier reference",
+    vc_cost: "Unit cost excl. VAT (ZAR)",
+    vc_cost_hint: "Values the existing stock. Leave empty if the cost is unknown.",
+    co_title: "Cost and value",
+    co_none: "No cost recorded yet. Enter the unit cost excluding VAT to value the current stock, or receive a delivery.",
+    co_open_ph: "Unit cost excl. VAT",
+    co_open_set: "Set opening cost",
+    co_open_hint: "Opening cost of the existing stock: {v}.",
+    co_vat_excl: "VAT excluded, because it is recoverable",
+    co_vat_incl: "VAT included, because it is not recoverable",
+    co_avg: "Average cost",
+    co_last: "Last cost",
+    co_value: "Stock value",
+    co_writedown: "Write-down to NRV",
+    co_nrv: "Net realisable value per unit",
+    co_nrv_hint: "Optional. When lower than the average cost, the stock is valued at this amount (lower of cost and NRV).",
+    co_hist: "Price history",
+    co_hist_none: "No receipt or opening cost recorded yet.",
+    co_h_open: "Opening cost",
+    co_h_rec: "Receipt",
+    co_h_avg: "average {a}",
+    lot_title: "Lots and expiry",
+    lot_none: "No lot with a date in stock.",
+    lot_nolot: "No lot number",
+    lot_recv: "received {d}",
+    lot_noexp: "No expiry date",
+    lot_fefo: "Withdrawals use the lot that expires first (FEFO).",
+    ex_late: "{n} d overdue",
+    ex_left: "{n} d left",
+    ex_help: "Items with an expiry date. Withdrawals use the earliest expiry first. Choose the period to review.",
+    ex_window: "Expiring within",
+    ex_w30: "30 days",
+    ex_w60: "60 days",
+    ex_w90: "90 days",
+    ex_w180: "180 days",
+    ex_wall: "All dates",
+    ex_count: "{n} items",
+    ex_none: "No item with an expiry date in this period.",
+    pw_title: "Change password",
+    pw_new: "New password",
+    pw_again: "Repeat the new password",
+    pw_hint: "At least 8 characters.",
+    pw_short: "The password must contain at least 8 characters.",
+    pw_mismatch: "The two passwords do not match.",
+    pw_done: "Password updated.",
+    rc_title: "Receive stock",
+    rc_help: "Record a delivery with its price: the quantity is added and the average cost is recomputed.",
+    rc_btn: "Receive a delivery",
+    rc_save: "Record the delivery",
+    rc_qty: "Quantity received",
+    rc_price: "Unit price excl. VAT (ZAR)",
+    rc_price_hint: "As on the supplier invoice, before VAT.",
+    rc_vat: "VAT rate (%)",
+    rc_vat_rec: "VAT is recoverable (VAT-registered business): exclude it from the cost",
+    rc_other: "Other costs for the whole delivery (ZAR)",
+    rc_other_hint: "Transport, duties, handling. Spread over the quantity received.",
+    rc_date: "Receipt date",
+    rc_doc: "Invoice or delivery note no.",
+    rc_lot: "Lot number",
+    rc_note: "Note",
+    rc_invalid: "Enter a quantity and a price.",
+    rc_done: "{n} units received.",
+    rc_preview_wait: "Enter the quantity and the price to see the cost.",
+    rc_p_unit: "Unit cost: {u}",
+    rc_p_novat: "VAT excluded",
+    rc_p_avg: "New average cost: {a}",
+    rc_p_vs: "vs {a} before",
+    rc_p_gap: "The price differs by {p} from the current average cost. Check the invoice.",
+    rc_p_total: "Delivery: {a} excl. VAT, {b} incl. VAT.",
+    ro_help: "Items out of stock or at or below the minimum. Suggested quantity: the larger of the reorder quantity and the shortfall to the minimum. Items without a minimum or reorder quantity show \"To define\".",
+    ro_count: "{n} items to reorder",
+    ro_none: "Nothing to reorder.",
+    ro_nosup: "No supplier recorded",
+    ro_order: "To order",
+    ro_define: "To define",
+    se_help: "Settings used to compute costs. Confirm the VAT status with your accountant.",
+    se_vat: "VAT rate (%)",
+    se_currency: "Currency",
+    se_vendor: "The business is a registered VAT vendor (input VAT is recoverable)",
+    se_vendor_hint: "If checked, VAT is excluded from the cost of stock. If not, non-recoverable VAT is added to the cost.",
+    team_roles_help: "Administrator: everything. Storekeeper: stock, costs and receipts. Editor: stock and item details, without costs. Viewer: read only.",
+    team_active: "Active",
+    team_add: "Add a person",
+    team_add_help: "Create the account here: enter the email, the role and a temporary password that the person changes after signing in. Without a password, only the invitation is saved.",
+    team_create: "Create the account",
+    team_created: "Account created.",
+    team_exists: "This person already has an account.",
+    team_invited: "Invitation saved. The role applies when the account is created.",
+    team_last: "There must always be at least one active administrator.",
+    team_name: "Name (optional)",
+    team_nofn: "Account creation from this screen is not enabled yet. The invitation is saved: create the account in the Supabase dashboard (Authentication, Add user) and the role will apply automatically.",
+    team_pending: "Pending invitations",
+    team_reset: "Reset password",
+    team_role: "Role",
+    team_temp_pw: "Temporary password",
+    tr_title: "Import translations",
+    tr_help: "Select a translation file (JSON) for Portuguese and Zulu. An empty value in the file keeps the existing translation.",
+    tr_reading: "Reading the file",
+    tr_progress: "Importing {d} of {n}",
+    tr_done: "Import complete: {n} entries updated.",
+    tr_error: "The import failed. Check the file and try again.",
+    va_help: "Value of the stock at weighted average cost, or at net realisable value when lower. Recoverable VAT is excluded.",
+    va_valued: "Items valued",
+    va_nocost: "Items in stock without cost",
+    va_cost: "Value at cost",
+    va_wd: "Write-down to NRV",
+    va_net: "Net value",
+    va_bycat: "By category",
+    va_method: "Method: weighted average cost recomputed at each receipt, stock measured at the lower of cost and net realisable value (IAS 2, which does not allow LIFO). The cost includes non-recoverable VAT and delivery costs. The tax treatment of trading stock (Income Tax Act, section 22) must be confirmed with your accountant.",
     csv_cols: ['ID', 'Item', 'Original name', 'Section', 'Location', 'Shelf / box / container', 'Type', 'Quantity', 'Minimum', 'Status', 'Units per pack', 'Total units', 'Supplier', 'Last purchase', 'Notes', 'Data to verify']
   },
   it: {
@@ -806,7 +1044,7 @@ const STRINGS = {
     fld_none: "Nessuno",
     team: "Team",
     team_title: "Accessi del team",
-    team_help: "Le nuove persone si aggiungono nel pannello Supabase (Authentication, Users) e iniziano come lettori.",
+    team_help: "Gestire chi può usare l'inventario e cosa può fare ciascuno.",
     team_you: "tu",
     imp_title: "Il database è vuoto.",
     imp_text: "Il catalogo contiene {n} articoli, pronti da importare.",
@@ -903,6 +1141,135 @@ const STRINGS = {
     v_again: "Scegli un'altra selezione",
     v_close: "Chiudi",
     v_reason: "Conteggio di verifica",
+    mg_open_sk: "Controllo magazzino",
+    pw_change: "Cambia password",
+    view_aria: "Visualizzazione",
+    view_list: "Vista elenco",
+    view_grid: "Vista galleria",
+    role_storekeeper: "Magazziniere",
+    mt_note: "Traduzione automatica.",
+    mg_tab_reorder: "Riordino",
+    mg_tab_expiry: "Scadenze",
+    mg_tab_value: "Valorizzazione",
+    mg_tab_settings: "Impostazioni",
+    fld_name_pt: "Nome (portoghese)",
+    fld_name_zu: "Nome (zulu)",
+    fld_notes_pt: "Note (portoghese)",
+    fld_notes_zu: "Note (zulu)",
+    fld_reorder: "Quantità di riordino",
+    fld_supref: "Riferimento fornitore",
+    fld_unit: "Unità",
+    d_mgmt: "Gestione",
+    d_more: "Altri dettagli",
+    d_supref: "Riferimento fornitore",
+    vc_cost: "Costo unitario IVA esclusa (ZAR)",
+    vc_cost_hint: "Valorizza lo stock esistente. Lasciare vuoto se il costo è ignoto.",
+    co_title: "Costo e valore",
+    co_none: "Nessun costo registrato. Inserire il costo unitario IVA esclusa per valorizzare lo stock attuale, oppure registrare una ricezione.",
+    co_open_ph: "Costo unitario IVA esclusa",
+    co_open_set: "Imposta costo di apertura",
+    co_open_hint: "Costo di apertura dello stock esistente: {v}.",
+    co_vat_excl: "IVA esclusa, perché recuperabile",
+    co_vat_incl: "IVA inclusa, perché non recuperabile",
+    co_avg: "Costo medio",
+    co_last: "Ultimo costo",
+    co_value: "Valore a magazzino",
+    co_writedown: "Svalutazione al VNR",
+    co_nrv: "Valore netto di realizzo per unità",
+    co_nrv_hint: "Facoltativo. Se inferiore al costo medio, lo stock è valutato a questo importo (minore tra costo e VNR).",
+    co_hist: "Storico prezzi",
+    co_hist_none: "Nessuna ricezione né costo di apertura registrati.",
+    co_h_open: "Costo di apertura",
+    co_h_rec: "Ricezione",
+    co_h_avg: "media {a}",
+    lot_title: "Lotti e scadenze",
+    lot_none: "Nessun lotto con data in magazzino.",
+    lot_nolot: "Senza numero di lotto",
+    lot_recv: "ricevuto il {d}",
+    lot_noexp: "Senza scadenza",
+    lot_fefo: "I prelievi usano prima il lotto che scade prima (FEFO).",
+    ex_late: "scaduto da {n} g",
+    ex_left: "{n} g rimasti",
+    ex_help: "Articoli con data di scadenza. I prelievi usano prima la scadenza più vicina. Scegliere il periodo da controllare.",
+    ex_window: "In scadenza entro",
+    ex_w30: "30 giorni",
+    ex_w60: "60 giorni",
+    ex_w90: "90 giorni",
+    ex_w180: "180 giorni",
+    ex_wall: "Tutte le date",
+    ex_count: "{n} articoli",
+    ex_none: "Nessun articolo con scadenza in questo periodo.",
+    pw_title: "Cambia password",
+    pw_new: "Nuova password",
+    pw_again: "Ripetere la nuova password",
+    pw_hint: "Almeno 8 caratteri.",
+    pw_short: "La password deve contenere almeno 8 caratteri.",
+    pw_mismatch: "Le due password non coincidono.",
+    pw_done: "Password aggiornata.",
+    rc_title: "Ricezione merce",
+    rc_help: "Registrare una consegna con il prezzo: la quantità viene aggiunta e il costo medio ricalcolato.",
+    rc_btn: "Registra una consegna",
+    rc_save: "Registra la consegna",
+    rc_qty: "Quantità ricevuta",
+    rc_price: "Prezzo unitario IVA esclusa (ZAR)",
+    rc_price_hint: "Come sulla fattura del fornitore, prima dell'IVA.",
+    rc_vat: "Aliquota IVA (%)",
+    rc_vat_rec: "IVA recuperabile (impresa registrata ai fini IVA): esclusa dal costo",
+    rc_other: "Altri costi dell'intera consegna (ZAR)",
+    rc_other_hint: "Trasporto, dazi, movimentazione. Ripartiti sulla quantità ricevuta.",
+    rc_date: "Data di ricezione",
+    rc_doc: "N. fattura o bolla",
+    rc_lot: "Numero di lotto",
+    rc_note: "Nota",
+    rc_invalid: "Inserire una quantità e un prezzo.",
+    rc_done: "{n} unità ricevute.",
+    rc_preview_wait: "Inserire quantità e prezzo per vedere il costo.",
+    rc_p_unit: "Costo unitario: {u}",
+    rc_p_novat: "IVA esclusa",
+    rc_p_avg: "Nuovo costo medio: {a}",
+    rc_p_vs: "rispetto a {a} prima",
+    rc_p_gap: "Il prezzo differisce del {p} dal costo medio attuale. Controllare la fattura.",
+    rc_p_total: "Consegna: {a} IVA esclusa, {b} IVA inclusa.",
+    ro_help: "Articoli esauriti o pari o sotto il minimo. Quantità suggerita: la maggiore tra la quantità di riordino e il fabbisogno fino al minimo. Gli articoli senza minimo né quantità di riordino mostrano \"Da definire\".",
+    ro_count: "{n} articoli da riordinare",
+    ro_none: "Niente da riordinare.",
+    ro_nosup: "Nessun fornitore registrato",
+    ro_order: "Da ordinare",
+    ro_define: "Da definire",
+    se_help: "Impostazioni usate per calcolare i costi. Confermare lo status IVA con il commercialista.",
+    se_vat: "Aliquota IVA (%)",
+    se_currency: "Valuta",
+    se_vendor: "L'impresa è registrata ai fini IVA (IVA recuperabile)",
+    se_vendor_hint: "Se spuntato, l'IVA è esclusa dal costo dello stock. Altrimenti l'IVA non recuperabile si aggiunge al costo.",
+    team_roles_help: "Amministratore: tutto. Magazziniere: stock, costi e ricezioni. Editor: stock e dettagli articolo, senza costi. Lettore: sola lettura.",
+    team_active: "Attivo",
+    team_add: "Aggiungi una persona",
+    team_add_help: "Creare l'account qui: inserire e-mail, ruolo e una password temporanea che la persona cambia dopo l'accesso. Senza password viene salvato solo l'invito.",
+    team_create: "Crea l'account",
+    team_created: "Account creato.",
+    team_exists: "Questa persona ha già un account.",
+    team_invited: "Invito salvato. Il ruolo si applica alla creazione dell'account.",
+    team_last: "Deve esserci sempre almeno un amministratore attivo.",
+    team_name: "Nome (facoltativo)",
+    team_nofn: "La creazione dell'account da questa schermata non è ancora attiva. L'invito è salvato: creare l'account nella dashboard Supabase (Authentication, Add user) e il ruolo si applicherà automaticamente.",
+    team_pending: "Inviti in sospeso",
+    team_reset: "Reimposta password",
+    team_role: "Ruolo",
+    team_temp_pw: "Password temporanea",
+    tr_title: "Importa traduzioni",
+    tr_help: "Selezionare un file di traduzioni (JSON) per portoghese e zulu. Un valore vuoto nel file mantiene la traduzione esistente.",
+    tr_reading: "Lettura del file",
+    tr_progress: "Importazione {d} di {n}",
+    tr_done: "Importazione completata: {n} voci aggiornate.",
+    tr_error: "Importazione non riuscita. Controllare il file e riprovare.",
+    va_help: "Valore dello stock al costo medio ponderato, o al valore netto di realizzo se inferiore. IVA recuperabile esclusa.",
+    va_valued: "Articoli valorizzati",
+    va_nocost: "Articoli in stock senza costo",
+    va_cost: "Valore al costo",
+    va_wd: "Svalutazione al VNR",
+    va_net: "Valore netto",
+    va_bycat: "Per categoria",
+    va_method: "Metodo: costo medio ponderato ricalcolato a ogni ricezione, stock valutato al minore tra costo e valore netto di realizzo (IAS 2, che non ammette il LIFO). Il costo comprende l'IVA non recuperabile e le spese di consegna. Il trattamento fiscale delle rimanenze (Income Tax Act, sezione 22) va confermato con il commercialista.",
     csv_cols: ['ID', 'Articolo', 'Nome originale', 'Sezione', 'Ubicazione', 'Scaffale / scatola / contenitore', 'Tipo', 'Quantità', 'Minimo', 'Stato', 'Unità per confezione', 'Unità totali', 'Fornitore', 'Ultimo acquisto', 'Note', 'Dati da verificare']
   },
   fr: {
@@ -993,7 +1360,7 @@ const STRINGS = {
     fld_none: "Aucun",
     team: "Équipe",
     team_title: "Accès de l'équipe",
-    team_help: "Les nouvelles personnes s'ajoutent dans le tableau de bord Supabase (Authentication, Users) et démarrent comme lecteurs.",
+    team_help: "Gérer qui peut utiliser l'inventaire et ce que chacun peut faire.",
     team_you: "vous",
     imp_title: "La base est vide.",
     imp_text: "Le catalogue contient {n} articles, prêts à être importés.",
@@ -1090,7 +1457,888 @@ const STRINGS = {
     v_again: "Choisir une autre sélection",
     v_close: "Fermer",
     v_reason: "Comptage de vérification",
+    mg_open_sk: "Contrôle du stock",
+    pw_change: "Changer le mot de passe",
+    view_aria: "Affichage",
+    view_list: "Vue liste",
+    view_grid: "Vue galerie",
+    role_storekeeper: "Magasinier",
+    mt_note: "Traduction automatique.",
+    mg_tab_reorder: "Réappro",
+    mg_tab_expiry: "Péremption",
+    mg_tab_value: "Valorisation",
+    mg_tab_settings: "Paramètres",
+    fld_name_pt: "Nom (portugais)",
+    fld_name_zu: "Nom (zoulou)",
+    fld_notes_pt: "Notes (portugais)",
+    fld_notes_zu: "Notes (zoulou)",
+    fld_reorder: "Quantité de réappro",
+    fld_supref: "Référence fournisseur",
+    fld_unit: "Unité",
+    d_mgmt: "Gestion",
+    d_more: "Plus de détails",
+    d_supref: "Référence fournisseur",
+    vc_cost: "Coût unitaire HT (ZAR)",
+    vc_cost_hint: "Valorise le stock existant. Laisser vide si le coût est inconnu.",
+    co_title: "Coût et valeur",
+    co_none: "Aucun coût enregistré. Saisir le coût unitaire hors TVA pour valoriser le stock actuel, ou enregistrer une réception.",
+    co_open_ph: "Coût unitaire HT",
+    co_open_set: "Définir le coût d'ouverture",
+    co_open_hint: "Coût d'ouverture du stock existant : {v}.",
+    co_vat_excl: "TVA exclue, car récupérable",
+    co_vat_incl: "TVA incluse, car non récupérable",
+    co_avg: "Coût moyen",
+    co_last: "Dernier coût",
+    co_value: "Valeur du stock",
+    co_writedown: "Dépréciation à la VNR",
+    co_nrv: "Valeur nette de réalisation par unité",
+    co_nrv_hint: "Facultatif. Si elle est inférieure au coût moyen, le stock est valorisé à ce montant (le plus bas du coût et de la VNR).",
+    co_hist: "Historique des prix",
+    co_hist_none: "Aucune réception ni coût d'ouverture enregistrés.",
+    co_h_open: "Coût d'ouverture",
+    co_h_rec: "Réception",
+    co_h_avg: "moyen {a}",
+    lot_title: "Lots et péremption",
+    lot_none: "Aucun lot daté en stock.",
+    lot_nolot: "Sans numéro de lot",
+    lot_recv: "reçu le {d}",
+    lot_noexp: "Sans date de péremption",
+    lot_fefo: "Les sorties consomment d'abord le lot qui périme en premier (FEFO).",
+    ex_late: "périmé depuis {n} j",
+    ex_left: "{n} j restants",
+    ex_help: "Articles avec date de péremption. Les sorties utilisent d'abord la péremption la plus proche. Choisir la période à contrôler.",
+    ex_window: "Péremption dans les",
+    ex_w30: "30 jours",
+    ex_w60: "60 jours",
+    ex_w90: "90 jours",
+    ex_w180: "180 jours",
+    ex_wall: "Toutes les dates",
+    ex_count: "{n} articles",
+    ex_none: "Aucun article avec une péremption dans cette période.",
+    pw_title: "Changer le mot de passe",
+    pw_new: "Nouveau mot de passe",
+    pw_again: "Répéter le nouveau mot de passe",
+    pw_hint: "Au moins 8 caractères.",
+    pw_short: "Le mot de passe doit contenir au moins 8 caractères.",
+    pw_mismatch: "Les deux mots de passe ne correspondent pas.",
+    pw_done: "Mot de passe mis à jour.",
+    rc_title: "Réception de stock",
+    rc_help: "Enregistrer une livraison avec son prix : la quantité est ajoutée et le coût moyen recalculé.",
+    rc_btn: "Enregistrer une livraison",
+    rc_save: "Enregistrer la livraison",
+    rc_qty: "Quantité reçue",
+    rc_price: "Prix unitaire HT (ZAR)",
+    rc_price_hint: "Comme sur la facture du fournisseur, avant TVA.",
+    rc_vat: "Taux de TVA (%)",
+    rc_vat_rec: "TVA récupérable (entreprise assujettie) : l'exclure du coût",
+    rc_other: "Autres frais pour toute la livraison (ZAR)",
+    rc_other_hint: "Transport, droits, manutention. Répartis sur la quantité reçue.",
+    rc_date: "Date de réception",
+    rc_doc: "N° de facture ou bon de livraison",
+    rc_lot: "Numéro de lot",
+    rc_note: "Note",
+    rc_invalid: "Saisir une quantité et un prix.",
+    rc_done: "{n} unités reçues.",
+    rc_preview_wait: "Saisir la quantité et le prix pour voir le coût.",
+    rc_p_unit: "Coût unitaire : {u}",
+    rc_p_novat: "TVA exclue",
+    rc_p_avg: "Nouveau coût moyen : {a}",
+    rc_p_vs: "contre {a} avant",
+    rc_p_gap: "Le prix s'écarte de {p} du coût moyen actuel. Vérifier la facture.",
+    rc_p_total: "Livraison : {a} HT, {b} TTC.",
+    ro_help: "Articles en rupture ou au minimum ou en dessous. Quantité suggérée : la plus grande entre la quantité de réappro et le manque jusqu'au minimum. Les articles sans minimum ni quantité de réappro affichent « À définir ».",
+    ro_count: "{n} articles à réapprovisionner",
+    ro_none: "Rien à réapprovisionner.",
+    ro_nosup: "Aucun fournisseur renseigné",
+    ro_order: "À commander",
+    ro_define: "À définir",
+    se_help: "Paramètres utilisés pour calculer les coûts. Faire confirmer le statut TVA par votre comptable.",
+    se_vat: "Taux de TVA (%)",
+    se_currency: "Devise",
+    se_vendor: "L'entreprise est assujettie à la TVA (TVA récupérable)",
+    se_vendor_hint: "Si coché, la TVA est exclue du coût du stock. Sinon, la TVA non récupérable s'ajoute au coût.",
+    team_roles_help: "Administrateur : tout. Magasinier : stock, coûts et réceptions. Éditeur : stock et fiches, sans les coûts. Lecteur : lecture seule.",
+    team_active: "Actif",
+    team_add: "Ajouter une personne",
+    team_add_help: "Créer le compte ici : saisir l'e-mail, le rôle et un mot de passe temporaire que la personne change après sa première connexion. Sans mot de passe, seule l'invitation est enregistrée.",
+    team_create: "Créer le compte",
+    team_created: "Compte créé.",
+    team_exists: "Cette personne a déjà un compte.",
+    team_invited: "Invitation enregistrée. Le rôle s'applique à la création du compte.",
+    team_last: "Il doit toujours rester au moins un administrateur actif.",
+    team_name: "Nom (facultatif)",
+    team_nofn: "La création de compte depuis cet écran n'est pas encore activée. L'invitation est enregistrée : créer le compte dans le tableau de bord Supabase (Authentication, Add user) et le rôle s'appliquera automatiquement.",
+    team_pending: "Invitations en attente",
+    team_reset: "Réinitialiser le mot de passe",
+    team_role: "Rôle",
+    team_temp_pw: "Mot de passe temporaire",
+    tr_title: "Importer des traductions",
+    tr_help: "Choisir un fichier de traductions (JSON) pour le portugais et le zoulou. Une valeur vide dans le fichier conserve la traduction existante.",
+    tr_reading: "Lecture du fichier",
+    tr_progress: "Import {d} sur {n}",
+    tr_done: "Import terminé : {n} entrées mises à jour.",
+    tr_error: "L'import a échoué. Vérifier le fichier et réessayer.",
+    va_help: "Valeur du stock au coût moyen pondéré, ou à la valeur nette de réalisation si elle est inférieure. TVA récupérable exclue.",
+    va_valued: "Articles valorisés",
+    va_nocost: "Articles en stock sans coût",
+    va_cost: "Valeur au coût",
+    va_wd: "Dépréciation à la VNR",
+    va_net: "Valeur nette",
+    va_bycat: "Par catégorie",
+    va_method: "Méthode : coût moyen pondéré recalculé à chaque réception, stock évalué au plus bas du coût et de la valeur nette de réalisation (IAS 2, qui n'admet pas le LIFO). Le coût inclut la TVA non récupérable et les frais d'approche. Le traitement fiscal du stock (Income Tax Act, section 22) doit être confirmé par votre comptable.",
     csv_cols: ['ID', 'Article', "Nom d'origine", 'Section', 'Emplacement', 'Étagère / boîte / conteneur', 'Type', 'Quantité', 'Minimum', 'Statut', 'Unités par conditionnement', 'Unités au total', 'Fournisseur', 'Dernier achat', 'Notes', 'Données à vérifier']
+  },
+  pt: {
+    inventory: "Inventário",
+    language: "Língua",
+    familyAria: "Família de artigos",
+    fam_all: "Todos",
+    fam_stock: "Stock",
+    fam_asset: "Ativos",
+    famdesc_all: "Consumíveis e artigos duradouros, todos os locais.",
+    famdesc_stock: "Consumíveis que se gastam e se repõem. Aplicam-se alertas de stock mínimo.",
+    famdesc_asset: "Artigos duradouros, como mobiliário, equipamento e ferramentas. Sem alertas de reposição.",
+    tilesAria: "Resumo",
+    t_total: "Artigos",
+    t_out: "Esgotado",
+    t_low: "Stock baixo",
+    t_expired: "Expirado",
+    t_expiring: "A expirar",
+    t_verify: "A verificar",
+    placeholder: "Pesquisar um artigo, marca ou local",
+    searchAria: "Pesquisar no inventário",
+    clearSearch: "Limpar pesquisa",
+    filtersAria: "Filtros",
+    section: "Secção",
+    location: "Local",
+    status: "Estado",
+    sortBy: "Ordenar por",
+    all_sections: "Todas as secções",
+    all_locations: "Todos os locais",
+    st_all: "Todos",
+    st_attention: "Requer atenção",
+    st_out: "Esgotado",
+    st_low: "Stock baixo",
+    st_expiring: "A expirar",
+    st_expired: "Expirado",
+    st_ok: "OK",
+    st_verify: "Dados a verificar",
+    so_auto: "Prioridade",
+    dir_asc: "Crescente",
+    dir_desc: "Decrescente",
+    dir_toggle: "Inverter a ordem",
+    h_item: "Artigo",
+    h_place: "Local",
+    h_type: "Tipo",
+    h_qty: "Qtd.",
+    h_min: "Mín.",
+    h_status: "Estado",
+    s_out: "Esgotado",
+    s_low: "Stock baixo",
+    s_ok: "OK",
+    s_expired: "Expirado",
+    s_expiring: "A expirar",
+    type_stock: "Stock",
+    type_asset: "Ativo",
+    count_all: "{n} artigos",
+    count_some: "{n} de {t} artigos",
+    more: "Mostrar mais {n}",
+    moreAll: "Mostrar tudo",
+    noResults: "Nenhum artigo corresponde à pesquisa.",
+    resetFilters: "Repor pesquisa e filtros",
+    exportCsv: "Exportar CSV",
+    loading: "A carregar o inventário",
+    loadError: "Não foi possível carregar o inventário. Recarregue a página.",
+    close: "Fechar",
+    updated: "Dados de {date}",
+    foot: "Castello di Alice",
+    d_qty: "Quantidade",
+    d_min: "Quantidade mínima",
+    d_notset: "Não definida",
+    d_pack: "Unidades por embalagem",
+    d_bal: "Total de unidades",
+    d_in: "Recebido",
+    d_out: "Saído",
+    d_sup: "Fornecedor",
+    d_lp: "Última compra",
+    d_notes: "Notas",
+    d_type: "Tipo",
+    d_original: "Nome original: {n}",
+    d_elsewhere: "Mesmo artigo noutros locais",
+    d_total: "Total",
+    d_checks: "Dados a verificar",
+    k_shelf: "Prateleira",
+    k_box: "Caixa",
+    k_container: "Contentor",
+    f_min_500: "A quantidade mínima está registada como 500, o que parece um erro de introdução.",
+    f_balance_gap: "O total de unidades não é igual à quantidade vezes as unidades por embalagem.",
+    f_flag_no_min: "Assinalado como stock baixo nos dados de origem, mas sem quantidade mínima definida.",
+    f_suspect_name: "O nome do artigo parece corrompido.",
+    f_dup_row: "O mesmo artigo está registado mais do que uma vez neste local.",
+    f_qty_missing: "Não há quantidade registada.",
+    login_title: "Iniciar sessão",
+    login_sub: "O acesso ao inventário está limitado à equipa.",
+    lbl_email: "E-mail",
+    lbl_password: "Palavra-passe",
+    signin: "Iniciar sessão",
+    signing: "A iniciar sessão",
+    login_err: "E-mail ou palavra-passe incorretos.",
+    login_net: "A ligação falhou. Tente novamente.",
+    signout: "Terminar sessão",
+    noaccess: "Esta conta não tem acesso ao inventário. Contacte um administrador.",
+    role_admin: "Administrador",
+    role_editor: "Editor",
+    role_viewer: "Leitor",
+    a_add: "Adicionar um artigo",
+    a_edit: "Editar",
+    a_save: "Guardar",
+    a_cancel: "Cancelar",
+    a_delete: "Eliminar este artigo",
+    a_delete_confirm: "Confirmar eliminação",
+    a_saved: "Guardado.",
+    a_error: "Não foi possível guardar a alteração.",
+    a_required: "O nome, a secção e o local são obrigatórios.",
+    a_verified: "Marcar como verificado",
+    mv_title: "Movimento de stock",
+    mv_add: "Receber (adicionar)",
+    mv_remove: "Dar saída (remover)",
+    mv_set: "Definir para (contagem)",
+    mv_amount: "Quantidade",
+    mv_reason: "Motivo (opcional)",
+    mv_apply: "Aplicar",
+    mv_minus: "Remover um",
+    mv_plus: "Adicionar um",
+    hist: "Histórico",
+    hist_none: "Ainda não há movimentos registados.",
+    hist_to: "agora {n}",
+    ph_title: "Fotografias",
+    ph_add: "Adicionar uma fotografia",
+    ph_remove: "Remover esta fotografia",
+    ph_busy: "A carregar",
+    fld_name: "Nome (inglês)",
+    fld_name_it: "Nome (italiano)",
+    fld_name_fr: "Nome (francês)",
+    fld_section: "Secção",
+    fld_loc: "Local",
+    fld_sub_kind: "Prateleira, caixa ou contentor",
+    fld_sub_v: "Número ou etiqueta",
+    fld_family: "Tipo",
+    fld_qty: "Quantidade",
+    fld_min: "Quantidade mínima",
+    fld_pack: "Unidades por embalagem",
+    fld_sup: "Fornecedor",
+    fld_lp: "Última compra",
+    fld_exp: "Data de validade",
+    fld_notes: "Notas",
+    fld_notes_it: "Notas (italiano)",
+    fld_notes_fr: "Notas (francês)",
+    fld_trans: "Traduções",
+    fld_none: "Nenhum",
+    team: "Equipa",
+    team_title: "Acesso da equipa",
+    team_you: "você",
+    imp_title: "A base de dados está vazia.",
+    imp_text: "O catálogo contém {n} artigos, prontos a importar.",
+    imp_btn: "Importar {n} artigos",
+    imp_prog: "A importar {d} de {n}",
+    imp_done: "Importação concluída.",
+    imp_err: "A importação falhou. Nada foi substituído, pode tentar novamente.",
+    d_expiry: "Data de validade",
+    d_updated: "Última alteração",
+    mg_open: "Gestão",
+    mg_title: "Gestão e verificação",
+    mg_tab_verify: "Verificação",
+    mg_tab_places: "Locais",
+    mg_tab_cats: "Categorias",
+    mg_tab_refs: "Referências",
+    lvl_1: "Local",
+    lvl_2: "Secção",
+    lvl_3: "Local",
+    fld_cat: "Categoria",
+    fld_subcat: "Subcategoria",
+    category: "Categoria",
+    all_cats: "Todas as categorias",
+    cat_none: "Sem categoria",
+    d_ref: "Referência",
+    d_cat: "Categoria",
+    d_verif: "Última verificação",
+    v_never: "Nunca verificado",
+    st_unverified: "Ainda não verificado",
+    mg_validated: "Validado",
+    mg_unvalidated: "A validar",
+    mg_validate: "Validar",
+    mg_unvalidate: "Retirar validação",
+    mg_validate_all: "Validar tudo",
+    mg_rename: "Editar",
+    mg_delete: "Eliminar",
+    mg_cannot_delete: "Esta entrada não pode ser eliminada porque ainda está em uso.",
+    mg_exists: "Esta entrada já existe.",
+    mg_items: "artigos",
+    mg_back: "Voltar",
+    mg_show_list: "Mostrar artigos",
+    mg_pl_help: "Valide os locais, as secções e as localizações antes de a equipa os usar. Uma prateleira ou uma caixa continua a ser um detalhe do artigo. Mudar o nome de uma entrada atualiza todos os artigos que a usam.",
+    mg_pl_sum: "Entradas: {n}, validadas: {v}",
+    mg_add_site: "Adicionar um local",
+    mg_add_child_1: "Adicionar uma secção",
+    mg_add_child_2: "Adicionar uma localização",
+    mg_new_1: "Novo local",
+    mg_new_2: "Nova secção",
+    mg_new_3: "Nova localização",
+    mg_ct_help: "Valide as categorias antes de emitir referências. O código de uma categoria fica fixo depois de emitidas referências com ele.",
+    mg_ct_sum: "Categorias: {n}, subcategorias: {s}, validadas: {v}",
+    mg_to_classify: "Artigos a classificar ({n})",
+    mg_add_cat: "Adicionar uma categoria",
+    mg_add_sub: "Adicionar uma subcategoria",
+    mg_new_cat: "Nova categoria",
+    mg_new_sub: "Nova subcategoria",
+    mg_code3: "Código (3 letras)",
+    mg_code3_hint: "Três letras, por exemplo CLN. Passa a ser o início de todas as referências desta categoria.",
+    mg_codesub: "Código",
+    mg_codesub_hint: "Código curto da subcategoria, apenas letras e algarismos.",
+    mg_review: "Rever artigos",
+    mg_review_help: "Mova um artigo escolhendo outra subcategoria e guarde depois todas as alterações de uma vez.",
+    mg_review_empty: "Nenhum artigo nesta subcategoria.",
+    mg_save_moves: "Guardar as alterações ({n})",
+    mg_rf_help: "Uma referência é o código da categoria seguido de um número, por exemplo CLN-0042. Não depende do local, é emitida uma só vez e nunca muda. Os artigos \"A classificar\" não recebem referência.",
+    mg_rf_cat: "Categoria",
+    mg_rf_status: "Estado",
+    mg_rf_numbered: "Numerados",
+    mg_rf_wait: "Em espera",
+    mg_rf_next: "Próximo",
+    mg_rf_unc: "Artigos ainda por classificar: {n}. Recebem uma referência quando tiverem categoria.",
+    mg_rf_generate: "Gerar as referências ({n})",
+    mg_rf_confirm: "Confirmar a numeração ({n})",
+    mg_rf_done: "Referências geradas: {n}.",
+    v_title: "Verificação",
+    v_check_item: "Verificar este artigo",
+    v_reissue: "Emitir nova referência",
+    v_ref_mismatch: "A referência {r} pertence a uma categoria diferente da atual ({c}).",
+    v_help: "Percorra os artigos um a um: verifique a quantidade, o mínimo, a data de validade e o local, tire uma fotografia e confirme.",
+    v_scope_todo: "Ainda não verificados",
+    v_scope_flag: "Assinalados para verificar",
+    v_scope_all: "Todos os artigos",
+    v_count: "Seleção: {n} de {t} artigos",
+    v_start: "Começar",
+    v_progress: "Artigo {i} de {n}",
+    v_last: "Verificado pela última vez em {d}",
+    v_photo: "Tirar ou adicionar uma fotografia",
+    v_qty: "Quantidade contada",
+    v_confirm: "Confirmar e continuar",
+    v_prev: "Anterior",
+    v_skip: "Saltar",
+    v_stop: "Parar",
+    v_finished: "Verificação concluída",
+    v_summary: "Confirmados: {d}. Saltados: {s}.",
+    v_again: "Escolher outra seleção",
+    v_close: "Fechar",
+    v_reason: "Contagem de verificação",
+    mg_open_sk: "Controlo de stock",
+    pw_change: "Alterar palavra-passe",
+    view_aria: "Visualização",
+    view_list: "Vista em lista",
+    view_grid: "Vista em galeria",
+    role_storekeeper: "Responsável de armazém",
+    mt_note: "Os nomes dos artigos nesta língua são traduzidos automaticamente e podem conter erros.",
+    mg_tab_reorder: "Reposição",
+    mg_tab_expiry: "Validade",
+    mg_tab_value: "Valorização",
+    mg_tab_settings: "Definições",
+    fld_name_pt: "Nome (português)",
+    fld_name_zu: "Nome (zulu)",
+    fld_notes_pt: "Notas (português)",
+    fld_notes_zu: "Notas (zulu)",
+    fld_reorder: "Quantidade de reposição",
+    fld_supref: "Referência do fornecedor",
+    fld_unit: "Unidade",
+    d_mgmt: "Gestão",
+    d_more: "Mais detalhes",
+    d_supref: "Referência do fornecedor",
+    vc_cost: "Custo unitário sem IVA (ZAR)",
+    vc_cost_hint: "Valoriza o stock existente. Deixar vazio se o custo for desconhecido.",
+    co_title: "Custo e valor",
+    co_none: "Ainda não há custo registado. Introduza o custo unitário sem IVA para valorizar o stock atual, ou registe uma receção.",
+    co_open_ph: "Custo unitário sem IVA",
+    co_open_set: "Definir custo de abertura",
+    co_open_hint: "Custo de abertura do stock existente: {v}.",
+    co_vat_excl: "IVA excluído, por ser recuperável",
+    co_vat_incl: "IVA incluído, por não ser recuperável",
+    co_avg: "Custo médio",
+    co_last: "Último custo",
+    co_value: "Valor do stock",
+    co_writedown: "Imparidade para o VLR",
+    co_nrv: "Valor líquido de realização por unidade",
+    co_nrv_hint: "Opcional. Se for inferior ao custo médio, o stock é valorizado por este valor (o menor entre o custo e o VLR).",
+    co_hist: "Histórico de preços",
+    co_hist_none: "Nenhuma receção nem custo de abertura registados.",
+    co_h_open: "Custo de abertura",
+    co_h_rec: "Receção",
+    co_h_avg: "médio {a}",
+    lot_title: "Lotes e validade",
+    lot_none: "Nenhum lote com data em stock.",
+    lot_nolot: "Sem número de lote",
+    lot_recv: "recebido em {d}",
+    lot_noexp: "Sem data de validade",
+    lot_fefo: "As saídas consomem primeiro o lote que expira primeiro (FEFO).",
+    ex_late: "expirado há {n} d",
+    ex_left: "faltam {n} d",
+    ex_help: "Artigos com data de validade. As saídas usam primeiro a validade mais próxima. Escolha o período a verificar.",
+    ex_window: "A expirar dentro de",
+    ex_w30: "30 dias",
+    ex_w60: "60 dias",
+    ex_w90: "90 dias",
+    ex_w180: "180 dias",
+    ex_wall: "Todas as datas",
+    ex_count: "{n} artigos",
+    ex_none: "Nenhum artigo com validade neste período.",
+    pw_title: "Alterar palavra-passe",
+    pw_new: "Nova palavra-passe",
+    pw_again: "Repita a nova palavra-passe",
+    pw_hint: "Pelo menos 8 caracteres.",
+    pw_short: "A palavra-passe deve ter pelo menos 8 caracteres.",
+    pw_mismatch: "As duas palavras-passe não coincidem.",
+    pw_done: "Palavra-passe atualizada.",
+    rc_title: "Receção de stock",
+    rc_help: "Registe uma entrega com o preço: a quantidade é somada e o custo médio recalculado.",
+    rc_btn: "Registar uma entrega",
+    rc_save: "Registar a entrega",
+    rc_qty: "Quantidade recebida",
+    rc_price: "Preço unitário sem IVA (ZAR)",
+    rc_price_hint: "Como na fatura do fornecedor, antes do IVA.",
+    rc_vat: "Taxa de IVA (%)",
+    rc_vat_rec: "IVA recuperável (empresa registada para IVA): excluir do custo",
+    rc_other: "Outros custos de toda a entrega (ZAR)",
+    rc_other_hint: "Transporte, direitos, manuseamento. Repartidos pela quantidade recebida.",
+    rc_date: "Data de receção",
+    rc_doc: "N.º da fatura ou guia de remessa",
+    rc_lot: "Número de lote",
+    rc_note: "Nota",
+    rc_invalid: "Introduza uma quantidade e um preço.",
+    rc_done: "{n} unidades recebidas.",
+    rc_preview_wait: "Introduza a quantidade e o preço para ver o custo.",
+    rc_p_unit: "Custo unitário: {u}",
+    rc_p_novat: "IVA excluído",
+    rc_p_avg: "Novo custo médio: {a}",
+    rc_p_vs: "face a {a} antes",
+    rc_p_gap: "O preço difere {p} do custo médio atual. Verifique a fatura.",
+    rc_p_total: "Entrega: {a} sem IVA, {b} com IVA.",
+    ro_help: "Artigos esgotados ou no mínimo ou abaixo dele. Quantidade sugerida: a maior entre a quantidade de reposição e a falta até ao mínimo. Os artigos sem mínimo nem quantidade de reposição mostram \"A definir\".",
+    ro_count: "{n} artigos a repor",
+    ro_none: "Nada a repor.",
+    ro_nosup: "Sem fornecedor registado",
+    ro_order: "A encomendar",
+    ro_define: "A definir",
+    se_help: "Definições usadas para calcular os custos. Confirme o estatuto de IVA com o seu contabilista.",
+    se_vat: "Taxa de IVA (%)",
+    se_currency: "Moeda",
+    se_vendor: "A empresa está registada para efeitos de IVA (IVA recuperável)",
+    se_vendor_hint: "Se assinalado, o IVA é excluído do custo do stock. Caso contrário, o IVA não recuperável é somado ao custo.",
+    team_help: "Gerir quem pode usar o inventário e o que cada pessoa pode fazer.",
+    team_roles_help: "Administrador: tudo. Responsável de armazém: stock, custos e receções. Editor: stock e fichas, sem custos. Leitor: só leitura.",
+    team_active: "Ativo",
+    team_add: "Adicionar uma pessoa",
+    team_add_help: "Crie a conta aqui: introduza o e-mail, a função e uma palavra-passe temporária que a pessoa altera após iniciar sessão. Sem palavra-passe, só o convite é guardado.",
+    team_create: "Criar a conta",
+    team_created: "Conta criada.",
+    team_exists: "Esta pessoa já tem conta.",
+    team_invited: "Convite guardado. A função aplica-se quando a conta for criada.",
+    team_last: "Tem de existir sempre pelo menos um administrador ativo.",
+    team_name: "Nome (opcional)",
+    team_nofn: "A criação de contas neste ecrã ainda não está ativa. O convite foi guardado: crie a conta no painel Supabase (Authentication, Add user) e a função aplica-se automaticamente.",
+    team_pending: "Convites pendentes",
+    team_reset: "Repor palavra-passe",
+    team_role: "Função",
+    team_temp_pw: "Palavra-passe temporária",
+    tr_title: "Importar traduções",
+    tr_help: "Selecione um ficheiro de traduções (JSON) para português e zulu. Um valor vazio no ficheiro mantém a tradução existente.",
+    tr_reading: "A ler o ficheiro",
+    tr_progress: "A importar {d} de {n}",
+    tr_done: "Importação concluída: {n} entradas atualizadas.",
+    tr_error: "A importação falhou. Verifique o ficheiro e tente novamente.",
+    va_help: "Valor do stock ao custo médio ponderado, ou ao valor líquido de realização se for inferior. IVA recuperável excluído.",
+    va_valued: "Artigos valorizados",
+    va_nocost: "Artigos em stock sem custo",
+    va_cost: "Valor ao custo",
+    va_wd: "Imparidade para o VLR",
+    va_net: "Valor líquido",
+    va_bycat: "Por categoria",
+    va_method: "Método: custo médio ponderado recalculado em cada receção, stock mensurado ao menor entre o custo e o valor líquido de realização (IAS 2, que não admite o LIFO). O custo inclui o IVA não recuperável e os custos de entrega. O tratamento fiscal das existências (Income Tax Act, secção 22) deve ser confirmado com o seu contabilista.",
+    csv_cols: ["ID", "Artigo", "Nome original", "Secção", "Local", "Prateleira / caixa / contentor", "Tipo", "Quantidade", "Mínimo", "Estado", "Unidades por embalagem", "Total de unidades", "Fornecedor", "Última compra", "Notas", "Dados a verificar"]
+  },
+  zu: {
+    inventory: "Uhlu lwempahla",
+    language: "Ulimi",
+    familyAria: "Uhlobo lwezinto",
+    fam_all: "Konke",
+    fam_stock: "Isitoko",
+    fam_asset: "Izimpahla",
+    famdesc_all: "Impahla esetshenziswayo nehlala isikhathi eside, zonke izindawo.",
+    famdesc_stock: "Impahla esetshenziswayo ephelayo bese ithengwa futhi. Kusebenza izexwayiso zesitoko esiphansi.",
+    famdesc_asset: "Izinto ezihlala isikhathi eside njengefenisha, imishini namathuluzi. Azikho izexwayiso zokuthenga futhi.",
+    tilesAria: "Isifinyezo",
+    t_total: "Izinto",
+    t_out: "Siphelile",
+    t_low: "Isitoko esiphansi",
+    t_expired: "Siphelelwe",
+    t_expiring: "Siseduze nokuphela",
+    t_verify: "Okuzoqinisekiswa",
+    placeholder: "Sesha into, uhlobo noma indawo",
+    searchAria: "Sesha ohlwini lwempahla",
+    clearSearch: "Sula usesho",
+    filtersAria: "Izihlungi",
+    section: "Ingxenye",
+    location: "Indawo",
+    status: "Isimo",
+    sortBy: "Hlela ngokuya nga",
+    all_sections: "Zonke izingxenye",
+    all_locations: "Zonke izindawo",
+    st_all: "Konke",
+    st_attention: "Kudinga ukunakwa",
+    st_out: "Siphelile",
+    st_low: "Isitoko esiphansi",
+    st_expiring: "Siseduze nokuphela",
+    st_expired: "Siphelelwe",
+    st_ok: "Kulungile",
+    st_verify: "Idatha okufanele iqinisekiswe",
+    so_auto: "Okubalulekile kuqala",
+    dir_asc: "Ukukhuphuka",
+    dir_desc: "Ukwehla",
+    dir_toggle: "Phendula ukulandelana",
+    h_item: "Into",
+    h_place: "Indawo",
+    h_type: "Uhlobo",
+    h_qty: "Inani",
+    h_min: "Okuncane",
+    h_status: "Isimo",
+    s_out: "Siphelile",
+    s_low: "Isitoko esiphansi",
+    s_ok: "Kulungile",
+    s_expired: "Siphelelwe",
+    s_expiring: "Siseduze nokuphela",
+    type_stock: "Isitoko",
+    type_asset: "Impahla",
+    count_all: "izinto ezingu-{n}",
+    count_some: "izinto ezingu-{n} kwezingu-{t}",
+    more: "Khombisa ezinye ezingu-{n}",
+    moreAll: "Khombisa konke",
+    noResults: "Ayikho into ehambisana nosesho lwakho.",
+    resetFilters: "Setha kabusha usesho nezihlungi",
+    exportCsv: "Landa i-CSV",
+    loading: "Iyalayisha uhlu lwempahla",
+    loadError: "Uhlu lwempahla alukwazanga ukulayishwa. Sicela ulayishe kabusha ikhasi.",
+    close: "Vala",
+    updated: "Idatha ka-{date}",
+    foot: "Castello di Alice",
+    d_qty: "Inani",
+    d_min: "Inani eliphansi kakhulu",
+    d_notset: "Akunqunyiwe",
+    d_pack: "Amayunithi ephaketheni ngalinye",
+    d_bal: "Inani eliphelele lamayunithi",
+    d_in: "Okutholiwe",
+    d_out: "Okukhishiwe",
+    d_sup: "Umphakeli",
+    d_lp: "Ukuthenga kokugcina",
+    d_notes: "Amanothi",
+    d_type: "Uhlobo",
+    d_original: "Igama lasekuqaleni: {n}",
+    d_elsewhere: "Into efanayo kwezinye izindawo",
+    d_total: "Isamba",
+    d_checks: "Idatha okufanele iqinisekiswe",
+    k_shelf: "Ishelufu",
+    k_box: "Ibhokisi",
+    k_container: "Isiqukathi",
+    f_min_500: "Inani eliphansi kakhulu liqoshwe njengo-500, okubonakala sengathi iphutha lokufaka.",
+    f_balance_gap: "Inani eliphelele lamayunithi alilingani nenani lokuphindaphinda ngamayunithi ephaketheni.",
+    f_flag_no_min: "Kumakiwe njengesitoko esiphansi kudatha yasekuqaleni, kodwa akukho nani eliphansi elinqunyiwe.",
+    f_suspect_name: "Igama lalento libonakala lonakele.",
+    f_dup_row: "Into efanayo ifakwe kaningi kule ndawo.",
+    f_qty_missing: "Alikho inani eliqoshiwe.",
+    login_title: "Ngena",
+    login_sub: "Ukufinyelela ohlwini lwempahla kukhawulelwe eqenjini kuphela.",
+    lbl_email: "I-imeyili",
+    lbl_password: "Iphasiwedi",
+    signin: "Ngena",
+    signing: "Iyangena",
+    login_err: "I-imeyili noma iphasiwedi akulungile.",
+    login_net: "Uxhumano lwehlulekile. Sicela uzame futhi.",
+    signout: "Phuma",
+    noaccess: "Le akhawunti ayinakho ukufinyelela ohlwini lwempahla. Sicela uxhumane nomlawuli.",
+    role_admin: "Umlawuli",
+    role_editor: "Umhleli",
+    role_viewer: "Obukayo",
+    a_add: "Engeza into",
+    a_edit: "Hlela",
+    a_save: "Gcina",
+    a_cancel: "Khansela",
+    a_delete: "Susa le nto",
+    a_delete_confirm: "Qinisekisa ukususa",
+    a_saved: "Kugciniwe.",
+    a_error: "Inguquko ayikwazanga ukugcinwa.",
+    a_required: "Igama, ingxenye nendawo kuyadingeka.",
+    a_verified: "Maka njengokuqinisekisiwe",
+    mv_title: "Ukuhamba kwesitoko",
+    mv_add: "Thola (engeza)",
+    mv_remove: "Khipha (susa)",
+    mv_set: "Setha ku- (ukubala)",
+    mv_amount: "Inani",
+    mv_reason: "Isizathu (akuphoqelekile)",
+    mv_apply: "Faka",
+    mv_minus: "Susa eyodwa",
+    mv_plus: "Engeza eyodwa",
+    hist: "Umlando",
+    hist_none: "Alukho ukuhamba okuqoshiwe okwamanje.",
+    hist_to: "manje {n}",
+    ph_title: "Izithombe",
+    ph_add: "Engeza isithombe",
+    ph_remove: "Susa lesi sithombe",
+    ph_busy: "Iyalayisha",
+    fld_name: "Igama (isiNgisi)",
+    fld_name_it: "Igama (isiNtaliyane)",
+    fld_name_fr: "Igama (isiFulentshi)",
+    fld_section: "Ingxenye",
+    fld_loc: "Indawo",
+    fld_sub_kind: "Ishelufu, ibhokisi noma isiqukathi",
+    fld_sub_v: "Inombolo noma ilebula",
+    fld_family: "Uhlobo",
+    fld_qty: "Inani",
+    fld_min: "Inani eliphansi kakhulu",
+    fld_pack: "Amayunithi ephaketheni ngalinye",
+    fld_sup: "Umphakeli",
+    fld_lp: "Ukuthenga kokugcina",
+    fld_exp: "Usuku lokuphelelwa",
+    fld_notes: "Amanothi",
+    fld_notes_it: "Amanothi (isiNtaliyane)",
+    fld_notes_fr: "Amanothi (isiFulentshi)",
+    fld_trans: "Ukuhumusha",
+    fld_none: "Lutho",
+    team: "Ithimba",
+    team_title: "Ukufinyelela kwethimba",
+    team_you: "wena",
+    imp_title: "Isizindalwazi asinalutho.",
+    imp_text: "Ikhathalogi iqukethe izinto ezingu-{n}, zikulungele ukungeniswa.",
+    imp_btn: "Ngenisa izinto ezingu-{n}",
+    imp_prog: "Iyangenisa {d} kwangu-{n}",
+    imp_done: "Ukungenisa kuphelile.",
+    imp_err: "Ukungenisa kuhlulekile. Akukho okubhalwe phezulu, ungazama futhi.",
+    d_expiry: "Usuku lokuphelelwa",
+    d_updated: "Inguquko yokugcina",
+    mg_open: "Ukuphatha",
+    mg_title: "Ukuphatha nokuqinisekisa",
+    mg_tab_verify: "Ukuqinisekisa",
+    mg_tab_places: "Izindawo",
+    mg_tab_cats: "Izigaba",
+    mg_tab_refs: "Izinkomba",
+    lvl_1: "Isizinda",
+    lvl_2: "Ingxenye",
+    lvl_3: "Indawo",
+    fld_cat: "Isigaba",
+    fld_subcat: "Isigaba esincane",
+    category: "Isigaba",
+    all_cats: "Zonke izigaba",
+    cat_none: "Akunasigaba",
+    d_ref: "Inkomba",
+    d_cat: "Isigaba",
+    d_verif: "Ukuqinisekisa kokugcina",
+    v_never: "Akukaze kuqinisekiswe",
+    st_unverified: "Akukaqinisekiswa",
+    mg_validated: "Kuqinisekisiwe",
+    mg_unvalidated: "Kumele kuqinisekiswe",
+    mg_validate: "Qinisekisa",
+    mg_unvalidate: "Hlehlisa ukuqinisekisa",
+    mg_validate_all: "Qinisekisa konke",
+    mg_rename: "Hlela",
+    mg_delete: "Susa",
+    mg_cannot_delete: "Lokhu akunakususwa ngoba kusasetshenziswa.",
+    mg_exists: "Lokhu sekukhona kakade.",
+    mg_items: "izinto",
+    mg_back: "Emuva",
+    mg_show_list: "Khombisa izinto",
+    mg_pl_help: "Qinisekisa izizinda, izingxenye nezindawo ngaphambi kokuba ithimba lizisebenzise. Ishelufu noma ibhokisi lihlala liyimininingwane yento. Ukushintsha igama kuvuselela zonke izinto ezilisebenzisayo.",
+    mg_pl_sum: "Okufakiwe: {n}, okuqinisekisiwe: {v}",
+    mg_add_site: "Engeza isizinda",
+    mg_add_child_1: "Engeza ingxenye",
+    mg_add_child_2: "Engeza indawo",
+    mg_new_1: "Isizinda esisha",
+    mg_new_2: "Ingxenye entsha",
+    mg_new_3: "Indawo entsha",
+    mg_ct_help: "Qinisekisa izigaba ngaphambi kokukhipha izinkomba. Ikhodi yesigaba iyaqina uma izinkomba sezikhishiwe ngayo.",
+    mg_ct_sum: "Izigaba: {n}, izigaba ezincane: {s}, eziqinisekisiwe: {v}",
+    mg_to_classify: "Izinto ezizohlelwa ({n})",
+    mg_add_cat: "Engeza isigaba",
+    mg_add_sub: "Engeza isigaba esincane",
+    mg_new_cat: "Isigaba esisha",
+    mg_new_sub: "Isigaba esincane esisha",
+    mg_code3: "Ikhodi (izinhlamvu ezi-3)",
+    mg_code3_hint: "Izinhlamvu ezintathu, isibonelo i-CLN. Iba ukuqala kazo zonke izinkomba zalesi sigaba.",
+    mg_codesub: "Ikhodi",
+    mg_codesub_hint: "Ikhodi emfushane yesigaba esincane, izinhlamvu nezinombolo kuphela.",
+    mg_review: "Buyekeza izinto",
+    mg_review_help: "Hambisa into ngokukhetha esinye isigaba esincane, bese ugcina konke ngasikhathi sinye.",
+    mg_review_empty: "Ayikho into kulesi sigaba esincane.",
+    mg_save_moves: "Gcina izinguquko ({n})",
+    mg_rf_help: "Inkomba yikhodi yesigaba elandelwa yinombolo, isibonelo i-CLN-0042. Ayixhomekile endaweni, ikhishwa kanye futhi ayiguquki. Izinto ezisesigabeni \"Ezizohlelwa\" azitholi nkomba.",
+    mg_rf_cat: "Isigaba",
+    mg_rf_status: "Isimo",
+    mg_rf_numbered: "Ezinezinombolo",
+    mg_rf_wait: "Zilindile",
+    mg_rf_next: "Olandelayo",
+    mg_rf_unc: "Izinto ezingakahlelwa: {n}. Zitholakala inkomba uma sezinesigaba.",
+    mg_rf_generate: "Dala izinkomba ({n})",
+    mg_rf_confirm: "Qinisekisa ukunombolwa ({n})",
+    mg_rf_done: "Izinkomba ezidaliwe: {n}.",
+    v_title: "Ukuqinisekisa",
+    v_check_item: "Hlola le nto",
+    v_reissue: "Khipha inkomba entsha",
+    v_ref_mismatch: "Inkomba {r} ingeyesinye isigaba hhayi lesi samanje ({c}).",
+    v_help: "Hamba phezu kwezinto eyodwa ngayodwa: hlola inani, okuncane, usuku lokuphelelwa nendawo, thatha isithombe bese uqinisekisa.",
+    v_scope_todo: "Okungakaqinisekiswa",
+    v_scope_flag: "Okumakiwe ukuze kuhlolwe",
+    v_scope_all: "Zonke izinto",
+    v_count: "Okukhethiwe: izinto ezingu-{n} kwezingu-{t}",
+    v_start: "Qala",
+    v_progress: "Into {i} kwezingu-{n}",
+    v_last: "Kuqinisekiswe kokugcina ngo-{d}",
+    v_photo: "Thatha noma wengeze isithombe",
+    v_qty: "Inani elibaliwe",
+    v_confirm: "Qinisekisa uqhubeke",
+    v_prev: "Okwangaphambili",
+    v_skip: "Yeqa",
+    v_stop: "Misa",
+    v_finished: "Ukuqinisekisa kuphelile",
+    v_summary: "Okuqinisekisiwe: {d}. Okweqiwe: {s}.",
+    v_again: "Khetha okunye okukhethiwe",
+    v_close: "Vala",
+    v_reason: "Ukubala kokuqinisekisa",
+    mg_open_sk: "Ukulawula isitoko",
+    pw_change: "Shintsha iphasiwedi",
+    view_aria: "Ukubukeka",
+    view_list: "Ukubuka uhlu",
+    view_grid: "Ukubuka igalari",
+    role_storekeeper: "Umgcini wesitoko",
+    mt_note: "Amagama ezinto kulolu limi ahunyushwe ngomshini futhi angaba namaphutha.",
+    mg_tab_reorder: "Ukuphinda uthenge",
+    mg_tab_expiry: "Ukuphelelwa isikhathi",
+    mg_tab_value: "Ukulinganisa inani",
+    mg_tab_settings: "Izilungiselelo",
+    fld_name_pt: "Igama (isiPutukezi)",
+    fld_name_zu: "Igama (isiZulu)",
+    fld_notes_pt: "Amanothi (isiPutukezi)",
+    fld_notes_zu: "Amanothi (isiZulu)",
+    fld_reorder: "Inani lokuphinda uthenge",
+    fld_supref: "Inkomba yomphakeli",
+    fld_unit: "Iyunithi",
+    d_mgmt: "Ukuphatha",
+    d_more: "Imininingwane eyengeziwe",
+    d_supref: "Inkomba yomphakeli",
+    vc_cost: "Izindleko zeyunithi ngaphandle kwe-VAT (ZAR)",
+    vc_cost_hint: "Kulinganisa inani lesitoko esikhona. Yeka kungenalutho uma izindleko zingaziwa.",
+    co_title: "Izindleko nenani",
+    co_none: "Azikho izindleko ezifakiwe. Faka izindleko zeyunithi ngaphandle kwe-VAT ukuze kulinganiswe isitoko samanje, noma uqophe ukutholwa.",
+    co_open_ph: "Izindleko zeyunithi ngaphandle kwe-VAT",
+    co_open_set: "Setha izindleko zokuvula",
+    co_open_hint: "Izindleko zokuvula zesitoko esikhona: {v}.",
+    co_vat_excl: "i-VAT ayifakiwe, ngoba iyabuyiselwa",
+    co_vat_incl: "i-VAT ifakiwe, ngoba ayibuyiselwa",
+    co_avg: "Izindleko eziphakathi",
+    co_last: "Izindleko zokugcina",
+    co_value: "Inani lesitoko",
+    co_writedown: "Ukwehliswa kuya ku-NRV",
+    co_nrv: "Inani elilindelekile lokuthengisa ngeyunithi",
+    co_nrv_hint: "Akuphoqelekile. Uma lingaphansi kwezindleko eziphakathi, isitoko silinganiswa ngalelo nani (okuphansi phakathi kwezindleko ne-NRV).",
+    co_hist: "Umlando wamanani",
+    co_hist_none: "Alukho ukutholwa noma izindleko zokuvula okuqoshiwe.",
+    co_h_open: "Izindleko zokuvula",
+    co_h_rec: "Ukutholwa",
+    co_h_avg: "isilinganiso {a}",
+    lot_title: "Amaqoqo nokuphelelwa isikhathi",
+    lot_none: "Alikho iqoqo elinosuku esitokweni.",
+    lot_nolot: "Alinayo inombolo yeqoqo",
+    lot_recv: "kutholwe ngo-{d}",
+    lot_noexp: "Alinalo usuku lokuphelelwa",
+    lot_fefo: "Ukukhipha kusebenzisa kuqala iqoqo eliphelelwa isikhathi kuqala (FEFO).",
+    ex_late: "{n} d edlule",
+    ex_left: "{n} d esele",
+    ex_help: "Izinto ezinosuku lokuphelelwa. Ukukhipha kusebenzisa kuqala usuku oluseduze kakhulu. Khetha isikhathi sokubheka.",
+    ex_window: "Ziphelelwa phakathi kwe-",
+    ex_w30: "izinsuku ezingu-30",
+    ex_w60: "izinsuku ezingu-60",
+    ex_w90: "izinsuku ezingu-90",
+    ex_w180: "izinsuku ezingu-180",
+    ex_wall: "Zonke izinsuku",
+    ex_count: "izinto ezingu-{n}",
+    ex_none: "Ayikho into enosuku lokuphelelwa kulesi sikhathi.",
+    pw_title: "Shintsha iphasiwedi",
+    pw_new: "Iphasiwedi entsha",
+    pw_again: "Phinda iphasiwedi entsha",
+    pw_hint: "Okungenani izinhlamvu ezingu-8.",
+    pw_short: "Iphasiwedi kumele ibe nezinhlamvu ezingu-8 okungenani.",
+    pw_mismatch: "Amaphasiwedi amabili awafani.",
+    pw_done: "Iphasiwedi ivuselelwe.",
+    rc_title: "Ukwamukela isitoko",
+    rc_help: "Qopha ukulethwa kanye nentengo yakho: inani liyengezwa futhi izindleko eziphakathi ziphinde zibalwe.",
+    rc_btn: "Qopha ukulethwa",
+    rc_save: "Qopha ukulethwa",
+    rc_qty: "Inani elitholiwe",
+    rc_price: "Intengo yeyunithi ngaphandle kwe-VAT (ZAR)",
+    rc_price_hint: "Njengasemfakweni womphakeli, ngaphambi kwe-VAT.",
+    rc_vat: "Izinga le-VAT (%)",
+    rc_vat_rec: "i-VAT iyabuyiselwa (ibhizinisi libhalisiwe ne-VAT): yikhiphe ezindlekweni",
+    rc_other: "Ezinye izindleko zokulethwa konke (ZAR)",
+    rc_other_hint: "Ukuthutha, intela, ukuphatha. Kusabalaliswa ngenani elitholiwe.",
+    rc_date: "Usuku lokutholwa",
+    rc_doc: "Inombolo yefemu noma yenothi lokulethwa",
+    rc_lot: "Inombolo yeqoqo",
+    rc_note: "Inothi",
+    rc_invalid: "Faka inani nentengo.",
+    rc_done: "amayunithi angu-{n} atholiwe.",
+    rc_preview_wait: "Faka inani nentengo ukuze ubone izindleko.",
+    rc_p_unit: "Izindleko zeyunithi: {u}",
+    rc_p_novat: "i-VAT ayifakiwe",
+    rc_p_avg: "Izindleko eziphakathi ezintsha: {a}",
+    rc_p_vs: "uma kuqhathaniswa no-{a} ngaphambili",
+    rc_p_gap: "Intengo iyahluka ngo-{p} ezindlekweni eziphakathi zamanje. Hlola ifemu.",
+    rc_p_total: "Ukulethwa: {a} ngaphandle kwe-VAT, {b} nge-VAT.",
+    ro_help: "Izinto eziphelile noma ezisemgqeni ophansi noma ngaphansi kwawo. Inani eliphakanyisiwe: elikhulu phakathi kwenani lokuphinda uthenge nokushoda kuya kokuncane. Izinto ezingenakho okuncane noma inani lokuphinda uthenge zikhombisa \"Okufanele kunqunywe\".",
+    ro_count: "izinto ezingu-{n} okumele zithengwe futhi",
+    ro_none: "Akukho okumele kuthengwe futhi.",
+    ro_nosup: "Alukho umphakeli oqoshiwe",
+    ro_order: "Okumele kuthengwe",
+    ro_define: "Okufanele kunqunywe",
+    se_help: "Izilungiselelo ezisetshenziselwa ukubala izindleko. Qinisekisa isimo se-VAT nomkhaphi wakho wezimali.",
+    se_vat: "Izinga le-VAT (%)",
+    se_currency: "Imali",
+    se_vendor: "Ibhizinisi libhalisiwe ne-VAT (i-VAT iyabuyiselwa)",
+    se_vendor_hint: "Uma ikhethiwe, i-VAT ayifakwa ezindlekweni zesitoko. Uma kungenjalo, i-VAT engabuyiselwa yengezwa ezindlekweni.",
+    team_help: "Phatha ukuthi ngubani ongasebenzisa uhlu lwempahla nokuthi ngamunye angakwenza.",
+    team_roles_help: "Umlawuli: konke. Umgcini wesitoko: isitoko, izindleko nokutholwa. Umhleli: isitoko nemininingwane yezinto, ngaphandle kwezindleko. Obukayo: ukufunda kuphela.",
+    team_active: "Uyasebenza",
+    team_add: "Engeza umuntu",
+    team_add_help: "Dala i-akhawunti lapha: faka i-imeyili, indima nephasiwedi yesikhashana umuntu ayishintshayo ngemva kokungena. Ngaphandle kwephasiwedi, isimemo kuphela esigcinwayo.",
+    team_create: "Dala i-akhawunti",
+    team_created: "I-akhawunti idaliwe.",
+    team_exists: "Lo muntu usenayo i-akhawunti.",
+    team_invited: "Isimemo sigciniwe. Indima isebenza uma i-akhawunti idalwa.",
+    team_last: "Kumele kuhlale kukhona umlawuli oyedwa osebenzayo okungenani.",
+    team_name: "Igama (akuphoqelekile)",
+    team_nofn: "Ukudala i-akhawunti kulesi sikrini akukakavulwa. Isimemo sigciniwe: dala i-akhawunti kudeshibhodi ye-Supabase (Authentication, Add user) futhi indima izosebenza ngokuzenzakalela.",
+    team_pending: "Izimemo ezisalindile",
+    team_reset: "Setha kabusha iphasiwedi",
+    team_role: "Indima",
+    team_temp_pw: "Iphasiwedi yesikhashana",
+    tr_title: "Ngenisa uhlelo lokuhumusha",
+    tr_help: "Khetha ifayela lokuhumusha (JSON) lesiPutukezi nesiZulu. Inani elingenalutho efayelini ligcina umhumusho okhona.",
+    tr_reading: "Iyafunda ifayela",
+    tr_progress: "Iyangenisa {d} kwangu-{n}",
+    tr_done: "Ukungenisa kuphelile: izinto ezingu-{n} zivuselelwe.",
+    tr_error: "Ukungenisa kuhlulekile. Hlola ifayela uzame futhi.",
+    va_help: "Inani lesitoko ngezindleko eziphakathi ezilinganisiwe, noma ngenani elilindelekile lokuthengisa uma liphansi. i-VAT ebuyiselwayo ayifakiwe.",
+    va_valued: "Izinto ezilinganisiwe",
+    va_nocost: "Izinto esitokweni ezingenazo izindleko",
+    va_cost: "Inani ngezindleko",
+    va_wd: "Ukwehliswa kuya ku-NRV",
+    va_net: "Inani eliphelele",
+    va_bycat: "Ngesigaba",
+    va_method: "Indlela: izindleko eziphakathi ezilinganisiwe ziphinde zibalwe ekutholweni ngakunye, isitoko silinganiswa ngokuphansi phakathi kwezindleko nenani elilindelekile lokuthengisa (IAS 2, engavumeli i-LIFO). Izindleko zifaka i-VAT engabuyiselwa nezindleko zokulethwa. Indlela yentela yesitoko (Income Tax Act, isigaba 22) kumele iqinisekiswe nomkhaphi wakho wezimali.",
+    csv_cols: ["ID", "Into", "Igama lasekuqaleni", "Ingxenye", "Indawo", "Ishelufu / ibhokisi / isiqukathi", "Uhlobo", "Inani", "Okuncane", "Isimo", "Amayunithi ephaketheni", "Inani eliphelele lamayunithi", "Umphakeli", "Ukuthenga kokugcina", "Amanothi", "Idatha okufanele iqinisekiswe"]
   }
 };
 /*END I18N*/
@@ -1111,13 +2359,14 @@ const STRINGS = {
     if (v) for (const x in v) s = s.replace('{' + x + '}', v[x]);
     return s;
   };
-  const nf = (n) => (n == null ? '' : Number(n).toLocaleString(lang));
+  const LOC = () => (lang === 'pt' ? 'pt-PT' : lang);
+  const nf = (n) => (n == null ? '' : Number(n).toLocaleString(LOC()));
   const tr = (map, key) => (lang === 'en' ? key : ((TR[map][key] || {})[lang] || key));
   const nameOf = (it) => tr('items', it.name);
   const secOf = (it) => tr('sections', it.section);
   const locOf = (it) => tr('locations', it.loc);
   const subOf = (it) => (it.sub ? t('k_' + it.sub.kind) + ' ' + it.sub.v : '');
-  const fmtDate = (iso) => { try { const p = String(iso).slice(0, 10).split('-').map(Number); return new Intl.DateTimeFormat(lang, { dateStyle: 'medium' }).format(new Date(p[0], p[1] - 1, p[2])); } catch (e) { return iso; } };
+  const fmtDate = (iso) => { try { const p = String(iso).slice(0, 10).split('-').map(Number); return new Intl.DateTimeFormat(LOC(), { dateStyle: 'medium' }).format(new Date(p[0], p[1] - 1, p[2])); } catch (e) { return iso; } };
   const normKey = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '');
 
   function el(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
@@ -1129,7 +2378,7 @@ const STRINGS = {
     document.querySelectorAll('[data-i18n-aria]').forEach((e) => { e.setAttribute('aria-label', t(e.dataset.i18nAria)); });
     document.querySelectorAll('[data-i18n-ph]').forEach((e) => { e.setAttribute('placeholder', t(e.dataset.i18nPh)); });
     document.querySelectorAll('#lang button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
-    $('foot').textContent = t('foot');
+    $('foot').textContent = t('foot') + ((lang === 'pt' || lang === 'zu') ? ' · ' + t('mt_note') : '');
     renderUser();
     if (META) $('meta').textContent = t('updated', { date: fmtDate(META.generated_at) });
     fillSelects();
@@ -1271,34 +2520,6 @@ const STRINGS = {
     return el('span', 'chip ' + k, t('s_' + k));
   }
 
-  function renderRows() {
-    const body = $('rows'); body.textContent = '';
-    const frag = document.createDocumentFragment();
-    const end = Math.min(S.shown, VIEW.length);
-    for (let n = 0; n < end; n++) {
-      const i = VIEW[n], it = ITEMS[i];
-      const tr_ = el('tr'); tr_.tabIndex = 0; tr_.dataset.i = i; tr_.setAttribute('role', 'button');
-      const c1 = el('td', 'c-name'); const nm = el('span', 'iname', nameOf(it)); c1.appendChild(nm);
-      if (it.flags && it.flags.length) { const f = el('span', 'vflag', '!'); f.title = t('st_verify'); f.setAttribute('aria-label', t('st_verify')); nm.appendChild(f); }
-      if (it.vAt) { const k = el('span', 'vtick'); k.title = t('d_verif') + ': ' + fmtDate(it.vAt); nm.appendChild(k); }
-      if (lang !== 'en' && nameOf(it) !== it.name) c1.appendChild(el('span', 'isub', it.name));
-      if (it.ref) c1.appendChild(el('span', 'iref', it.ref));
-      const c2 = el('td', 'c-place'); const pl = el('span', 'iplace', locOf(it) + (it.sub ? ' · ' + subOf(it) : '')); pl.appendChild(el('span', 'sec', secOf(it))); c2.appendChild(pl);
-      const c3 = el('td', 'c-type'); c3.appendChild(el('span', 'chip ' + familyOf(it), t('type_' + familyOf(it))));
-      const c4 = el('td', 'c-qty num'); c4.appendChild(el('span', 'qty', it.qty == null ? '–' : nf(it.qty)));
-      const c5 = el('td', 'c-min num dim', it.min == null ? '' : nf(it.min));
-      const c6 = el('td', 'c-status'); c6.appendChild(statusChip(i));
-      [c1, c2, c3, c4, c5, c6].forEach((c) => tr_.appendChild(c));
-      frag.appendChild(tr_);
-    }
-    body.appendChild(frag);
-    const empty = VIEW.length === 0;
-    $('list').hidden = empty; $('empty').hidden = !empty;
-    const left = VIEW.length - end;
-    $('more').hidden = left <= 0;
-    if (left > 0) $('morebtn').textContent = t('more', { n: nf(Math.min(PAGE, left)) }) + ' (' + nf(left) + ')';
-  }
-
   function renderCount() {
     const total = scope().length;
     $('count').textContent = VIEW.length === total && !S.q ? t('count_all', { n: nf(VIEW.length) }) : t('count_some', { n: nf(VIEW.length), t: nf(total) });
@@ -1310,59 +2531,6 @@ const STRINGS = {
     syncSort();
     renderTiles(); renderCount(); renderRows();
     $('clearq').hidden = !S.q;
-  }
-
-  // ---------- detail ----------
-  function fact(dl_, label, valueNode) { const d = el('div'); d.appendChild(el('dt', null, label)); const dd = el('dd'); if (typeof valueNode === 'string') dd.textContent = valueNode; else dd.appendChild(valueNode); d.appendChild(dd); dl_.appendChild(d); }
-
-  function openDetail(i) {
-    const it = ITEMS[i];
-    CUR = i;
-    const keep = $('detail').open ? $('d-body').scrollTop : 0;
-    $('d-name').textContent = nameOf(it);
-    const orig = $('d-orig');
-    if (lang !== 'en' && nameOf(it) !== it.name) { orig.textContent = t('d_original', { n: it.name }); orig.hidden = false; } else { orig.hidden = true; }
-    $('d-place').textContent = [secOf(it), locOf(it), subOf(it)].filter(Boolean).join(' › ');
-    const body = $('d-body'); body.textContent = '';
-    const chips = el('div', 'chips'); chips.appendChild(statusChip(i)); chips.appendChild(el('span', 'chip ' + familyOf(it), t('type_' + familyOf(it)))); body.appendChild(chips);
-    if (DB) { const ps = photoSection(i); if (ps) body.appendChild(ps); }
-    if (it.photos && it.photos.length) { const g = el('div', 'gallery'); it.photos.forEach((p) => { const im = document.createElement('img'); im.src = p; im.alt = nameOf(it); im.loading = 'lazy'; g.appendChild(im); }); body.appendChild(g); }
-    const facts = el('dl', 'facts');
-    if (DB) detailExtras(facts, it);
-    fact(facts, t('d_qty'), it.qty == null ? '–' : nf(it.qty));
-    if (familyOf(it) === 'stock') fact(facts, t('d_min'), it.min == null ? t('d_notset') : nf(it.min));
-    if (it.pack) fact(facts, t('d_pack'), nf(it.pack));
-    const totalUnits = DB ? (it.pack && it.qty != null ? it.qty * it.pack : null) : it.bal;
-    if (totalUnits != null && totalUnits !== it.qty) fact(facts, t('d_bal'), nf(totalUnits));
-    if (it.in) fact(facts, t('d_in'), nf(it.in));
-    if (it.out) fact(facts, t('d_out'), nf(it.out));
-    if (it.sup) fact(facts, t('d_sup'), it.sup);
-    if (it.lp) fact(facts, t('d_lp'), fmtDate(it.lp));
-    if (it.expiry) fact(facts, t('d_expiry'), fmtDate(it.expiry));
-    if (it.notes) fact(facts, t('d_notes'), tr('notes', it.notes));
-    body.appendChild(facts);
-    if (DB && canEdit()) { body.appendChild(stockControl(i)); if (REFS()) body.appendChild(verifySection(i)); }
-    const same = (BYKEY.get(KEYS[i]) || []).filter((j) => j !== i);
-    if (same.length) {
-      const s = el('div', 'sect'); s.appendChild(el('h3', null, t('d_elsewhere')));
-      const ul = el('ul', 'others'); let tot = it.qty || 0;
-      same.forEach((j) => { const o = ITEMS[j]; tot += o.qty || 0; const li = el('li'); li.appendChild(el('span', null, secOf(o) + ' › ' + locOf(o) + (o.sub ? ' · ' + subOf(o) : ''))); li.appendChild(el('strong', null, o.qty == null ? '–' : nf(o.qty))); ul.appendChild(li); });
-      const lt = el('li', 'total'); lt.appendChild(el('span', null, t('d_total'))); lt.appendChild(el('span', null, nf(tot))); ul.appendChild(lt);
-      s.appendChild(ul); body.appendChild(s);
-    }
-    if (it.flags && it.flags.length) {
-      const s = el('div', 'sect'); s.appendChild(el('h3', null, t('d_checks')));
-      const ul = el('ul', 'checks'); it.flags.forEach((f) => ul.appendChild(el('li', null, t('f_' + f)))); s.appendChild(ul);
-      if (DB && canEdit()) { const vb = mkBtn(t('a_verified'), 'btn', () => markVerified(i)); vb.style.marginTop = '8px'; s.appendChild(vb); }
-      body.appendChild(s);
-    }
-    if (DB) {
-      body.appendChild(historySection(i));
-      if (canEdit()) { const eb = mkBtn(t('a_edit'), 'btn', () => { $('detail').close(); openEditor(i); }); body.appendChild(eb); }
-    }
-    const dlg = $('detail');
-    if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', ''); }
-    body.scrollTop = keep;
   }
 
   // ---------- CSV ----------
@@ -1424,8 +2592,12 @@ const STRINGS = {
   const DB = !!(CFG.url && CFG.key && window.supabase);
   const PLACES = {"order":["New Store Room","Tool Room","Kitchen Inventory","Laundry","Management Offices","Garages","Lanseria Depot"],"sections":{"Management Offices":{"it":"Uffici direzionali","fr":"Bureaux de direction"},"New Store Room":{"it":"Nuovo magazzino","fr":"Nouvelle réserve"},"Tool Room":{"it":"Magazzino attrezzi","fr":"Local des outils"},"Lanseria Depot":{"it":"Deposito di Lanseria","fr":"Dépôt de Lanseria"},"Kitchen Inventory":{"it":"Inventario cucina","fr":"Inventaire cuisine"},"Garages":{"it":"Garage","fr":"Garages"},"Laundry":{"it":"Lavanderia","fr":"Buanderie"}},"locations":{"Reception Office":{"it":"Ufficio reception","fr":"Bureau de réception"},"Denise's Office":{"it":"Ufficio di Denise","fr":"Bureau de Denise"},"Marco's Office":{"it":"Ufficio di Marco","fr":"Bureau de Marco"},"Chad's Office":{"it":"Ufficio di Chad","fr":"Bureau de Chad"},"Martina's Office":{"it":"Ufficio di Martina","fr":"Bureau de Martina"},"Management Bathroom":{"it":"Bagno della direzione","fr":"Salle de bain de la direction"},"Staff Canteen":{"it":"Mensa del personale","fr":"Cantine du personnel"},"IT Room":{"it":"Sala IT","fr":"Salle informatique"},"Pictures in the Cortege":{"it":"Quadri nel Cortège","fr":"Tableaux dans le Cortège"},"Tools":{"it":"Attrezzi","fr":"Outils"},"Consumables":{"it":"Materiali di consumo","fr":"Consommables"},"Lanseria Depot":{"it":"Deposito di Lanseria","fr":"Dépôt de Lanseria"},"Appliance and Cookware":{"it":"Elettrodomestici e utensili da cucina","fr":"Électroménager et ustensiles de cuisine"},"Furnitures":{"it":"Arredi","fr":"Mobilier"},"Laundryware and Furnitures":{"it":"Biancheria e arredi per lavanderia","fr":"Linge et mobilier de buanderie"},"Location A":{"it":"Ubicazione A","fr":"Emplacement A"},"Location B":{"it":"Ubicazione B","fr":"Emplacement B"},"Location C":{"it":"Ubicazione C","fr":"Emplacement C"},"Location D":{"it":"Ubicazione D","fr":"Emplacement D"},"Location E":{"it":"Ubicazione E","fr":"Emplacement E"},"Location F":{"it":"Ubicazione F","fr":"Emplacement F"},"Location G":{"it":"Ubicazione G","fr":"Emplacement G"},"Garage 1":{"it":"Garage 1","fr":"Garage 1"},"Garage 2":{"it":"Garage 2","fr":"Garage 2"},"Garage 3":{"it":"Garage 3","fr":"Garage 3"},"Garage 4":{"it":"Garage 4","fr":"Garage 4"},"Garage 5":{"it":"Garage 5","fr":"Garage 5"}}};
   let sb = null, ROLE = null, USER = null, LAST_LOAD = 0, CUR = -1, BUSY = false;
-  const canEdit = () => ROLE === 'admin' || ROLE === 'editor';
+  const canEdit = () => ROLE === 'admin' || ROLE === 'storekeeper' || ROLE === 'editor';
+  const canCost = () => ROLE === 'admin' || ROLE === 'storekeeper';
   const isAdmin = () => ROLE === 'admin';
+  let ME = null, SET = { currency: 'ZAR', vat_rate: 15, vat_vendor: true };
+  const COSTS = new Map();
+  const LX = ['it', 'fr', 'pt', 'zu'];
   const mkBtn = (label, cls, fn) => { const b = el('button', cls || 'btn', label); b.type = 'button'; if (fn) b.addEventListener('click', fn); return b; };
   const sectionBox = (title) => { const s = el('div', 'sect'); s.appendChild(el('h3', null, title)); return s; };
 
@@ -1448,10 +2620,13 @@ const STRINGS = {
     if (r.last_purchase) it.lp = r.last_purchase;
     if (r.notes) it.notes = r.notes;
     if (r.expiry) it.expiry = r.expiry;
+    if (r.supplier_ref) it.supRef = r.supplier_ref;
+    if (r.unit) it.unit = r.unit;
+    if (r.reorder_qty != null) it.reorder = r.reorder_qty;
     it.photoPaths = r.photos || [];
     it.upd = r.updated_at || '';
     it.placeId = r.place_id || null; it.catId = r.category_id || null; it.ref = r.ref || null; it.vAt = r.verified_at || null; it.vBy = r.verified_email || null;
-    it._tr = { name_it: r.name_it, name_fr: r.name_fr, notes_it: r.notes_it, notes_fr: r.notes_fr };
+    it._tr = { name_it: r.name_it, name_fr: r.name_fr, notes_it: r.notes_it, notes_fr: r.notes_fr, name_pt: r.name_pt, name_zu: r.name_zu, notes_pt: r.notes_pt, notes_zu: r.notes_zu };
     return it;
   }
 
@@ -1477,14 +2652,16 @@ const STRINGS = {
 
   function rebuildTR() {
     TR = { items: {}, sections: Object.assign({}, PLACES.sections), locations: Object.assign({}, PLACES.locations), notes: {} };
+    const pick = (o, pre) => { const r = {}; let any = false; LX.forEach((l) => { r[l] = o[pre + '_' + l] || ''; if (r[l]) any = true; }); return any ? r : null; };
     PL.forEach((p) => {
-      if (p.level === 1 || !(p.name_it || p.name_fr)) return;
-      (p.level === 2 ? TR.sections : TR.locations)[p.name] = { it: p.name_it || '', fr: p.name_fr || '' };
+      if (p.level === 1) return;
+      const x = pick(p, 'name'); if (!x) return;
+      (p.level === 2 ? TR.sections : TR.locations)[p.name] = x;
     });
     ITEMS.forEach((it) => {
       const x = it._tr || {};
-      if (x.name_it || x.name_fr) TR.items[it.name] = { it: x.name_it || '', fr: x.name_fr || '' };
-      if (it.notes && (x.notes_it || x.notes_fr)) TR.notes[it.notes] = { it: x.notes_it || '', fr: x.notes_fr || '' };
+      const n = pick(x, 'name'); if (n) TR.items[it.name] = n;
+      const o = pick(x, 'notes'); if (it.notes && o) TR.notes[it.notes] = o;
     });
   }
 
@@ -1502,14 +2679,15 @@ const STRINGS = {
     const u = $('userbar'); if (!u) return;
     u.hidden = !(DB && USER);
     if (!DB || !USER) return;
-    $('whoami').textContent = (USER.email || '') + (ROLE ? ' · ' + t('role_' + ROLE) : '');
+    $('whoami').textContent = ((ME && ME.display_name) || USER.email || '') + (ROLE ? ' · ' + t('role_' + ROLE) : '');
     $('btn-team').hidden = !isAdmin();
     $('addbtn').hidden = !canEdit();
     $('btn-manage').hidden = !(canEdit() && REFS());
+    $('btn-manage').textContent = t(isAdmin() ? 'mg_open' : 'mg_open_sk');
   }
 
   function showLogin() {
-    ROLE = null; USER = null; ITEMS = []; VIEW = []; ALERTS = []; IX = []; PL = []; CT = []; PLM = new Map(); CTM = new Map();
+    ROLE = null; ME = null; COSTS.clear(); USER = null; ITEMS = []; VIEW = []; ALERTS = []; IX = []; PL = []; CT = []; PLM = new Map(); CTM = new Map();
     $('app').hidden = true; $('login').hidden = false; $('userbar').hidden = true; $('importbox').hidden = true;
     $('rows').textContent = ''; $('lg-pass').value = '';
     ['detail', 'editor', 'team', 'mform', 'manage'].forEach((id) => { if ($(id).open) $(id).close(); });
@@ -1521,11 +2699,13 @@ const STRINGS = {
   async function loadDb(silent) {
     if (!silent) { $('loading').hidden = false; $('list').hidden = true; $('error').hidden = true; $('empty').hidden = true; }
     try {
-      const me = await sb.from('staff').select('role,email').eq('user_id', USER.id).maybeSingle();
+      const me = await sb.from('staff').select('role,email,display_name,active').eq('user_id', USER.id).maybeSingle();
       if (me.error) throw me.error;
-      if (!me.data) { ROLE = null; renderUser(); $('loading').hidden = true; const er = $('error'); er.hidden = false; er.textContent = t('noaccess'); return; }
-      ROLE = me.data.role;
+      if (!me.data || me.data.active === false) { ROLE = null; ME = null; renderUser(); $('loading').hidden = true; const er = $('error'); er.hidden = false; er.textContent = t('noaccess'); return; }
+      ROLE = me.data.role; ME = me.data;
       await loadRef();
+      await loadSettings();
+      if (canCost()) await loadCosts();
       const rows = [];
       for (let from = 0; ; from += 1000) {
         const r = await sb.from('items').select('*').order('id').range(from, from + 999);
@@ -1622,7 +2802,7 @@ const STRINGS = {
       if (!r.data.length) { ul.appendChild(el('li', 'none', t('hist_none'))); return; }
       r.data.forEach((m) => {
         const li = el('li');
-        let when = m.created_at; try { when = new Intl.DateTimeFormat(lang, { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(m.created_at)); } catch (e) {}
+        let when = m.created_at; try { when = new Intl.DateTimeFormat(LOC(), { dateStyle: 'medium', timeStyle: 'short' }).format(new Date(m.created_at)); } catch (e) {}
         const who = (m.user_email || '').split('@')[0];
         li.appendChild(el('span', 'when', when + (who ? ' · ' + who : '')));
         li.appendChild(el('span', m.delta >= 0 ? 'dplus' : 'dminus', (m.delta > 0 ? '+' : '') + nf(m.delta) + ' (' + t('hist_to', { n: nf(m.new_qty) }) + ')'));
@@ -1654,9 +2834,12 @@ const STRINGS = {
     const old = btn.textContent; btn.disabled = true; btn.textContent = t('ph_busy');
     try {
       const blob = await shrink(file, 1280, 0.82);
-      const path = ITEMS[i].id + '/' + Date.now().toString(36) + '.jpg';
+      const small = await shrink(file, 360, 0.74);
+      const base = ITEMS[i].id + '/' + Date.now().toString(36);
+      const path = base + '.jpg';
       const up = await sb.storage.from('item-photos').upload(path, blob, { contentType: 'image/jpeg', upsert: false });
       if (up.error) throw up.error;
+      try { await sb.storage.from('item-photos').upload(thumbOf(path), small, { contentType: 'image/jpeg', upsert: false }); } catch (e) { /* the list falls back to the full photo */ }
       await savePhotos(i, (ITEMS[i].photoPaths || []).concat(path));
       if (after) after(); else openDetail(i);
       toast(t('a_saved'));
@@ -1666,33 +2849,9 @@ const STRINGS = {
   async function removePhoto(i, path) {
     try {
       await savePhotos(i, (ITEMS[i].photoPaths || []).filter((p) => p !== path));
-      try { await sb.storage.from('item-photos').remove([path]); } catch (e) {}
+      try { await sb.storage.from('item-photos').remove([path, thumbOf(path)]); } catch (e) {}
       openDetail(i);
     } catch (e) { toast(t('a_error'), true); }
-  }
-
-  function photoSection(i) {
-    const it = ITEMS[i], paths = it.photoPaths || [];
-    if (!paths.length && !canEdit()) return null;
-    const s = sectionBox(t('ph_title')); const g = el('div', 'gallery'); s.appendChild(g);
-    if (paths.length) {
-      sb.storage.from('item-photos').createSignedUrls(paths, 3600).then((r) => {
-        if (CUR !== i || !r || !r.data) return;
-        r.data.forEach((o) => {
-          if (!o.signedUrl) return;
-          const fig = el('div', 'ph'); const im = document.createElement('img'); im.src = o.signedUrl; im.alt = nameOf(it); fig.appendChild(im);
-          if (canEdit()) { const x = mkBtn('×', 'phx', () => removePhoto(i, o.path)); x.setAttribute('aria-label', t('ph_remove')); fig.appendChild(x); }
-          g.appendChild(fig);
-        });
-      });
-    }
-    if (canEdit()) {
-      const file = el('input'); file.type = 'file'; file.accept = 'image/*'; file.hidden = true;
-      const add = mkBtn(t('ph_add'), 'btn phadd', () => file.click());
-      file.addEventListener('change', () => { const f = file.files && file.files[0]; file.value = ''; addPhoto(i, f, add); });
-      s.append(file, add);
-    }
-    return s;
   }
 
   // ---------- item editor ----------
@@ -1732,6 +2891,9 @@ const STRINGS = {
     add('min', t('fld_min'), 'number', it.min);
     add('pack', t('fld_pack'), 'number', it.pack);
     add('sup', t('fld_sup'), 'text', it.sup);
+    add('supref', t('fld_supref'), 'text', it.supRef);
+    add('unit', t('fld_unit'), 'text', it.unit, { list: 'dl-unit' });
+    add('reorder', t('fld_reorder'), 'number', it.reorder);
     add('lp', t('fld_lp'), 'date', it.lp);
     add('exp', t('fld_exp'), 'date', it.expiry);
     add('notes', t('fld_notes'), 'textarea', it.notes, { full: true });
@@ -1741,6 +2903,11 @@ const STRINGS = {
     add('name_fr', t('fld_name_fr'), 'text', x.name_fr, { full: true, parent: inner });
     add('notes_it', t('fld_notes_it'), 'textarea', x.notes_it, { full: true, parent: inner });
     add('notes_fr', t('fld_notes_fr'), 'textarea', x.notes_fr, { full: true, parent: inner });
+    add('name_pt', t('fld_name_pt'), 'text', x.name_pt, { full: true, parent: inner });
+    add('name_zu', t('fld_name_zu'), 'text', x.name_zu, { full: true, parent: inner });
+    add('notes_pt', t('fld_notes_pt'), 'textarea', x.notes_pt, { full: true, parent: inner });
+    add('notes_zu', t('fld_notes_zu'), 'textarea', x.notes_zu, { full: true, parent: inner });
+    const dlu = el('datalist'); dlu.id = 'dl-unit'; ['pcs', 'set', 'pair', 'box', 'pack', 'roll', 'kg', 'g', 'L', 'ml', 'm'].forEach((u) => dlu.appendChild(new Option(u))); form.appendChild(dlu);
     if (!REFS()) {
       const dls = el('datalist'); dls.id = 'dl-sec'; (META ? META.sections : []).forEach((s) => dls.appendChild(new Option(s)));
       const dll = el('datalist'); dll.id = 'dl-loc'; Array.from(new Set(ITEMS.map((a) => a.loc))).sort().forEach((s) => dll.appendChild(new Option(s)));
@@ -1771,8 +2938,10 @@ const STRINGS = {
       const p = {
         name: v('name'), name_it: v('name_it') || null, name_fr: v('name_fr') || null,
         sub_kind: kind || null, sub_v: kind ? (v('sub_v') || null) : null, family: F.family.value, min_qty: num('min'), pack: num('pack'),
-        supplier: v('sup') || null, last_purchase: F.lp.value || null, expiry: F.exp.value || null,
-        notes: v('notes') || null, notes_it: v('notes_it') || null, notes_fr: v('notes_fr') || null
+        supplier: v('sup') || null, supplier_ref: v('supref') || null, unit: v('unit') || null, reorder_qty: num('reorder'),
+        last_purchase: F.lp.value || null, expiry: F.exp.value || null,
+        notes: v('notes') || null, notes_it: v('notes_it') || null, notes_fr: v('notes_fr') || null,
+        name_pt: v('name_pt') || null, name_zu: v('name_zu') || null, notes_pt: v('notes_pt') || null, notes_zu: v('notes_zu') || null
       };
       if (REFS()) {
         const pid = PC.get(), cid = CC.get();
@@ -1796,28 +2965,6 @@ const STRINGS = {
     });
     body.appendChild(form);
     $('editor').showModal();
-  }
-
-  // ---------- team (administrators) ----------
-  async function openTeam() {
-    const body = $('tm-body'); body.textContent = '';
-    body.appendChild(el('p', 'muted', t('team_help')));
-    const r = await sb.from('staff').select('user_id,email,role').order('email');
-    if (r.error || !r.data) { toast(t('a_error'), true); return; }
-    const ul = el('ul', 'others');
-    r.data.forEach((m) => {
-      const li = el('li');
-      li.appendChild(el('span', null, (m.email || m.user_id) + (m.user_id === USER.id ? ' (' + t('team_you') + ')' : '')));
-      const sel = el('select'); ['admin', 'editor', 'viewer'].forEach((k) => sel.appendChild(new Option(t('role_' + k), k)));
-      sel.value = m.role; sel.disabled = m.user_id === USER.id;
-      sel.addEventListener('change', async () => {
-        const u = await sb.from('staff').update({ role: sel.value }).eq('user_id', m.user_id).select('role').single();
-        if (u.error || !u.data) { toast(t('a_error'), true); sel.value = m.role; } else { m.role = u.data.role; toast(t('a_saved')); }
-      });
-      li.appendChild(sel); ul.appendChild(li);
-    });
-    body.appendChild(ul);
-    if (!$('team').open) $('team').showModal();
   }
 
   // ---------- first import of the catalogue (administrators, empty database only) ----------
@@ -1852,6 +2999,7 @@ const STRINGS = {
   function wireEditing() {
     $('addbtn').addEventListener('click', () => openEditor(-1));
     $('btn-team').addEventListener('click', openTeam);
+    $('btn-pass').addEventListener('click', openPassword);
     $('btn-manage').addEventListener('click', () => openManage('verify'));
     $('ed-close').addEventListener('click', () => $('editor').close());
     $('tm-close').addEventListener('click', () => $('team').close());
@@ -1877,7 +3025,7 @@ const STRINGS = {
   let PL = [], CT = [], PLM = new Map(), CTM = new Map();
   const REFS = () => DB && PL.length > 0 && CT.length > 0;
   const bySort = (a, b) => (a.sort - b.sort) || String(a.name).localeCompare(String(b.name), 'en', { numeric: true });
-  const lname = (o) => (o ? ((lang === 'it' ? o.name_it : lang === 'fr' ? o.name_fr : '') || o.name) : '');
+  const lname = (o) => (o ? ((lang === 'en' ? '' : o['name_' + lang]) || o.name) : '');
   const kids = (arr, pid) => arr.filter((x) => (x.parent_id || null) === pid).sort(bySort);
 
   async function loadRef() {
@@ -1895,7 +3043,7 @@ const STRINGS = {
   const placeText = (id) => placeChain(id).map(lname).join(' › ');
   const catChain = (id) => { const c = []; let p = id ? CTM.get(id) : null; while (p) { c.unshift(p); p = p.parent_id ? CTM.get(p.parent_id) : null; } return c; };
   const catText = (id) => catChain(id).map(lname).join(' › ');
-  const catWords = (it) => catChain(it.catId).flatMap((c) => [c.name, c.name_it, c.name_fr]);
+  const catWords = (it) => catChain(it.catId).flatMap((c) => [c.name, c.name_it, c.name_fr, c.name_pt, c.name_zu]);
   const catTop = (it) => (it.catId ? it.catId.split('.')[0] : '');
   const nameLine = (o) => lname(o) + (lang !== 'en' && lname(o) !== o.name ? ' (' + o.name + ')' : '');
 
@@ -1920,9 +3068,8 @@ const STRINGS = {
 
   // ---------- item editor extras, detail extras, verification stamp ----------
   function detailExtras(facts, it) {
-    if (it.ref) fact(facts, t('d_ref'), it.ref);
     if (!REFS()) return;
-    fact(facts, t('d_cat'), it.catId ? catText(it.catId) : t('cat_none'));
+    if (!it.catId) fact(facts, t('d_cat'), t('cat_none'));
     const who = (it.vBy || '').split('@')[0];
     fact(facts, t('d_verif'), it.vAt ? fmtDate(it.vAt) + (who ? ' · ' + who : '') : t('v_never'));
   }
@@ -1954,7 +3101,7 @@ const STRINGS = {
 
   function openManage(tab, queue) {
     if (!canEdit() || !REFS()) return;
-    const tabs = isAdmin() ? ['verify', 'places', 'cats', 'refs'] : ['verify'];
+    const tabs = ['verify', 'reorder', 'expiry'].concat(canCost() ? ['value'] : [], isAdmin() ? ['places', 'cats', 'refs', 'settings'] : []);
     const bar = $('mg-tabs'); bar.textContent = '';
     tabs.forEach((k) => { const b = el('button', null, t('mg_tab_' + k)); b.type = 'button'; b.dataset.tab = k; b.setAttribute('role', 'tab'); b.addEventListener('click', () => mgShow(k)); bar.appendChild(b); });
     bar.hidden = tabs.length < 2;
@@ -1968,6 +3115,10 @@ const STRINGS = {
     $('mg-title').textContent = t('mg_title');
     const body = $('mg-body'); body.textContent = ''; body.scrollTop = 0;
     if (tab === 'verify') tabVerify(body, queue);
+    else if (tab === 'reorder') tabReorder(body);
+    else if (tab === 'expiry') tabExpiry(body);
+    else if (tab === 'value') tabValue(body);
+    else if (tab === 'settings') tabSettings(body);
     else if (tab === 'places') tabPlaces(body);
     else if (tab === 'cats') tabCats(body);
     else tabRefs(body);
@@ -2054,10 +3205,12 @@ const STRINGS = {
     formDialog(title, [
       { k: 'name', label: t('fld_name'), value: editing ? p.name : '', req: true },
       { k: 'name_it', label: t('fld_name_it'), value: editing ? p.name_it : '' },
-      { k: 'name_fr', label: t('fld_name_fr'), value: editing ? p.name_fr : '' }
+      { k: 'name_fr', label: t('fld_name_fr'), value: editing ? p.name_fr : '' },
+      { k: 'name_pt', label: t('fld_name_pt'), value: editing ? p.name_pt : '' },
+      { k: 'name_zu', label: t('fld_name_zu'), value: editing ? p.name_zu : '' }
     ], async (v) => {
       let r;
-      const f = { name: v.name, name_it: v.name_it || null, name_fr: v.name_fr || null };
+      const f = { name: v.name, name_it: v.name_it || null, name_fr: v.name_fr || null, name_pt: v.name_pt || null, name_zu: v.name_zu || null };
       if (editing) r = await sb.from('places').update(f).eq('id', p.id).select('*').single();
       else r = await sb.from('places').insert(Object.assign({ parent_id: p ? p.id : null, level: level, sort: kids(PL, p ? p.id : null).length + 1 }, f)).select('*').single();
       if (r.error) { toast(r.error.code === '23505' ? t('mg_exists') : t('a_error'), true); return false; }
@@ -2124,9 +3277,9 @@ const STRINGS = {
     if (!editing) fields.push(level === 1
       ? { k: 'code', label: t('mg_code3'), req: true, maxlength: 3, pattern: '[A-Za-z]{3}', hint: t('mg_code3_hint') }
       : { k: 'code', label: t('mg_codesub'), req: true, maxlength: 12, pattern: '[A-Za-z0-9]{2,12}', hint: t('mg_codesub_hint') });
-    fields.push({ k: 'name', label: t('fld_name'), value: editing ? c.name : '', req: true }, { k: 'name_it', label: t('fld_name_it'), value: editing ? c.name_it : '' }, { k: 'name_fr', label: t('fld_name_fr'), value: editing ? c.name_fr : '' });
+    fields.push({ k: 'name', label: t('fld_name'), value: editing ? c.name : '', req: true }, { k: 'name_it', label: t('fld_name_it'), value: editing ? c.name_it : '' }, { k: 'name_fr', label: t('fld_name_fr'), value: editing ? c.name_fr : '' }, { k: 'name_pt', label: t('fld_name_pt'), value: editing ? c.name_pt : '' }, { k: 'name_zu', label: t('fld_name_zu'), value: editing ? c.name_zu : '' });
     formDialog(editing ? t('mg_rename') + ' · ' + lname(c) : t(level === 1 ? 'mg_new_cat' : 'mg_new_sub'), fields, async (v) => {
-      const f = { name: v.name, name_it: v.name_it || null, name_fr: v.name_fr || null };
+      const f = { name: v.name, name_it: v.name_it || null, name_fr: v.name_fr || null, name_pt: v.name_pt || null, name_zu: v.name_zu || null };
       let r;
       if (editing) r = await sb.from('categories').update(f).eq('id', c.id).select('*').single();
       else {
@@ -2293,9 +3446,9 @@ const STRINGS = {
     const showPhoto = () => {
       ph.textContent = '';
       const paths = ITEMS[i].photoPaths || [];
-      if (paths.length) sb.storage.from('item-photos').createSignedUrls(paths.slice(0, 3), 3600).then((r) => {
-        if (!r || !r.data || VQ.list[VQ.pos] !== i) return;
-        const g = el('div', 'gallery'); r.data.forEach((o) => { if (!o.signedUrl) return; const im = document.createElement('img'); im.src = o.signedUrl; im.alt = nameOf(it); g.appendChild(im); }); ph.prepend(g);
+      if (paths.length) signBatch(paths.slice(0, 3)).then(() => {
+        if (VQ.list[VQ.pos] !== i) return;
+        const g = el('div', 'gallery'); paths.slice(0, 3).forEach((p) => { const u = signed(p); if (!u) return; const im = document.createElement('img'); im.src = u; im.alt = nameOf(it); g.appendChild(im); }); ph.prepend(g);
       });
       const file = el('input'); file.type = 'file'; file.accept = 'image/*'; file.setAttribute('capture', 'environment'); file.hidden = true;
       const add = mkBtn(t('v_photo'), 'btn', () => file.click());
@@ -2320,6 +3473,14 @@ const STRINGS = {
     if (isStock || it.expiry) {
       const l2 = el('label'); l2.appendChild(el('span', null, t('fld_exp'))); expIn = el('input'); expIn.type = 'date'; expIn.value = it.expiry || ''; l2.appendChild(expIn); form.appendChild(l2);
     }
+    const rl = el('label'); rl.appendChild(el('span', null, t('fld_reorder'))); const reIn = el('input'); reIn.type = 'number'; reIn.min = '0'; reIn.step = '1'; reIn.inputMode = 'numeric'; reIn.value = it.reorder == null ? '' : it.reorder; rl.appendChild(reIn); form.appendChild(rl);
+    const sl = el('label'); sl.appendChild(el('span', null, t('fld_supref'))); const srIn = el('input'); srIn.type = 'text'; srIn.maxLength = 80; srIn.value = it.supRef || ''; sl.appendChild(srIn); form.appendChild(sl);
+    const ul2 = el('label'); ul2.appendChild(el('span', null, t('fld_unit'))); const unIn = el('input'); unIn.type = 'text'; unIn.maxLength = 20; unIn.value = it.unit || ''; ul2.appendChild(unIn); form.appendChild(ul2);
+    let costIn = null;
+    if (canCost()) {
+      const cl = el('label'); cl.appendChild(el('span', null, t('vc_cost'))); costIn = el('input'); costIn.type = 'number'; costIn.min = '0'; costIn.step = '0.01'; costIn.inputMode = 'decimal';
+      const cc0 = COSTS.get(it.id); costIn.value = cc0 && cc0.avg_cost != null ? cc0.avg_cost : ''; costIn.dataset.was = costIn.value; cl.appendChild(costIn); cl.appendChild(el('small', 'muted', t('vc_cost_hint'))); form.appendChild(cl);
+    }
     const pc = cascade(form, [t('lvl_1'), t('lvl_2'), t('lvl_3')], PL, placeChain(it.placeId).map((p) => p.id), false);
     const kl = el('label'); kl.appendChild(el('span', null, t('fld_sub_kind')));
     const kind = el('select'); [['', t('fld_none')], ['shelf', t('k_shelf')], ['box', t('k_box')], ['container', t('k_container')]].forEach(([v, l]) => kind.appendChild(new Option(l, v))); kind.value = it.sub ? it.sub.kind : ''; kl.appendChild(kind); form.appendChild(kl);
@@ -2336,6 +3497,9 @@ const STRINGS = {
       const q = num(qin); if (q != null && q !== it.qty) { p.qty = q; p.last_reason = t('v_reason'); }
       if (minIn) { const m = num(minIn); if (m !== (it.min == null ? null : it.min)) p.min_qty = m; }
       if (expIn) { const e = expIn.value || null; if (e !== (it.expiry || null)) p.expiry = e; }
+      { const rq = num(reIn); if (rq !== (it.reorder == null ? null : it.reorder)) p.reorder_qty = rq; }
+      { const sr = srIn.value.trim() || null; if (sr !== (it.supRef || null)) p.supplier_ref = sr; }
+      { const un = unIn.value.trim() || null; if (un !== (it.unit || null)) p.unit = un; }
       const pid = pc.get(); if (pid && pid !== it.placeId) p.place_id = pid;
       const k = kind.value || null, sv = k ? (subv.value.trim() || null) : null;
       if (k !== (it.sub ? it.sub.kind : null) || sv !== (it.sub ? String(it.sub.v) : null)) { p.sub_kind = k; p.sub_v = sv; }
@@ -2344,6 +3508,11 @@ const STRINGS = {
         const r = await sb.from('items').update(p).eq('id', it.id).select('*').single();
         if (r.error) throw r.error;
         ITEMS[i] = fromRow(r.data); ALERTS[i] = alertsOf(ITEMS[i], today);
+        if (costIn && costIn.value !== '' && costIn.value !== costIn.dataset.was && Number(costIn.value) >= 0) {
+          const oc = await sb.rpc('set_opening_cost', { p_item: it.id, p_unit_cost: Number(costIn.value), p_note: t('v_reason') });
+          if (oc.error) throw oc.error;
+          await refreshCost(it.id);
+        }
         VQ.done++; MG.dirty = true; next();
       } catch (e) { toast(t('a_error'), true); confirm.disabled = false; }
     });
@@ -2391,11 +3560,746 @@ const STRINGS = {
     });
     (META ? META.sections : []).forEach((s) => { if (!done.has(s)) sel.appendChild(new Option(tr('sections', s), s)); });
   }
+  // ---------- thumbnails, list rows, gallery view and item detail ----------
+  const ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 7.5L12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5L12 12l8.5-4.5M12 12v9"/></svg>';
+  const SIGN = new Map(); // storage path -> { url, at }
+  const thumbOf = (p) => String(p).replace(/\.jpg$/i, '_t.jpg');
+  const signed = (p) => { const c = SIGN.get(p); return c ? c.url : null; };
+
+  async function signBatch(paths) {
+    const need = Array.from(new Set(paths)).filter((p) => { const c = SIGN.get(p); return !(c && Date.now() - c.at < 3000000); });
+    for (let a = 0; a < need.length; a += 100) {
+      try {
+        const r = await sb.storage.from('item-photos').createSignedUrls(need.slice(a, a + 100), 3600);
+        if (r && r.data) r.data.forEach((o) => { SIGN.set(o.path, { url: o.signedUrl || null, at: Date.now() }); });
+      } catch (e) { /* the placeholder stays */ }
+    }
+  }
+
+  function setThumbImg(node, src, fallback, alt) {
+    const im = document.createElement('img');
+    im.decoding = 'async'; im.alt = alt || '';
+    im.addEventListener('load', () => { node.classList.remove('wait'); node.classList.add('ok'); const s = node.querySelector('svg'); if (s) s.remove(); });
+    im.addEventListener('error', () => { if (fallback && im.src !== fallback) { im.src = fallback; fallback = null; } else im.remove(); });
+    im.src = src; node.appendChild(im);
+  }
+
+  async function loadThumbs(nodes) {
+    const paths = []; nodes.forEach((n) => { paths.push(thumbOf(n.dataset.p), n.dataset.p); });
+    await signBatch(paths);
+    nodes.forEach((n) => {
+      if (!n.isConnected) return;
+      const th = signed(thumbOf(n.dataset.p)), main = signed(n.dataset.p);
+      const u = th || main; if (u) setThumbImg(n, u, th ? main : null, '');
+    });
+  }
+
+  const thumbIO = typeof IntersectionObserver === 'function'
+    ? new IntersectionObserver((es) => {
+        const batch = [];
+        es.forEach((e) => { if (e.isIntersecting) { thumbIO.unobserve(e.target); batch.push(e.target); } });
+        if (batch.length) loadThumbs(batch);
+      }, { rootMargin: '400px' })
+    : null;
+
+  function thumbEl(it) {
+    const s = el('span', 'thumb'); s.innerHTML = ICON;
+    const first = DB ? (it.photoPaths || [])[0] : (it.photos || [])[0];
+    if (!first) { s.classList.add('nophoto'); return s; }
+    s.classList.add('wait');
+    if (!DB) { setThumbImg(s, first, null, ''); return s; }
+    s.dataset.p = first;
+    if (thumbIO) thumbIO.observe(s); else loadThumbs([s]);
+    return s;
+  }
+
+  // ---------- list / gallery switch ----------
+  let VIEWMODE = 'list';
+  try { const v = localStorage.getItem('alice-view'); if (v === 'grid' || v === 'list') VIEWMODE = v; } catch (e) {}
+  function syncView() {
+    $('tablewrap').classList.toggle('view-grid', VIEWMODE === 'grid');
+    document.querySelectorAll('#viewsw button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === VIEWMODE)));
+  }
+  $('viewsw').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-view]'); if (!b) return;
+    VIEWMODE = b.dataset.view; try { localStorage.setItem('alice-view', VIEWMODE); } catch (x) {}
+    syncView();
+  });
+  syncView();
+
+  function renderRows() {
+    const body = $('rows'); body.textContent = '';
+    const frag = document.createDocumentFragment();
+    const end = Math.min(S.shown, VIEW.length);
+    for (let n = 0; n < end; n++) {
+      const i = VIEW[n], it = ITEMS[i];
+      const tr_ = el('tr'); tr_.tabIndex = 0; tr_.dataset.i = i; tr_.setAttribute('role', 'button');
+      const c1 = el('td', 'c-name'); const wrap = el('div', 'nmwrap'); wrap.appendChild(thumbEl(it));
+      const tx = el('div', 'nmtxt'); const nm = el('span', 'iname', nameOf(it)); tx.appendChild(nm);
+      if (it.flags && it.flags.length) { const f = el('span', 'vflag', '!'); f.title = t('st_verify'); f.setAttribute('aria-label', t('st_verify')); nm.appendChild(f); }
+      if (it.vAt) { const k = el('span', 'vtick'); k.title = t('d_verif') + ': ' + fmtDate(it.vAt); nm.appendChild(k); }
+      if (lang !== 'en' && nameOf(it) !== it.name) tx.appendChild(el('span', 'isub', it.name));
+      if (it.ref) tx.appendChild(el('span', 'iref', it.ref));
+      wrap.appendChild(tx); c1.appendChild(wrap);
+      const c2 = el('td', 'c-place'); const pl = el('span', 'iplace', locOf(it) + (it.sub ? ' · ' + subOf(it) : '')); pl.appendChild(el('span', 'sec', secOf(it))); c2.appendChild(pl);
+      const c3 = el('td', 'c-type'); c3.appendChild(el('span', 'chip ' + familyOf(it), t('type_' + familyOf(it))));
+      const c4 = el('td', 'c-qty num'); c4.appendChild(el('span', 'qty', it.qty == null ? '–' : nf(it.qty)));
+      const c5 = el('td', 'c-min num dim', it.min == null ? '' : nf(it.min));
+      const c6 = el('td', 'c-status'); c6.appendChild(statusChip(i));
+      [c1, c2, c3, c4, c5, c6].forEach((c) => tr_.appendChild(c));
+      frag.appendChild(tr_);
+    }
+    body.appendChild(frag);
+    const empty = VIEW.length === 0;
+    $('list').hidden = empty; $('empty').hidden = !empty;
+    const left = VIEW.length - end;
+    $('more').hidden = left <= 0;
+    if (left > 0) $('morebtn').textContent = t('more', { n: nf(Math.min(PAGE, left)) }) + ' (' + nf(left) + ')';
+  }
+
+  // ---------- detail: photo, essentials, details, management ----------
+  function fact(dl_, label, valueNode) { const d = el('div'); d.appendChild(el('dt', null, label)); const dd = el('dd'); if (typeof valueNode === 'string') dd.textContent = valueNode; else dd.appendChild(valueNode); d.appendChild(dd); dl_.appendChild(d); }
+
+  function heroSection(i) {
+    const it = ITEMS[i];
+    const paths = DB ? (it.photoPaths || []) : [];
+    const urls = DB ? [] : (it.photos || []);
+    const edit = DB && canEdit();
+    if (!paths.length && !urls.length && !edit) return null;
+    const wrap = el('div', 'hero');
+    const stage = el('div', 'herostage'); wrap.appendChild(stage);
+    const strip = el('div', 'herostrip');
+    const show = (src) => { stage.textContent = ''; stage.classList.remove('nophoto', 'wait'); const im = document.createElement('img'); im.src = src; im.alt = nameOf(it); stage.appendChild(im); };
+    const noPhoto = () => { stage.classList.remove('wait'); stage.classList.add('nophoto'); stage.innerHTML = ICON; };
+    const addThumb = (src, path, first) => {
+      if (!first && !strip.children.length) return;
+      const w = el('div', 'hth'); const b = el('button', 'hthb'); b.type = 'button'; b.setAttribute('aria-label', nameOf(it));
+      const im = document.createElement('img'); im.src = src; im.alt = ''; b.appendChild(im); b.addEventListener('click', () => show(src)); w.appendChild(b);
+      if (edit && path) { const x = mkBtn('×', 'phx', () => removePhoto(i, path)); x.setAttribute('aria-label', t('ph_remove')); w.appendChild(x); }
+      strip.appendChild(w);
+    };
+    if (urls.length) {
+      show(urls[0]);
+      if (urls.length > 1) urls.forEach((u) => addThumb(u, null, true));
+    } else if (paths.length) {
+      stage.classList.add('wait'); stage.innerHTML = ICON;
+      signBatch(paths).then(() => {
+        if (CUR !== i) return;
+        const ok = paths.filter((p) => signed(p));
+        if (!ok.length) { noPhoto(); return; }
+        show(signed(ok[0]));
+        if (ok.length > 1 || edit) ok.forEach((p) => addThumb(signed(p), p, true));
+      });
+    } else noPhoto();
+    if (strip.children.length || paths.length > 1 || edit) wrap.appendChild(strip);
+    if (edit) {
+      const file = el('input'); file.type = 'file'; file.accept = 'image/*'; file.hidden = true;
+      const add = mkBtn(t('ph_add'), 'btn sm phadd', () => file.click());
+      file.addEventListener('change', () => { const f = file.files && file.files[0]; file.value = ''; addPhoto(i, f, add); });
+      wrap.append(file, add);
+    }
+    return wrap;
+  }
+
+  function openDetail(i) {
+    const it = ITEMS[i];
+    CUR = i;
+    const dlg = $('detail');
+    const keep = dlg.open ? $('d-body').scrollTop : 0;
+    const staff = DB && canEdit();
+    $('d-name').textContent = nameOf(it);
+    const orig = $('d-orig');
+    if (lang !== 'en' && nameOf(it) !== it.name) { orig.textContent = t('d_original', { n: it.name }); orig.hidden = false; } else { orig.hidden = true; }
+    $('d-place').textContent = [secOf(it), locOf(it), subOf(it)].filter(Boolean).join(' › ');
+    const body = $('d-body'); body.textContent = '';
+
+    const hero = heroSection(i); if (hero) body.appendChild(hero);
+
+    const chips = el('div', 'chips'); chips.appendChild(statusChip(i)); chips.appendChild(el('span', 'chip ' + familyOf(it), t('type_' + familyOf(it))));
+    if (it.ref) chips.appendChild(el('span', 'chip refchip', it.ref));
+    if (DB && REFS() && it.catId) chips.appendChild(el('span', 'chip catchip', catText(it.catId)));
+    body.appendChild(chips);
+
+    const a = ALERTS[i];
+    const kf = el('div', 'keyfig');
+    const kfig = (label, value, unit, cls) => { const d = el('div', 'kf' + (cls ? ' ' + cls : '')); d.appendChild(el('span', 'kl', label)); const v = el('span', 'kv', value); if (unit) v.appendChild(el('small', null, ' ' + unit)); d.appendChild(v); kf.appendChild(d); };
+    kfig(t('d_qty'), it.qty == null ? '–' : nf(it.qty), it.unit, a.includes('out') ? 'bad' : a.includes('low') ? 'warn' : '');
+    if (familyOf(it) === 'stock') kfig(t('d_min'), it.min == null ? t('d_notset') : nf(it.min));
+    if (it.expiry) kfig(t('d_expiry'), fmtDate(it.expiry), '', a.includes('expired') ? 'bad' : a.includes('expiring') ? 'warn' : '');
+    body.appendChild(kf);
+
+    const more = el('details', 'more'); more.appendChild(el('summary', null, t('d_more')));
+    const facts = el('dl', 'facts');
+    if (it.pack) fact(facts, t('d_pack'), nf(it.pack));
+    const totalUnits = DB ? (it.pack && it.qty != null ? it.qty * it.pack : null) : it.bal;
+    if (totalUnits != null && totalUnits !== it.qty) fact(facts, t('d_bal'), nf(totalUnits));
+    if (it.in) fact(facts, t('d_in'), nf(it.in));
+    if (it.out) fact(facts, t('d_out'), nf(it.out));
+    if (it.sup) fact(facts, t('d_sup'), it.sup);
+    if (it.supRef) fact(facts, t('d_supref'), it.supRef);
+    if (it.lp) fact(facts, t('d_lp'), fmtDate(it.lp));
+    if (DB) detailExtras(facts, it);
+    if (it.notes) fact(facts, t('d_notes'), tr('notes', it.notes));
+    if (facts.children.length) more.appendChild(facts);
+    const same = (BYKEY.get(KEYS[i]) || []).filter((j) => j !== i);
+    if (same.length) {
+      const s = el('div', 'sect'); s.appendChild(el('h3', null, t('d_elsewhere')));
+      const ul = el('ul', 'others'); let tot = it.qty || 0;
+      same.forEach((j) => { const o = ITEMS[j]; tot += o.qty || 0; const li = el('li'); li.appendChild(el('span', null, secOf(o) + ' › ' + locOf(o) + (o.sub ? ' · ' + subOf(o) : ''))); li.appendChild(el('strong', null, o.qty == null ? '–' : nf(o.qty))); ul.appendChild(li); });
+      const lt = el('li', 'total'); lt.appendChild(el('span', null, t('d_total'))); lt.appendChild(el('span', null, nf(tot))); ul.appendChild(lt);
+      s.appendChild(ul); more.appendChild(s);
+    }
+    if (more.children.length > 1) body.appendChild(more);
+
+    if (it.flags && it.flags.length) {
+      const s = el('div', 'sect'); s.appendChild(el('h3', null, t('d_checks')));
+      const ul = el('ul', 'checks'); it.flags.forEach((f) => ul.appendChild(el('li', null, t('f_' + f)))); s.appendChild(ul);
+      if (staff) { const vb = mkBtn(t('a_verified'), 'btn', () => markVerified(i)); vb.style.marginTop = '8px'; s.appendChild(vb); }
+      body.appendChild(s);
+    }
+
+    if (staff) {
+      const mg = el('div', 'mgmt'); mg.appendChild(el('h3', 'mgh', t('d_mgmt')));
+      mg.appendChild(stockControl(i));
+      if (canCost()) { mg.appendChild(receiveBar(i)); mg.appendChild(costSection(i)); }
+      mg.appendChild(lotsSection(i));
+      if (REFS()) mg.appendChild(verifySection(i));
+      mg.appendChild(historySection(i));
+      mg.appendChild(mkBtn(t('a_edit'), 'btn', () => { $('detail').close(); openEditor(i); }));
+      body.appendChild(mg);
+    }
+    if (!dlg.open) { if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', ''); }
+    body.scrollTop = keep;
+  }
+
+  // ---------- storekeeper: costs (ZAR), receipts, lots, reorder, expiry, valuation, settings, team ----------
+  const MLOC = () => ({ en: 'en-ZA', it: 'it-IT', fr: 'fr-FR', pt: 'pt-PT', zu: 'zu-ZA' }[lang] || 'en-ZA');
+  const money = (n, dec) => {
+    if (n == null || n === '') return '–';
+    try { return new Intl.NumberFormat(MLOC(), { style: 'currency', currency: SET.currency || 'ZAR', minimumFractionDigits: 2, maximumFractionDigits: dec || 2 }).format(Number(n)); }
+    catch (e) { return 'R ' + Number(n).toFixed(2); }
+  };
+  const pct = (n) => (n > 0 ? '+' : '') + (Math.round(n * 10) / 10).toLocaleString(LOC()) + ' %';
+  const r4 = (x) => Math.round(x * 10000) / 10000;
+  const isoToday = () => new Date().toISOString().slice(0, 10);
+
+  async function loadSettings() {
+    try {
+      const r = await sb.from('app_settings').select('key,value');
+      if (r.error || !r.data) return;
+      r.data.forEach((x) => {
+        if (x.key === 'vat_rate' && Number.isFinite(Number(x.value))) SET.vat_rate = Number(x.value);
+        else if (x.key === 'vat_vendor') SET.vat_vendor = x.value === 'true';
+        else if (x.key === 'currency') SET.currency = x.value;
+      });
+    } catch (e) { /* defaults stay */ }
+  }
+
+  async function loadCosts() {
+    COSTS.clear();
+    try {
+      for (let from = 0; ; from += 1000) {
+        const r = await sb.from('item_costs').select('*').order('item_id').range(from, from + 999);
+        if (r.error || !r.data) return;
+        r.data.forEach((c) => COSTS.set(c.item_id, c));
+        if (r.data.length < 1000) break;
+      }
+    } catch (e) { /* no cost data yet */ }
+  }
+
+  async function refreshCost(id) {
+    const r = await sb.from('item_costs').select('*').eq('item_id', id).maybeSingle();
+    if (r && !r.error) { if (r.data) COSTS.set(id, r.data); else COSTS.delete(id); }
+  }
+
+  // Stock valued at the lower of weighted average cost and net realisable value (IAS 2).
+  function valueOf(it) {
+    const c = COSTS.get(it.id); const q = it.qty || 0;
+    if (!c || c.avg_cost == null) return null;
+    const avg = Number(c.avg_cost), nrv = c.nrv == null ? null : Number(c.nrv);
+    const unit = nrv != null ? Math.min(avg, nrv) : avg;
+    return { cost: q * avg, value: q * unit, writedown: q * (avg - unit), unit: unit };
+  }
+
+  function downloadCsv(name, rows) {
+    const esc = (v) => { const s = v == null ? '' : String(v); return /[",\n;]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+    const csv = '﻿' + rows.map((r) => r.map(esc).join(',')).join('\r\n');
+    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    const a = document.createElement('a'); a.href = url; a.download = name + '-' + isoToday() + '.csv';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  function mkTable(heads, nums) {
+    const tbl = el('table', 'reftable'); const th = el('thead'); const hr = el('tr');
+    heads.forEach((h, k) => hr.appendChild(el('th', nums && nums.includes(k) ? 'num' : null, h))); th.appendChild(hr); tbl.appendChild(th);
+    const tb = el('tbody'); tbl.appendChild(tb);
+    const wrap = el('div', 'tablescroll'); wrap.appendChild(tbl);
+    return { wrap, tb, nums };
+  }
+  const addRow = (T, cells) => {
+    const tr_ = el('tr');
+    cells.forEach((c, k) => { const td = el('td', T.nums && T.nums.includes(k) ? 'num' : null); if (c instanceof Node) td.appendChild(c); else td.textContent = c == null ? '' : c; tr_.appendChild(td); });
+    T.tb.appendChild(tr_); return tr_;
+  };
+
+  // Generic form in the small dialog. fields: { k, label, type, value, req, min, step, hint, full, options, heading }.
+  function richForm(title, fields, onSubmit, preview, submitLabel) {
+    $('mf-title').textContent = title;
+    const body = $('mf-body'); body.textContent = '';
+    const form = el('form', 'form'); const F = {};
+    fields.forEach((f) => {
+      if (f.heading) { form.appendChild(el('h4', 'full fhead', f.heading)); return; }
+      const lab = el('label', f.type === 'checkbox' ? 'full chk' : (f.full ? 'full' : null));
+      let inp;
+      if (f.type === 'checkbox') { inp = el('input'); inp.type = 'checkbox'; inp.checked = !!f.value; lab.append(inp, el('span', null, f.label)); }
+      else {
+        lab.appendChild(el('span', null, f.label));
+        if (f.type === 'select') { inp = el('select'); f.options.forEach(([v, l]) => inp.appendChild(new Option(l, v))); inp.value = f.value == null ? '' : f.value; }
+        else if (f.type === 'textarea') { inp = el('textarea'); inp.rows = 2; inp.value = f.value || ''; }
+        else {
+          inp = el('input'); inp.type = f.type || 'text'; inp.value = f.value == null ? '' : f.value;
+          if (f.type === 'number') { inp.min = f.min == null ? '0' : f.min; inp.step = f.step || '1'; inp.inputMode = 'decimal'; }
+          if (f.type === 'password') { inp.autocomplete = 'new-password'; inp.minLength = f.minlength || 8; }
+          if (f.type === 'email') { inp.autocomplete = 'off'; inp.inputMode = 'email'; inp.autocapitalize = 'off'; }
+          if (!f.type || f.type === 'text') inp.maxLength = f.maxlength || 160;
+        }
+        lab.appendChild(inp);
+      }
+      if (f.req) inp.required = true;
+      if (f.hint) lab.appendChild(el('small', 'muted', f.hint));
+      form.appendChild(lab); F[f.k] = inp;
+    });
+    const pv = el('div', 'full preview'); if (preview) form.appendChild(pv);
+    const act = el('div', 'formactions'); const ok = el('button', 'btn primary', submitLabel || t('a_save')); ok.type = 'submit';
+    act.append(ok, mkBtn(t('a_cancel'), 'btn', () => $('mform').close())); form.appendChild(act);
+    const vals = () => {
+      const v = {};
+      fields.forEach((f) => { if (f.heading) return; const x = F[f.k]; v[f.k] = f.type === 'checkbox' ? x.checked : (f.type === 'number' ? (x.value === '' ? null : Number(x.value)) : (f.type === 'password' ? x.value : x.value.trim())); });
+      return v;
+    };
+    const upd = () => { if (!preview) return; pv.textContent = ''; (preview(vals()) || []).forEach((l) => pv.appendChild(el('p', l.cls || null, l.text || l))); };
+    form.addEventListener('input', upd); form.addEventListener('change', upd); upd();
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); ok.disabled = true;
+      try { if (await onSubmit(vals()) !== false) { $('mform').close(); toastHome(); } } catch (x) { toast(t('a_error'), true); }
+      ok.disabled = false;
+    });
+    body.appendChild(form);
+    $('mform').showModal();
+    const first = form.querySelector('input,select'); if (first) first.focus();
+    return F;
+  }
+
+  // ---------- receipts ----------
+  function calcReceipt(it, v) {
+    const q = Math.round(v.qty || 0), p = v.price;
+    if (!(q > 0) || p == null || !(p >= 0)) return null;
+    const vat = v.vat == null ? SET.vat_rate : v.vat;
+    const unit = r4(p + (v.rec ? 0 : p * vat / 100) + (v.other || 0) / q);
+    const c = COSTS.get(it.id) || {}; const oldQ = it.qty || 0, oldAvg = c.avg_cost == null ? null : Number(c.avg_cost);
+    const avg = (oldAvg == null || oldQ <= 0) ? unit : r4((oldQ * oldAvg + q * unit) / (oldQ + q));
+    return { q: q, unit: unit, avg: avg, oldAvg: oldAvg, oldQ: oldQ, excl: q * p, incl: q * p * (1 + vat / 100) };
+  }
+
+  function receiveBar(i) {
+    const s = sectionBox(t('rc_title'));
+    s.appendChild(el('p', 'muted', t('rc_help')));
+    s.appendChild(mkBtn(t('rc_btn'), 'btn primary', () => openReceive(i)));
+    return s;
+  }
+
+  function openReceive(i, after) {
+    const it = ITEMS[i];
+    richForm(t('rc_title') + ' · ' + nameOf(it), [
+      { k: 'qty', label: t('rc_qty'), type: 'number', req: true, min: '1', step: '1' },
+      { k: 'price', label: t('rc_price'), type: 'number', req: true, min: '0', step: '0.01', hint: t('rc_price_hint') },
+      { k: 'vat', label: t('rc_vat'), type: 'number', min: '0', step: '0.01', value: SET.vat_rate },
+      { k: 'rec', label: t('rc_vat_rec'), type: 'checkbox', value: SET.vat_vendor },
+      { k: 'other', label: t('rc_other'), type: 'number', min: '0', step: '0.01', value: 0, hint: t('rc_other_hint') },
+      { k: 'date', label: t('rc_date'), type: 'date', value: isoToday() },
+      { k: 'supplier', label: t('fld_sup'), value: it.sup || '' },
+      { k: 'supref', label: t('fld_supref'), value: it.supRef || '' },
+      { k: 'doc', label: t('rc_doc') },
+      { k: 'lot', label: t('rc_lot') },
+      { k: 'exp', label: t('fld_exp'), type: 'date' },
+      { k: 'note', label: t('rc_note'), full: true }
+    ], async (v) => {
+      const c = calcReceipt(it, v);
+      if (!c) { toast(t('rc_invalid'), true); return false; }
+      const r = await sb.rpc('receive_stock', {
+        p_item: it.id, p_qty: c.q, p_unit_cost: v.price, p_vat_rate: v.vat == null ? SET.vat_rate : v.vat, p_vat_recoverable: !!v.rec, p_other_costs: v.other || 0,
+        p_supplier: v.supplier || null, p_supplier_ref: v.supref || null, p_doc_ref: v.doc || null, p_lot: v.lot || null, p_expiry: v.exp || null, p_date: v.date || null, p_note: v.note || null
+      });
+      if (r.error) { toast(t('a_error'), true); return false; }
+      const g = await sb.from('items').select('*').eq('id', it.id).single();
+      if (!g.error && g.data) { ITEMS[i] = fromRow(g.data); ALERTS[i] = alertsOf(ITEMS[i], today); }
+      await refreshCost(it.id);
+      MG.dirty = true;
+      refresh(false);
+      if (after) after(); else openDetail(i);
+      toast(t('rc_done', { n: nf(c.q) }));
+    }, (v) => {
+      const c = calcReceipt(it, v); if (!c) return [{ cls: 'muted', text: t('rc_preview_wait') }];
+      const lines = [{ text: t('rc_p_unit', { u: money(c.unit, 4) }) + (v.rec ? ' (' + t('rc_p_novat') + ')' : '') }];
+      let avg = t('rc_p_avg', { a: money(c.avg, 4) });
+      if (c.oldAvg != null && c.oldQ > 0 && c.oldAvg > 0) avg += ' (' + pct((c.avg - c.oldAvg) / c.oldAvg * 100) + ' ' + t('rc_p_vs', { a: money(c.oldAvg, 4) }) + ')';
+      lines.push({ text: avg });
+      if (c.oldAvg != null && c.oldAvg > 0 && Math.abs(c.unit - c.oldAvg) / c.oldAvg > 0.25) lines.push({ cls: 'warnline', text: t('rc_p_gap', { p: pct((c.unit - c.oldAvg) / c.oldAvg * 100) }) });
+      lines.push({ cls: 'muted', text: t('rc_p_total', { a: money(c.excl), b: money(c.incl) }) });
+      return lines;
+    }, t('rc_save'));
+  }
+
+  // ---------- cost, value and price history of one item ----------
+  function costSection(i) {
+    const it = ITEMS[i]; const s = sectionBox(t('co_title'));
+    const host = el('div', 'costhost'); s.appendChild(host);
+    s.appendChild(el('h4', 'subh', t('co_hist')));
+    const hl = el('ul', 'hist costhist'); s.appendChild(hl);
+
+    const loadHist = () => sb.from('stock_receipts').select('kind,received_at,created_at,qty,unit_cost,supplier,doc_ref,avg_after,user_email').eq('item_id', it.id).order('created_at', { ascending: false }).limit(20).then((r) => {
+      if (CUR !== i || !r || r.error || !r.data) return;
+      hl.textContent = '';
+      if (!r.data.length) { hl.appendChild(el('li', 'none', t('co_hist_none'))); return; }
+      r.data.forEach((m, k) => {
+        const li = el('li');
+        const who = (m.user_email || '').split('@')[0];
+        li.appendChild(el('span', 'when', fmtDate(m.kind === 'opening' ? m.created_at : m.received_at) + ' · ' + t(m.kind === 'opening' ? 'co_h_open' : 'co_h_rec') + (who ? ' · ' + who : '')));
+        const prev = r.data[k + 1]; const cur = Number(m.unit_cost);
+        const right = el('span', 'dplus', money(cur, 4));
+        if (prev && Number(prev.unit_cost) > 0) { const ch = (cur - Number(prev.unit_cost)) / Number(prev.unit_cost) * 100; const sp = el('small', ch > 0.05 ? 'up' : ch < -0.05 ? 'down' : '', ' ' + pct(ch)); right.appendChild(sp); }
+        li.appendChild(right);
+        const bits = [];
+        if (m.kind === 'receipt') bits.push('+' + nf(m.qty));
+        if (m.supplier) bits.push(m.supplier);
+        if (m.doc_ref) bits.push(m.doc_ref);
+        if (m.avg_after != null) bits.push(t('co_h_avg', { a: money(m.avg_after, 4) }));
+        if (bits.length) li.appendChild(el('span', 'why', bits.join(' · ')));
+        hl.appendChild(li);
+      });
+    });
+
+    const draw = () => {
+      host.textContent = '';
+      const c = COSTS.get(it.id), v = valueOf(it);
+      if (!c || c.avg_cost == null) {
+        host.appendChild(el('p', 'muted', t('co_none')));
+        const f = el('form', 'inline');
+        const inp = el('input'); inp.type = 'number'; inp.min = '0'; inp.step = '0.01'; inp.inputMode = 'decimal'; inp.required = true; inp.placeholder = t('co_open_ph'); inp.setAttribute('aria-label', t('co_open_ph'));
+        const go = el('button', 'btn', t('co_open_set')); go.type = 'submit'; f.append(inp, go);
+        f.addEventListener('submit', async (e) => {
+          e.preventDefault(); go.disabled = true;
+          const r = await sb.rpc('set_opening_cost', { p_item: it.id, p_unit_cost: Number(inp.value), p_note: null });
+          if (r.error) { toast(t('a_error'), true); go.disabled = false; return; }
+          await refreshCost(it.id); draw(); loadHist(); MG.dirty = true; toast(t('a_saved'));
+        });
+        host.appendChild(f);
+        host.appendChild(el('small', 'muted', t('co_open_hint', { v: SET.vat_vendor ? t('co_vat_excl') : t('co_vat_incl') })));
+      } else {
+        const dl_ = el('dl', 'facts');
+        fact(dl_, t('co_avg'), money(c.avg_cost, 4));
+        fact(dl_, t('co_last'), money(c.last_cost, 4) + (c.last_cost_at ? ' · ' + fmtDate(c.last_cost_at) : ''));
+        fact(dl_, t('co_value'), money(v.value));
+        if (v.writedown > 0.004) fact(dl_, t('co_writedown'), money(v.writedown));
+        host.appendChild(dl_);
+      }
+      const nf_ = el('form', 'inline nrv');
+      const lab = el('label'); lab.appendChild(el('span', null, t('co_nrv')));
+      const ni = el('input'); ni.type = 'number'; ni.min = '0'; ni.step = '0.01'; ni.inputMode = 'decimal'; ni.value = c && c.nrv != null ? c.nrv : ''; lab.appendChild(ni);
+      const sv = el('button', 'btn', t('a_save')); sv.type = 'submit'; nf_.append(lab, sv);
+      nf_.addEventListener('submit', async (e) => {
+        e.preventDefault(); sv.disabled = true;
+        const r = await sb.rpc('set_nrv', { p_item: it.id, p_nrv: ni.value === '' ? null : Number(ni.value) });
+        if (r.error) { toast(t('a_error'), true); sv.disabled = false; return; }
+        await refreshCost(it.id); draw(); MG.dirty = true; toast(t('a_saved'));
+      });
+      host.appendChild(nf_); host.appendChild(el('small', 'muted', t('co_nrv_hint')));
+    };
+    draw(); loadHist();
+    return s;
+  }
+
+  function lotsSection(i) {
+    const it = ITEMS[i]; const s = sectionBox(t('lot_title'));
+    const ul = el('ul', 'hist lots'); s.appendChild(ul);
+    sb.from('stock_lots').select('lot_no,expiry,qty_in,qty_left,received_at').eq('item_id', it.id).order('expiry', { ascending: true }).then((r) => {
+      if (CUR !== i || !r || r.error || !r.data) return;
+      const live = r.data.filter((l) => l.qty_left > 0);
+      if (!live.length) { ul.appendChild(el('li', 'none', t('lot_none'))); return; }
+      live.forEach((l) => {
+        const li = el('li');
+        li.appendChild(el('span', 'when', (l.lot_no || t('lot_nolot')) + ' · ' + t('lot_recv', { d: fmtDate(l.received_at) })));
+        const dd = l.expiry ? daysUntil(l.expiry, today) : null;
+        const cls = dd == null ? '' : dd < 0 ? 'dminus' : dd <= EXPIRY_WARN_DAYS ? 'warnqty' : 'dplus';
+        li.appendChild(el('span', cls, nf(l.qty_left) + ' / ' + nf(l.qty_in)));
+        li.appendChild(el('span', 'why', l.expiry ? t('d_expiry') + ' ' + fmtDate(l.expiry) + (dd != null ? ' · ' + (dd < 0 ? t('ex_late', { n: nf(-dd) }) : t('ex_left', { n: nf(dd) })) : '') : t('lot_noexp')));
+        ul.appendChild(li);
+      });
+    });
+    s.appendChild(el('small', 'muted', t('lot_fefo')));
+    return s;
+  }
+
+  // ---------- reorder list ----------
+  function reorderList() {
+    const out = [];
+    ITEMS.forEach((it, i) => {
+      if (familyOf(it) !== 'stock') return;
+      const a = ALERTS[i]; if (!(a.includes('out') || a.includes('low'))) return;
+      const q = it.qty || 0, gap = it.min != null ? Math.max(0, it.min - q) : 0;
+      out.push({ i: i, it: it, q: q, need: Math.max(it.reorder || 0, gap) || null });
+    });
+    return out;
+  }
+
+  function tabReorder(body) {
+    body.appendChild(el('p', 'muted', t('ro_help')));
+    const rows = reorderList();
+    const top = el('div', 'mgtop'); top.appendChild(el('strong', null, t('ro_count', { n: nf(rows.length) })));
+    const acts = el('div', 'mgacts');
+    if (rows.length) acts.appendChild(mkBtn(t('exportCsv'), 'btn sm', () => downloadCsv('reorder', [[t('d_sup'), t('d_ref'), t('h_item'), t('section'), t('location'), t('h_qty'), t('h_min'), t('fld_reorder'), t('ro_order'), t('fld_supref'), t('fld_unit')]].concat(
+      rows.slice().sort((a, b) => String(a.it.sup || '~').localeCompare(String(b.it.sup || '~')) || nameOf(a.it).localeCompare(nameOf(b.it), lang)).map((r) => [r.it.sup || '', r.it.ref || '', nameOf(r.it), secOf(r.it), locOf(r.it), r.q, r.it.min, r.it.reorder, r.need, r.it.supRef || '', r.it.unit || ''])))));
+    top.appendChild(acts); body.appendChild(top);
+    if (!rows.length) { body.appendChild(el('p', 'muted', t('ro_none'))); return; }
+    const groups = new Map();
+    rows.forEach((r) => { const k = r.it.sup || ''; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(r); });
+    Array.from(groups.keys()).sort((a, b) => (a === '') - (b === '') || a.localeCompare(b, lang)).forEach((k) => {
+      const list = groups.get(k).sort((a, b) => nameOf(a.it).localeCompare(nameOf(b.it), lang, { sensitivity: 'base' }));
+      body.appendChild(el('h3', 'grouph', (k || t('ro_nosup')) + ' · ' + nf(list.length)));
+      const T = mkTable([t('d_ref'), t('h_item'), t('location'), t('h_qty'), t('h_min'), t('ro_order'), t('fld_supref'), ''], [3, 4, 5]);
+      list.forEach((r) => {
+        const act = canCost() ? mkBtn(t('rc_btn'), 'btn sm', () => openReceive(r.i, () => mgShow('reorder'))) : '';
+        const nm = el('span'); nm.appendChild(el('strong', null, nameOf(r.it)));
+        addRow(T, [r.it.ref || '', nm, locOf(r.it), nf(r.q), r.it.min == null ? '' : nf(r.it.min), r.need == null ? t('ro_define') : nf(r.need), r.it.supRef || '', act]);
+      });
+      body.appendChild(T.wrap);
+    });
+  }
+
+  // ---------- expiry ----------
+  async function tabExpiry(body) {
+    body.appendChild(el('p', 'muted', t('ex_help')));
+    const lab = el('label'); lab.appendChild(el('span', null, t('ex_window')));
+    const sel = el('select'); [[30, 'ex_w30'], [60, 'ex_w60'], [90, 'ex_w90'], [180, 'ex_w180'], [9999, 'ex_wall']].forEach(([v, k]) => sel.appendChild(new Option(t(k), v))); sel.value = '90';
+    lab.appendChild(sel); const form = el('div', 'form'); form.appendChild(lab); body.appendChild(form);
+    const host = el('div'); body.appendChild(host);
+    const lots = new Map();
+    try {
+      const r = await sb.from('stock_lots').select('item_id,lot_no,expiry,qty_left').order('expiry', { ascending: true }).range(0, 4999);
+      if (!r.error && r.data) r.data.forEach((l) => { if (l.qty_left > 0) { if (!lots.has(l.item_id)) lots.set(l.item_id, []); lots.get(l.item_id).push(l); } });
+    } catch (e) { /* items alone are shown */ }
+    const draw = () => {
+      host.textContent = '';
+      const win = Number(sel.value);
+      const rows = [];
+      ITEMS.forEach((it, i) => { if (!it.expiry) return; const d = daysUntil(it.expiry, today); if (d != null && d <= win) rows.push({ i: i, it: it, d: d }); });
+      rows.sort((a, b) => a.d - b.d);
+      host.appendChild(el('p', 'vinfo', t('ex_count', { n: nf(rows.length) })));
+      if (!rows.length) { host.appendChild(el('p', 'muted', t('ex_none'))); return; }
+      const T = mkTable([t('h_item'), t('location'), t('lot_title'), t('h_qty'), t('d_expiry'), t('h_status')], [3]);
+      rows.forEach((r) => {
+        const ls = (lots.get(r.it.id) || []).map((l) => (l.lot_no || t('lot_nolot')) + ': ' + nf(l.qty_left)).join(' · ');
+        const nm = el('span'); nm.appendChild(el('strong', null, nameOf(r.it))); if (r.it.ref) nm.appendChild(el('small', 'muted', ' ' + r.it.ref));
+        const chip = el('span', 'chip ' + (r.d < 0 ? 'expired' : r.d <= EXPIRY_WARN_DAYS ? 'expiring' : 'ok'), r.d < 0 ? t('ex_late', { n: nf(-r.d) }) : t('ex_left', { n: nf(r.d) }));
+        const tr_ = addRow(T, [nm, locOf(r.it), ls, r.it.qty == null ? '–' : nf(r.it.qty), fmtDate(r.it.expiry), chip]);
+        tr_.classList.add('clickrow'); tr_.addEventListener('click', () => { $('manage').close(); openDetail(r.i); });
+      });
+      host.appendChild(T.wrap);
+    };
+    sel.addEventListener('change', draw); draw();
+  }
+
+  // ---------- valuation ----------
+  function tabValue(body) {
+    body.appendChild(el('p', 'muted', t('va_help')));
+    let nCost = 0, nNo = 0, sumCost = 0, sumNet = 0, wd = 0;
+    const by = new Map();
+    ITEMS.forEach((it) => {
+      const v = valueOf(it);
+      if (!v) { if ((it.qty || 0) > 0) nNo++; return; }
+      nCost++; sumCost += v.cost; sumNet += v.value; wd += v.writedown;
+      const k = catTop(it) || ''; const o = by.get(k) || { n: 0, cost: 0, net: 0 }; o.n++; o.cost += v.cost; o.net += v.value; by.set(k, o);
+    });
+    const dl_ = el('dl', 'facts');
+    fact(dl_, t('va_valued'), nf(nCost)); fact(dl_, t('va_nocost'), nf(nNo));
+    fact(dl_, t('va_cost'), money(sumCost)); fact(dl_, t('va_wd'), money(wd)); fact(dl_, t('va_net'), money(sumNet));
+    body.appendChild(dl_);
+    const top = el('div', 'mgtop'); top.appendChild(el('strong', null, t('va_bycat')));
+    const acts = el('div', 'mgacts');
+    acts.appendChild(mkBtn(t('exportCsv'), 'btn sm', () => {
+      const rows = [[t('d_ref'), t('h_item'), t('d_cat'), t('location'), t('h_qty'), t('fld_unit'), t('co_avg'), t('co_last'), t('co_nrv'), t('va_cost'), t('va_wd'), t('va_net')]];
+      ITEMS.forEach((it) => { const c = COSTS.get(it.id), v = valueOf(it); if (!v) return; rows.push([it.ref || '', nameOf(it), it.catId ? catText(it.catId) : '', placeText(it.placeId) || locOf(it), it.qty, it.unit || '', c.avg_cost, c.last_cost, c.nrv, r4(v.cost), r4(v.writedown), r4(v.value)]); });
+      downloadCsv('valuation', rows);
+    }));
+    top.appendChild(acts); body.appendChild(top);
+    const T = mkTable([t('d_cat'), t('va_valued'), t('va_cost'), t('va_net')], [1, 2, 3]);
+    Array.from(by.keys()).sort((a, b) => by.get(b).net - by.get(a).net).forEach((k) => {
+      const o = by.get(k); const c = CTM.get(k);
+      addRow(T, [c ? lname(c) : t('cat_none'), nf(o.n), money(o.cost), money(o.net)]);
+    });
+    body.appendChild(T.wrap);
+    body.appendChild(el('p', 'muted', t('va_method')));
+  }
+
+  // ---------- settings and translation import (administrators) ----------
+  function tabSettings(body) {
+    body.appendChild(el('p', 'muted', t('se_help')));
+    const form = el('form', 'form');
+    const l1 = el('label'); l1.appendChild(el('span', null, t('se_vat'))); const vr = el('input'); vr.type = 'number'; vr.min = '0'; vr.max = '100'; vr.step = '0.01'; vr.value = SET.vat_rate; vr.required = true; l1.appendChild(vr); form.appendChild(l1);
+    const l2 = el('label'); l2.appendChild(el('span', null, t('se_currency'))); const cu = el('input'); cu.value = SET.currency; cu.disabled = true; l2.appendChild(cu); form.appendChild(l2);
+    const l3 = el('label', 'full chk'); const vv = el('input'); vv.type = 'checkbox'; vv.checked = SET.vat_vendor; l3.append(vv, el('span', null, t('se_vendor'))); l3.appendChild(el('small', 'muted', t('se_vendor_hint'))); form.appendChild(l3);
+    const act = el('div', 'formactions'); const ok = el('button', 'btn primary', t('a_save')); ok.type = 'submit'; act.appendChild(ok); form.appendChild(act);
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); ok.disabled = true;
+      const r = await sb.from('app_settings').upsert([{ key: 'vat_rate', value: String(Number(vr.value)) }, { key: 'vat_vendor', value: vv.checked ? 'true' : 'false' }], { onConflict: 'key' });
+      if (r.error) toast(t('a_error'), true); else { SET.vat_rate = Number(vr.value); SET.vat_vendor = vv.checked; toast(t('a_saved')); }
+      ok.disabled = false;
+    });
+    body.appendChild(form);
+
+    const s = sectionBox(t('tr_title')); s.appendChild(el('p', 'muted', t('tr_help')));
+    const file = el('input'); file.type = 'file'; file.accept = 'application/json,.json'; file.id = 'tr-file';
+    const msg = el('p', 'vinfo'); msg.id = 'tr-msg';
+    file.addEventListener('change', async () => {
+      const f = file.files && file.files[0]; if (!f) return;
+      file.disabled = true; msg.textContent = t('tr_reading');
+      try { await importTranslations(JSON.parse(await f.text()), msg); } catch (e) { msg.textContent = t('tr_error'); }
+      file.value = ''; file.disabled = false;
+    });
+    s.append(file, msg); body.appendChild(s);
+  }
+
+  async function importTranslations(data, msg) {
+    const part = (k) => (data && typeof data[k] === 'object' && data[k]) || {};
+    const items = part('items'), ids = Object.keys(items);
+    let n = 0;
+    const small = { places: part('places'), categories: part('categories') };
+    let r = await sb.rpc('import_translations', { p: small });
+    if (r.error) throw r.error; n += r.data || 0;
+    for (let a = 0; a < ids.length; a += 250) {
+      msg.textContent = t('tr_progress', { d: nf(a), n: nf(ids.length) });
+      const chunk = {}; ids.slice(a, a + 250).forEach((id) => { chunk[id] = items[id]; });
+      r = await sb.rpc('import_translations', { p: { items: chunk } });
+      if (r.error) throw r.error; n += r.data || 0;
+    }
+    msg.textContent = t('tr_done', { n: nf(n) });
+    await loadDb(true);
+  }
+
+  // ---------- change own password ----------
+  function openPassword() {
+    richForm(t('pw_title'), [
+      { k: 'p1', label: t('pw_new'), type: 'password', req: true, hint: t('pw_hint') },
+      { k: 'p2', label: t('pw_again'), type: 'password', req: true }
+    ], async (v) => {
+      if (v.p1.length < 8) { toast(t('pw_short'), true); return false; }
+      if (v.p1 !== v.p2) { toast(t('pw_mismatch'), true); return false; }
+      const r = await sb.auth.updateUser({ password: v.p1 });
+      if (r.error) { toast(t('a_error'), true); return false; }
+      toast(t('pw_done'));
+    });
+  }
+
+  // ---------- team (administrators) ----------
+  async function callAdmin(body) {
+    try {
+      const r = await sb.functions.invoke('admin-users', { body: body });
+      if (!r.error) return { ok: true, data: r.data };
+      let msg = '', status = 0;
+      try { status = r.error.context && r.error.context.status; const j = await r.error.context.json(); msg = (j && j.error) || ''; } catch (e) { /* no body */ }
+      return { ok: false, status: status, msg: msg, missing: !status || status === 404 };
+    } catch (e) { return { ok: false, status: 0, msg: '', missing: true }; }
+  }
+
+  async function openTeam() {
+    const body = $('tm-body'); body.textContent = '';
+    const [st, inv] = await Promise.all([
+      sb.from('staff').select('user_id,email,role,display_name,active').order('email'),
+      sb.from('staff_invites').select('email,role,display_name,used_at').is('used_at', null).order('email')
+    ]);
+    if (st.error || !st.data) { toast(t('a_error'), true); return; }
+    body.appendChild(el('p', 'muted', t('team_help')));
+    const ul = el('ul', 'others team');
+    st.data.forEach((m) => {
+      const li = el('li', 'member'); const self = m.user_id === USER.id;
+      const who = el('span', 'who'); who.appendChild(el('strong', null, m.display_name || m.email)); who.appendChild(el('small', 'muted', (m.display_name ? m.email : '') + (self ? ' (' + t('team_you') + ')' : '')));
+      const sel = el('select'); ['admin', 'storekeeper', 'editor', 'viewer'].forEach((k) => sel.appendChild(new Option(t('role_' + k), k)));
+      sel.value = m.role; sel.disabled = self; sel.setAttribute('aria-label', t('team_role'));
+      sel.addEventListener('change', async () => {
+        const u = await sb.from('staff').update({ role: sel.value }).eq('user_id', m.user_id).select('role').single();
+        if (u.error || !u.data) { toast(u.error && u.error.code === '23514' ? t('team_last') : t('a_error'), true); sel.value = m.role; } else { m.role = u.data.role; toast(t('a_saved')); }
+      });
+      const ac = el('label', 'activechk'); const cb = el('input'); cb.type = 'checkbox'; cb.checked = m.active !== false; cb.disabled = self; ac.append(cb, el('span', null, t('team_active')));
+      cb.addEventListener('change', async () => {
+        const u = await sb.from('staff').update({ active: cb.checked }).eq('user_id', m.user_id).select('active').single();
+        if (u.error || !u.data) { toast(u.error && u.error.code === '23514' ? t('team_last') : t('a_error'), true); cb.checked = !cb.checked; } else { m.active = u.data.active; toast(t('a_saved')); }
+      });
+      const pw = mkBtn(t('team_reset'), 'btn sm', () => resetPassword(m));
+      li.append(who, sel, ac, pw); ul.appendChild(li);
+    });
+    body.appendChild(ul);
+
+    const known = new Set(st.data.map((m) => String(m.email).toLowerCase()));
+    const pend = ((inv && inv.data) || []).filter((x) => !known.has(String(x.email).toLowerCase()));
+    if (pend.length) {
+      const s = sectionBox(t('team_pending')); const pl = el('ul', 'others team');
+      pend.forEach((x) => {
+        const li = el('li', 'member'); const who = el('span', 'who'); who.appendChild(el('strong', null, x.display_name || x.email)); who.appendChild(el('small', 'muted', x.display_name ? x.email : ''));
+        const rl = el('span', 'chip stock', t('role_' + x.role));
+        const rm = mkBtn(t('mg_delete'), 'btn sm danger', async () => { const d = await sb.from('staff_invites').delete().eq('email', x.email).select('email'); if (d.error) toast(t('a_error'), true); else openTeam(); });
+        li.append(who, rl, rm); pl.appendChild(li);
+      });
+      s.appendChild(pl); body.appendChild(s);
+    }
+
+    const add = sectionBox(t('team_add'));
+    add.appendChild(el('p', 'muted', t('team_add_help')));
+    const form = el('form', 'form');
+    const mk = (label, type, attrs) => { const l = el('label'); l.appendChild(el('span', null, label)); const i_ = el('input'); i_.type = type; Object.assign(i_, attrs || {}); l.appendChild(i_); form.appendChild(l); return i_; };
+    const em = mk(t('lbl_email'), 'email', { required: true, autocomplete: 'off', autocapitalize: 'off', inputMode: 'email' });
+    const nm = mk(t('team_name'), 'text', { maxLength: 80, autocomplete: 'off' });
+    const rl = el('label'); rl.appendChild(el('span', null, t('team_role'))); const rs = el('select'); ['viewer', 'storekeeper', 'editor', 'admin'].forEach((k) => rs.appendChild(new Option(t('role_' + k), k))); rl.appendChild(rs); form.appendChild(rl);
+    const pw = mk(t('team_temp_pw'), 'password', { autocomplete: 'new-password', minLength: 8 });
+    const hint = el('p', 'muted full'); hint.textContent = t('team_roles_help'); form.appendChild(hint);
+    const act = el('div', 'formactions'); const go = el('button', 'btn primary', t('team_create')); go.type = 'submit'; act.appendChild(go); form.appendChild(act);
+    const out = el('p', 'vinfo full'); out.setAttribute('role', 'status'); form.appendChild(out);
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); go.disabled = true; out.textContent = '';
+      const email = em.value.trim().toLowerCase();
+      try {
+        if (known.has(email)) { out.textContent = t('team_exists'); go.disabled = false; return; }
+        const iv = await sb.from('staff_invites').upsert({ email: email, role: rs.value, display_name: nm.value.trim() || null, created_by: USER.id, used_at: null }, { onConflict: 'email' });
+        if (iv.error) throw iv.error;
+        if (!pw.value) { out.textContent = t('team_invited'); toast(t('a_saved')); go.disabled = false; return; }
+        if (pw.value.length < 8) { out.textContent = t('pw_short'); go.disabled = false; return; }
+        const r = await callAdmin({ action: 'create', email: email, password: pw.value, role: rs.value, display_name: nm.value.trim() || null });
+        if (r.ok) { toast(t('team_created')); openTeam(); return; }
+        out.textContent = r.missing ? t('team_nofn') : (r.status === 409 ? t('team_exists') : t('a_error'));
+      } catch (x) { out.textContent = t('a_error'); }
+      go.disabled = false;
+    });
+    add.appendChild(form); body.appendChild(add);
+    if (!$('team').open) $('team').showModal();
+  }
+
+  function resetPassword(m) {
+    richForm(t('team_reset') + ' · ' + (m.display_name || m.email), [
+      { k: 'p1', label: t('pw_new'), type: 'password', req: true, hint: t('pw_hint') }
+    ], async (v) => {
+      if (v.p1.length < 8) { toast(t('pw_short'), true); return false; }
+      const r = await callAdmin({ action: 'set_password', email: m.email, password: v.p1 });
+      if (!r.ok) { toast(r.missing ? t('team_nofn') : t('a_error'), true); return false; }
+      toast(t('pw_done'));
+    });
+  }
+
   // ---------- data ----------
   function buildIndex() {
     IX = ITEMS.map((it) => {
-      const names = [it.name, (TR.items[it.name] || {}).it, (TR.items[it.name] || {}).fr, it.ref].filter(Boolean);
-      const places = [it.section, it.loc, (TR.sections[it.section] || {}).it, (TR.sections[it.section] || {}).fr, (TR.locations[it.loc] || {}).it, (TR.locations[it.loc] || {}).fr].concat(catWords(it)).filter(Boolean);
+      const tn = TR.items[it.name] || {};
+      const names = [it.name, tn.it, tn.fr, tn.pt, tn.zu, it.ref, it.supRef].filter(Boolean);
+      const ts = TR.sections[it.section] || {}, tl = TR.locations[it.loc] || {};
+      const places = [it.section, it.loc, ts.it, ts.fr, ts.pt, ts.zu, tl.it, tl.fr, tl.pt, tl.zu].concat(DB ? catWords(it) : []).filter(Boolean);
       return indexItem(it, names, places);
     });
   }
