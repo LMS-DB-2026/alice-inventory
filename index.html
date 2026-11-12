@@ -377,6 +377,11 @@ dialog#team { width: min(760px, calc(100vw - 24px)); }
 }
 @media (min-width: 2200px) { .wrap { max-width: 2000px; } body { font-size: 18px; } :root { --th: 84px; --gcard: 260px; } }
 @media print { .viewsw { display: none !important; } }
+.tk { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin: 10px 0; display: grid; gap: 6px; background: var(--paper, #fff); }
+.tk p { margin: 0; }
+.tkhead { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 12px; }
+.tknote { font-size: 0.9rem; }
+.tkact { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 
 @media (max-width: 760px) {
   .wrap { padding: 0 14px; }
@@ -954,6 +959,31 @@ const STRINGS = {
     va_net: "Net value",
     va_bycat: "By category",
     va_method: "Method: weighted average cost recomputed at each receipt, stock measured at the lower of cost and net realisable value (IAS 2, which does not allow LIFO). The cost includes non-recoverable VAT and delivery costs. The tax treatment of trading stock (Income Tax Act, section 22) must be confirmed with your accountant.",
+    mg_tab_tasks: "Tasks",
+    tk_help_admin: "Give a verification round to someone on the stock team. They find it under Stock control and work through it item by item.",
+    tk_help_mine: "Verification rounds assigned to you. Start one and confirm each item in turn.",
+    tk_new: "New task",
+    tk_assignee: "Assigned to",
+    tk_due: "Due date (optional)",
+    tk_title: "Title (optional)",
+    tk_note: "Instruction (optional)",
+    tk_count: "Scope: {n} items",
+    tk_assign: "Assign task",
+    tk_created: "Task assigned.",
+    tk_none_admin: "No task yet.",
+    tk_none_mine: "No task assigned to you.",
+    tk_no_team: "No active team member can receive a task.",
+    tk_for: "For {n}",
+    tk_due_on: "Due {d}",
+    tk_by: "Assigned by {n} on {d}",
+    tk_progress: "{d} of {n} verified",
+    tk_start: "Start",
+    tk_continue: "Continue",
+    tk_done: "Completed",
+    tk_late: "Overdue",
+    tk_open: "In progress",
+    tk_delete: "Delete task",
+    tk_default_title: "Verification · {s}",
     csv_cols: ['ID', 'Item', 'Original name', 'Section', 'Location', 'Shelf / box / container', 'Type', 'Quantity', 'Minimum', 'Status', 'Units per pack', 'Total units', 'Supplier', 'Last purchase', 'Notes', 'Data to verify']
   },
   it: {
@@ -1270,6 +1300,31 @@ const STRINGS = {
     va_net: "Valore netto",
     va_bycat: "Per categoria",
     va_method: "Metodo: costo medio ponderato ricalcolato a ogni ricezione, stock valutato al minore tra costo e valore netto di realizzo (IAS 2, che non ammette il LIFO). Il costo comprende l'IVA non recuperabile e le spese di consegna. Il trattamento fiscale delle rimanenze (Income Tax Act, sezione 22) va confermato con il commercialista.",
+    mg_tab_tasks: "Compiti",
+    tk_help_admin: "Assegna un giro di verifica a una persona del team di magazzino. La ritrova in Controllo magazzino e la svolge articolo per articolo.",
+    tk_help_mine: "Giri di verifica assegnati a te. Avviane uno e conferma ogni articolo a turno.",
+    tk_new: "Nuovo compito",
+    tk_assignee: "Assegnato a",
+    tk_due: "Scadenza (facoltativa)",
+    tk_title: "Titolo (facoltativo)",
+    tk_note: "Istruzione (facoltativa)",
+    tk_count: "Ambito: {n} articoli",
+    tk_assign: "Assegna il compito",
+    tk_created: "Compito assegnato.",
+    tk_none_admin: "Nessun compito per ora.",
+    tk_none_mine: "Nessun compito assegnato a te.",
+    tk_no_team: "Nessun membro attivo del team può ricevere compiti.",
+    tk_for: "Per {n}",
+    tk_due_on: "Entro il {d}",
+    tk_by: "Assegnato da {n} il {d}",
+    tk_progress: "{d} su {n} verificati",
+    tk_start: "Inizia",
+    tk_continue: "Continua",
+    tk_done: "Completato",
+    tk_late: "In ritardo",
+    tk_open: "In corso",
+    tk_delete: "Elimina compito",
+    tk_default_title: "Verifica · {s}",
     csv_cols: ['ID', 'Articolo', 'Nome originale', 'Sezione', 'Ubicazione', 'Scaffale / scatola / contenitore', 'Tipo', 'Quantità', 'Minimo', 'Stato', 'Unità per confezione', 'Unità totali', 'Fornitore', 'Ultimo acquisto', 'Note', 'Dati da verificare']
   },
   fr: {
@@ -1586,6 +1641,31 @@ const STRINGS = {
     va_net: "Valeur nette",
     va_bycat: "Par catégorie",
     va_method: "Méthode : coût moyen pondéré recalculé à chaque réception, stock évalué au plus bas du coût et de la valeur nette de réalisation (IAS 2, qui n'admet pas le LIFO). Le coût inclut la TVA non récupérable et les frais d'approche. Le traitement fiscal du stock (Income Tax Act, section 22) doit être confirmé par votre comptable.",
+    mg_tab_tasks: "Tâches",
+    tk_help_admin: "Confiez un tour de vérification à une personne de l'équipe stock. Elle le retrouve dans Contrôle du stock et le traite article par article.",
+    tk_help_mine: "Tours de vérification qui vous sont confiés. Lancez-en un et confirmez chaque article à tour de rôle.",
+    tk_new: "Nouvelle tâche",
+    tk_assignee: "Confiée à",
+    tk_due: "Échéance (facultatif)",
+    tk_title: "Titre (facultatif)",
+    tk_note: "Consigne (facultatif)",
+    tk_count: "Périmètre : {n} articles",
+    tk_assign: "Assigner la tâche",
+    tk_created: "Tâche assignée.",
+    tk_none_admin: "Aucune tâche pour le moment.",
+    tk_none_mine: "Aucune tâche ne vous est confiée.",
+    tk_no_team: "Aucun membre actif de l'équipe ne peut recevoir de tâche.",
+    tk_for: "Pour {n}",
+    tk_due_on: "Pour le {d}",
+    tk_by: "Assignée par {n} le {d}",
+    tk_progress: "{d} sur {n} vérifiés",
+    tk_start: "Commencer",
+    tk_continue: "Continuer",
+    tk_done: "Terminée",
+    tk_late: "En retard",
+    tk_open: "En cours",
+    tk_delete: "Supprimer la tâche",
+    tk_default_title: "Vérification · {s}",
     csv_cols: ['ID', 'Article', "Nom d'origine", 'Section', 'Emplacement', 'Étagère / boîte / conteneur', 'Type', 'Quantité', 'Minimum', 'Statut', 'Unités par conditionnement', 'Unités au total', 'Fournisseur', 'Dernier achat', 'Notes', 'Données à vérifier']
   },
   pt: {
@@ -1962,6 +2042,31 @@ const STRINGS = {
     va_net: "Valor líquido",
     va_bycat: "Por categoria",
     va_method: "Método: custo médio ponderado recalculado em cada receção, stock mensurado ao menor entre o custo e o valor líquido de realização (IAS 2, que não admite o LIFO). O custo inclui o IVA não recuperável e os custos de entrega. O tratamento fiscal das existências (Income Tax Act, secção 22) deve ser confirmado com o seu contabilista.",
+    mg_tab_tasks: "Tarefas",
+    tk_help_admin: "Atribua uma ronda de verificação a uma pessoa da equipa de armazém. Ela encontra-a em Controlo de stock e trata-a artigo a artigo.",
+    tk_help_mine: "Rondas de verificação atribuídas a si. Inicie uma e confirme cada artigo por sua vez.",
+    tk_new: "Nova tarefa",
+    tk_assignee: "Atribuída a",
+    tk_due: "Prazo (opcional)",
+    tk_title: "Título (opcional)",
+    tk_note: "Instrução (opcional)",
+    tk_count: "Âmbito: {n} artigos",
+    tk_assign: "Atribuir a tarefa",
+    tk_created: "Tarefa atribuída.",
+    tk_none_admin: "Ainda não há tarefas.",
+    tk_none_mine: "Nenhuma tarefa atribuída a si.",
+    tk_no_team: "Nenhum membro ativo da equipa pode receber tarefas.",
+    tk_for: "Para {n}",
+    tk_due_on: "Até {d}",
+    tk_by: "Atribuída por {n} em {d}",
+    tk_progress: "{d} de {n} verificados",
+    tk_start: "Iniciar",
+    tk_continue: "Continuar",
+    tk_done: "Concluída",
+    tk_late: "Em atraso",
+    tk_open: "Em curso",
+    tk_delete: "Eliminar tarefa",
+    tk_default_title: "Verificação · {s}",
     csv_cols: ["ID", "Artigo", "Nome original", "Secção", "Local", "Prateleira / caixa / contentor", "Tipo", "Quantidade", "Mínimo", "Estado", "Unidades por embalagem", "Total de unidades", "Fornecedor", "Última compra", "Notas", "Dados a verificar"]
   },
   zu: {
@@ -2338,6 +2443,31 @@ const STRINGS = {
     va_net: "Inani eliphelele",
     va_bycat: "Ngesigaba",
     va_method: "Indlela: izindleko eziphakathi ezilinganisiwe ziphinde zibalwe ekutholweni ngakunye, isitoko silinganiswa ngokuphansi phakathi kwezindleko nenani elilindelekile lokuthengisa (IAS 2, engavumeli i-LIFO). Izindleko zifaka i-VAT engabuyiselwa nezindleko zokulethwa. Indlela yentela yesitoko (Income Tax Act, isigaba 22) kumele iqinisekiswe nomkhaphi wakho wezimali.",
+    mg_tab_tasks: "Imisebenzi",
+    tk_help_admin: "Nikeza ilungu leqembu lesitoko umjikelezo wokuqinisekisa. Lizowuthola ku-Ukulawula isitoko liwenze into ngayinye.",
+    tk_help_mine: "Imijikelezo yokuqinisekisa enikezwe wena. Qala owodwa uqinisekise into ngayinye ngokulandelana.",
+    tk_new: "Umsebenzi omusha",
+    tk_assignee: "Kunikezwe",
+    tk_due: "Usuku lokugcina (akuphoqelekile)",
+    tk_title: "Isihloko (akuphoqelekile)",
+    tk_note: "Isiqondiso (akuphoqelekile)",
+    tk_count: "Ububanzi: izinto ezingu-{n}",
+    tk_assign: "Nikeza umsebenzi",
+    tk_created: "Umsebenzi unikeziwe.",
+    tk_none_admin: "Akukho msebenzi okwamanje.",
+    tk_none_mine: "Awukho umsebenzi onikezwe wena.",
+    tk_no_team: "Alikho ilungu leqembu elisebenzayo elingathola umsebenzi.",
+    tk_for: "Unikezwe: {n}",
+    tk_due_on: "Usuku lokugcina: {d}",
+    tk_by: "Kunikezwe ngu-{n} mhla ka-{d}",
+    tk_progress: "{d} kwangu-{n} aqinisekisiwe",
+    tk_start: "Qala",
+    tk_continue: "Qhubeka",
+    tk_done: "Kuqediwe",
+    tk_late: "Kudlulelwe isikhathi",
+    tk_open: "Kuyaqhubeka",
+    tk_delete: "Susa umsebenzi",
+    tk_default_title: "Ukuqinisekisa · {s}",
     csv_cols: ["ID", "Into", "Igama lasekuqaleni", "Ingxenye", "Indawo", "Ishelufu / ibhokisi / isiqukathi", "Uhlobo", "Inani", "Okuncane", "Isimo", "Amayunithi ephaketheni", "Inani eliphelele lamayunithi", "Umphakeli", "Ukuthenga kokugcina", "Amanothi", "Idatha okufanele iqinisekiswe"]
   }
 };
@@ -2683,11 +2813,11 @@ const STRINGS = {
     $('btn-team').hidden = !isAdmin();
     $('addbtn').hidden = !canEdit();
     $('btn-manage').hidden = !(canEdit() && REFS());
-    $('btn-manage').textContent = t(isAdmin() ? 'mg_open' : 'mg_open_sk');
+    { const nt = isAdmin() ? 0 : openTaskCount(); $('btn-manage').textContent = t(isAdmin() ? 'mg_open' : 'mg_open_sk') + (nt ? ' · ' + nt : ''); }
   }
 
   function showLogin() {
-    ROLE = null; ME = null; COSTS.clear(); USER = null; ITEMS = []; VIEW = []; ALERTS = []; IX = []; PL = []; CT = []; PLM = new Map(); CTM = new Map();
+    ROLE = null; ME = null; TASKS = []; COSTS.clear(); USER = null; ITEMS = []; VIEW = []; ALERTS = []; IX = []; PL = []; CT = []; PLM = new Map(); CTM = new Map();
     $('app').hidden = true; $('login').hidden = false; $('userbar').hidden = true; $('importbox').hidden = true;
     $('rows').textContent = ''; $('lg-pass').value = '';
     ['detail', 'editor', 'team', 'mform', 'manage'].forEach((id) => { if ($(id).open) $(id).close(); });
@@ -2705,6 +2835,7 @@ const STRINGS = {
       ROLE = me.data.role; ME = me.data;
       await loadRef();
       await loadSettings();
+      await loadTasks();
       if (canCost()) await loadCosts();
       const rows = [];
       for (let from = 0; ; from += 1000) {
@@ -3000,7 +3131,7 @@ const STRINGS = {
     $('addbtn').addEventListener('click', () => openEditor(-1));
     $('btn-team').addEventListener('click', openTeam);
     $('btn-pass').addEventListener('click', openPassword);
-    $('btn-manage').addEventListener('click', () => openManage('verify'));
+    $('btn-manage').addEventListener('click', () => openManage(!isAdmin() && openTaskCount() ? 'tasks' : 'verify'));
     $('ed-close').addEventListener('click', () => $('editor').close());
     $('tm-close').addEventListener('click', () => $('team').close());
     $('mg-close').addEventListener('click', () => $('manage').close());
@@ -3101,7 +3232,7 @@ const STRINGS = {
 
   function openManage(tab, queue) {
     if (!canEdit() || !REFS()) return;
-    const tabs = ['verify', 'reorder', 'expiry'].concat(canCost() ? ['value'] : [], isAdmin() ? ['places', 'cats', 'refs', 'settings'] : []);
+    const tabs = ['verify', 'tasks', 'reorder', 'expiry'].concat(canCost() ? ['value'] : [], isAdmin() ? ['places', 'cats', 'refs', 'settings'] : []);
     const bar = $('mg-tabs'); bar.textContent = '';
     tabs.forEach((k) => { const b = el('button', null, t('mg_tab_' + k)); b.type = 'button'; b.dataset.tab = k; b.setAttribute('role', 'tab'); b.addEventListener('click', () => mgShow(k)); bar.appendChild(b); });
     bar.hidden = tabs.length < 2;
@@ -3115,6 +3246,7 @@ const STRINGS = {
     $('mg-title').textContent = t('mg_title');
     const body = $('mg-body'); body.textContent = ''; body.scrollTop = 0;
     if (tab === 'verify') tabVerify(body, queue);
+    else if (tab === 'tasks') tabTasks(body);
     else if (tab === 'reorder') tabReorder(body);
     else if (tab === 'expiry') tabExpiry(body);
     else if (tab === 'value') tabValue(body);
@@ -4293,6 +4425,140 @@ const STRINGS = {
     });
   }
 
+  // ---------- tasks: verification rounds assigned to the stock team ----------
+  let TASKS = [];
+
+  async function loadTasks() {
+    if (!DB || !canEdit()) { TASKS = []; return; }
+    try {
+      const r = await sb.from('tasks').select('*').order('created_at', { ascending: false }).limit(200);
+      TASKS = r.error ? [] : (r.data || []);
+    } catch (e) { TASKS = []; }
+  }
+
+  const todayStr = () => { const d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+
+  // Progress of a task: items of the snapshot verified since the task was created.
+  function taskProgress(tk) {
+    const ix = new Map(); ITEMS.forEach((it, i) => ix.set(it.id, i));
+    const since = new Date(tk.created_at).getTime();
+    let n = 0, done = 0; const todo = [];
+    (tk.item_ids || []).forEach((id) => {
+      const i = ix.get(id); if (i == null) return;
+      n++;
+      const v = ITEMS[i].vAt; if (v && new Date(v).getTime() >= since) done++; else todo.push(i);
+    });
+    return { n, done, todo };
+  }
+
+  const taskOpen = (tk) => { const p = taskProgress(tk); return p.n > 0 && p.done < p.n; };
+  const openTaskCount = () => (ROLE && ITEMS.length ? TASKS.filter((tk) => tk.assignee === (USER && USER.id) && taskOpen(tk)).length : 0);
+
+  const scopeText = (tk) => [
+    tk.scope_place ? placeText(tk.scope_place) : '',
+    tk.scope_cat ? catText(tk.scope_cat) : '',
+    tk.scope_mode && tk.scope_mode !== 'all' ? t('v_scope_' + tk.scope_mode) : ''
+  ].filter(Boolean).join(' · ') || t('v_scope_all');
+  const taskTitle = (tk) => tk.title || t('tk_default_title', { s: scopeText(tk) });
+
+  // Same filter as the verification tab: place, category, status.
+  function scopeIdx(pc, cc, mode) {
+    const [s1, s2, s3] = pc.sels.map((s) => s.value); const [c1, c2] = cc.sels.map((s) => s.value);
+    const out = [];
+    ITEMS.forEach((it, i) => {
+      if (s3 && it.placeId !== s3) return;
+      const ch = placeChain(it.placeId);
+      if (!s3 && s2 && (!ch[1] || ch[1].id !== s2)) return;
+      if (!s3 && !s2 && s1 && (!ch[0] || ch[0].id !== s1)) return;
+      if (c2 && it.catId !== c2) return;
+      if (!c2 && c1 && catTop(it) !== c1) return;
+      if (mode === 'todo' && it.vAt) return;
+      if (mode === 'flag' && !(it.flags && it.flags.length)) return;
+      out.push(i);
+    });
+    return out;
+  }
+
+  // Items to work through, in storage order (same order as the verification tab).
+  function taskQueue(todo) {
+    const pos = (it) => placeChain(it.placeId).map((p) => String(p.sort).padStart(4, '0') + p.name).join('|');
+    return todo.slice().sort((a, b) => pos(ITEMS[a]).localeCompare(pos(ITEMS[b]), 'en', { numeric: true }) || String(ITEMS[a].sub ? ITEMS[a].sub.v : '').localeCompare(String(ITEMS[b].sub ? ITEMS[b].sub.v : ''), 'en', { numeric: true }) || nameOf(ITEMS[a]).localeCompare(nameOf(ITEMS[b]), lang, { sensitivity: 'base' }));
+  }
+
+  function taskCard(tk, host, rerender) {
+    const p = taskProgress(tk);
+    const complete = p.n > 0 && p.done >= p.n;
+    const late = !complete && tk.due_on && tk.due_on < todayStr();
+    const card = el('div', 'tk');
+    const head = el('div', 'tkhead');
+    head.appendChild(el('strong', null, taskTitle(tk)));
+    const bd = el('span', 'badge ' + (complete ? 'ok' : 'todo'), complete ? t('tk_done') : late ? t('tk_late') : t('tk_open'));
+    head.appendChild(bd); card.appendChild(head);
+    const meta = [];
+    if (isAdmin()) meta.push(t('tk_for', { n: tk.assignee_name || '' }));
+    if (tk.due_on) meta.push(t('tk_due_on', { d: fmtDate(tk.due_on) }));
+    meta.push(t('tk_by', { n: tk.created_by_name || '', d: fmtDate(tk.created_at) }));
+    card.appendChild(el('p', 'muted', meta.join(' · ')));
+    if (tk.title) card.appendChild(el('p', 'muted', scopeText(tk)));
+    if (tk.note) card.appendChild(el('p', 'tknote', tk.note));
+    const pr = el('div', 'vprog');
+    pr.appendChild(el('span', null, t('tk_progress', { d: nf(p.done), n: nf(p.n) })));
+    const bar = el('div', 'vbar'); const fill = el('span'); fill.style.width = (p.n ? Math.round(p.done / p.n * 100) : 0) + '%'; bar.appendChild(fill); pr.appendChild(bar);
+    card.appendChild(pr);
+    const act = el('div', 'tkact');
+    if (!complete && p.todo.length) act.appendChild(mkBtn(p.done ? t('tk_continue') : t('tk_start'), 'btn primary', () => mgShow('verify', taskQueue(p.todo))));
+    if (isAdmin()) {
+      act.appendChild(armBtn(t('tk_delete'), async () => {
+        const r = await sb.from('tasks').delete().eq('id', tk.id).select('id');
+        if (r.error || !r.data || !r.data.length) { toast(t('a_error'), true); return; }
+        TASKS = TASKS.filter((x) => x.id !== tk.id); renderUser(); rerender();
+      }));
+    }
+    card.appendChild(act);
+    host.appendChild(card);
+  }
+
+  async function tabTasks(body) {
+    body.appendChild(el('p', 'muted', t(isAdmin() ? 'tk_help_admin' : 'tk_help_mine')));
+    if (isAdmin()) {
+      const staff = await sb.from('staff').select('user_id,email,display_name,role,active').order('email');
+      const team = (staff.data || []).filter((m) => m.active !== false && ['admin', 'storekeeper', 'editor'].includes(m.role));
+      const box = sectionBox(t('tk_new')); body.appendChild(box);
+      if (!team.length) { box.appendChild(el('p', 'muted', t('tk_no_team'))); }
+      else {
+        const form = el('div', 'form'); box.appendChild(form);
+        const la = el('label'); la.appendChild(el('span', null, t('tk_assignee')));
+        const sa = el('select'); team.slice().sort((a, b) => ['storekeeper', 'editor', 'admin'].indexOf(a.role) - ['storekeeper', 'editor', 'admin'].indexOf(b.role)).forEach((m) => sa.appendChild(new Option((m.display_name || m.email) + ' · ' + t('role_' + m.role), m.user_id)));
+        la.appendChild(sa); form.appendChild(la);
+        const ld = el('label'); ld.appendChild(el('span', null, t('tk_due'))); const due = el('input'); due.type = 'date'; ld.appendChild(due); form.appendChild(ld);
+        const pc = cascade(form, [t('lvl_1'), t('lvl_2'), t('lvl_3')], PL, [], true);
+        const cc = cascade(form, [t('fld_cat'), t('fld_subcat')], CT, [], true);
+        const lm = el('label'); lm.appendChild(el('span', null, t('status')));
+        const sm = el('select'); [['todo', 'v_scope_todo'], ['flag', 'v_scope_flag'], ['all', 'v_scope_all']].forEach(([v, k]) => sm.appendChild(new Option(t(k), v))); lm.appendChild(sm); form.appendChild(lm);
+        const lt = el('label', 'full'); lt.appendChild(el('span', null, t('tk_title'))); const ti = el('input'); ti.type = 'text'; ti.maxLength = 160; lt.appendChild(ti); form.appendChild(lt);
+        const ln = el('label', 'full'); ln.appendChild(el('span', null, t('tk_note'))); const no = el('input'); no.type = 'text'; no.maxLength = 500; ln.appendChild(no); form.appendChild(ln);
+        const info = el('p', 'vinfo'); box.appendChild(info);
+        const go = mkBtn(t('tk_assign'), 'btn primary');
+        const upd = () => { const n = scopeIdx(pc, cc, sm.value).length; info.textContent = t('tk_count', { n: nf(n) }); go.disabled = n === 0; };
+        form.addEventListener('change', upd); upd();
+        go.addEventListener('click', async () => {
+          const idx = scopeIdx(pc, cc, sm.value); if (!idx.length) return;
+          go.disabled = true;
+          const lastVal = (c) => c.sels.map((s) => s.value).filter(Boolean).pop() || null;
+          const row = { title: ti.value.trim() || null, note: no.value.trim() || null, assignee: sa.value, due_on: due.value || null, scope_place: lastVal(pc), scope_cat: lastVal(cc), scope_mode: sm.value, item_ids: idx.map((i) => ITEMS[i].id) };
+          const r = await sb.from('tasks').insert(row).select('*').single();
+          if (r.error || !r.data) { toast(t('a_error'), true); go.disabled = false; return; }
+          TASKS.unshift(r.data); toast(t('tk_created')); mgShow('tasks');
+        });
+        const act = el('div', 'formactions'); act.appendChild(go); box.appendChild(act);
+      }
+    }
+    const list = isAdmin() ? TASKS : TASKS.filter((tk) => tk.assignee === USER.id);
+    const host = el('div', 'tklist'); body.appendChild(host);
+    if (!list.length) { host.appendChild(el('p', 'muted', t(isAdmin() ? 'tk_none_admin' : 'tk_none_mine'))); return; }
+    const rank = (tk) => (taskOpen(tk) ? 0 : 1);
+    list.slice().sort((a, b) => rank(a) - rank(b) || String(b.created_at).localeCompare(String(a.created_at))).forEach((tk) => taskCard(tk, host, () => mgShow('tasks')));
+  }
   // ---------- data ----------
   function buildIndex() {
     IX = ITEMS.map((it) => {
